@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const User = require('./models/users');
+const Card = require('./models/cards');
 
 const db = {
   name: process.env.DB_NAME,
@@ -15,13 +16,15 @@ const sequelize = new Sequelize(db.name, db.username, db.pw, {
     ssl: {
       rejectUnauthorized: true,
     }
-  }
+  },
+  logging: false
   }
 );
 
 // CREATE MODELS
 (async () => {
   await User(sequelize, DataTypes).sync();
+  await Card(sequelize, DataTypes).sync();
 })();
 
 exports.default = sequelize;
