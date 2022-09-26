@@ -35,6 +35,6 @@ module.exports = (db, DataTypes) => {
   });
 
   // ASOCIACIONES
-  
+
   return Card;
 };
