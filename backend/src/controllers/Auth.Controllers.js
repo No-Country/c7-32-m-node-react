@@ -28,5 +28,5 @@ export const login = async (req, res) => {
       expiresIn: 60 * 60 * 24, // 24 hours
     });
   
-    res.json({ token, message: "Logged correctly " });
+    res.json({ token, message: "¡Inicio de sesión exitoso!" });
 }
