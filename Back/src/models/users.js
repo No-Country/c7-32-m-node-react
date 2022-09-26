@@ -1,5 +1,7 @@
-module.exports = (db, DataTypes) => {
-  const User = db.define('User', {
+import {sequelize} from '../db/db.js';
+import {DataTypes} from 'sequelize';
+
+export const User = sequelize.define('User', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -68,6 +70,3 @@ module.exports = (db, DataTypes) => {
 
   //   User.hasOne
   // };
-
-  return User;
-}

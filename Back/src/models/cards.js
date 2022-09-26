@@ -1,4 +1,4 @@
-module.exports = (db, DataTypes) => {
+export default function (db, DataTypes) {
   const Card = db.define('Card', {
     id: {
       type: DataTypes.INTEGER,

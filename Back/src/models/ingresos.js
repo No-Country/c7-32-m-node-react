@@ -1,5 +1,7 @@
-module.exports = (db, DataTypes) => {
-  const Ingreso = db.define('Ingreso', {
+import {sequelize} from '../db/db.js';
+import {DataTypes} from 'sequelize';
+
+export const Ingreso = sequelize.define('Ingreso', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -18,6 +20,3 @@ module.exports = (db, DataTypes) => {
   });
 
   // ASOCIACIONES
-
-  return Ingreso;
-};

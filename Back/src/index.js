@@ -1,13 +1,21 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const app = express();
-const port = process.env.PORT || 8080;
+import app from "./app.js";
+import { sequelize } from './db/db.js';
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// import models
+import './models/Users.js';
+import './models/Cards.js';
 
-app.listen(port, (err) => {
-  if (!err) console.log(`Server listening on http://localhost:${process.env.PORT}`);
-});
+// initalization of DATABASE and SERVER
+
+const Main = async () => {
+  try {
+    await sequelize.sync({ force: false });
+    console.log("Connection has been established successfully.");
+    app.listen(app.get("PORT"));
+    console.log(`Server listening on port ${app.get("PORT")}`);
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+}
+
+Main();
