@@ -1,7 +1,7 @@
 import {sequelize} from '../db/db.js';
 import {DataTypes} from 'sequelize';
 
-export const Egreso = sequelize.define({
+export const Egreso = sequelize.define('Egreso', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,

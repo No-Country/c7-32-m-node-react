@@ -1,5 +1,7 @@
-export default function (db, DataTypes) {
-  const Card = db.define('Card', {
+import {sequelize} from '../db/db.js';
+import {DataTypes} from 'sequelize';
+
+export const Card = sequelize.define('Card', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -35,6 +37,3 @@ export default function (db, DataTypes) {
   });
 
   // ASOCIACIONES
-
-  return Card;
-};
