@@ -1,7 +1,8 @@
 // imports
-import jwt from "jsonwebtoken";
 import {generateToken} from '../utils/generateToken.js';
 import { User } from "../models/Users.js";
+import {createCard} from '../utils/generateCard.js';
+import { cbu } from '../utils/generateCbu.js';
 import { comparePassword } from "../utils/encryptPassword.js";
 import {OAuth2Client} from 'google-auth-library';
 
@@ -68,9 +69,20 @@ export const googleLogin = async (req, res) => {
 
       // if doesn't exist sign in
 
+      const cardUser = await createCard(userFound.name, userFound.surname);
 
+      const newUser = await User.create({
+        name: payload.given_name,
+        surname: payload.family_name,
+        email: payload.email,
+        image: payload.picture,
+        cbu,
+        card_id: cardUser.id
+      });
       
-    res.json('hola pa');
+      const token =  generateToken(newUser.id);
+
+      res.json({ token, message: "¡Inicio de sesión exitoso!", user: newUser});
   } catch (error) {
     res.status(500).json({message: error});
   }
