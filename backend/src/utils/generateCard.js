@@ -8,7 +8,7 @@ export const createCard = async (name, surname) => {
     const issue_date = new Date(); 
     const exp_date = new Date(`${issue_date.getFullYear() + 10}`);
 
-    return newCard = await Card.create({
+    return await Card.create({
         name,
         surname,
         number: cbu,
