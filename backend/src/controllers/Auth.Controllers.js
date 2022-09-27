@@ -80,9 +80,9 @@ export const googleLogin = async (req, res) => {
         card_id: cardUser.id
       });
       
-      const token =  generateToken(newUser.id);
+      const tokenGenerated =  generateToken(newUser.id);
 
-      res.json({ token, message: "¡Inicio de sesión exitoso!", user: newUser});
+      res.json({ token: tokenGenerated, message: "¡Inicio de sesión exitoso!", user: newUser});
   } catch (error) {
     res.status(500).json({message: error});
   }
