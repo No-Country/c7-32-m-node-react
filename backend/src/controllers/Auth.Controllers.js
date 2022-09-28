@@ -1,8 +1,8 @@
 // imports
 import {generateToken} from '../utils/generateToken.js';
 import { User } from "../models/Users.js";
-import {createCard} from '../utils/generateCard.js';
-import { cbu } from '../utils/generateCbu.js';
+// import {createCard} from '../utils/generateCard.js';
+// import { cbu } from '../utils/generateCbu.js';
 import { comparePassword } from "../utils/encryptPassword.js";
 import {OAuth2Client} from 'google-auth-library';
 
@@ -46,6 +46,10 @@ export const login = async (req, res) => {
 export const googleLogin = async (req, res) => {
   const {token} = req.body;
 
+  if(!token) {
+    return res.status(400).json({message: 'Token inválido'})
+  }
+
   try {
     // verify token of google
       const ticket = await client.verifyIdToken({
@@ -53,7 +57,6 @@ export const googleLogin = async (req, res) => {
           audience: process.env.CLIENT_ID, 
       });
       const payload = ticket.getPayload();
-      const userid = payload['sub'];
 
       // find if user exist in our DB
       const userFound = await User.findOne({ where: {email: payload.email }});
@@ -69,15 +72,15 @@ export const googleLogin = async (req, res) => {
 
       // if doesn't exist sign in
 
-      const cardUser = await createCard(userFound.name, userFound.surname);
+      // const cardUser = await createCard(userFound.name, userFound.surname);
 
       const newUser = await User.create({
         name: payload.given_name,
         surname: payload.family_name,
         email: payload.email,
         image: payload.picture,
-        cbu,
-        card_id: cardUser.id
+        // cbu,
+        // card_id: cardUser.id
       });
       
       const tokenGenerated =  generateToken(newUser.id);
