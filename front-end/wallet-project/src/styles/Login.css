@@ -1,3 +1,4 @@
+/* Page Login */
 .login{
   width: 100vw;
   min-height: 100vh;
@@ -5,7 +6,7 @@
   display: flex;
 
 }
-
+/* Login image and text on the left side */
 .login-image{
   width: 50%;
   background: linear-gradient(0deg, #009562 -2.22%, rgba(21, 191, 133, 0.22) 101.22%);  
@@ -13,12 +14,11 @@
   flex-direction: column;
   align-items: center;
 }
-
 .login-image  .image  img{
-  margin-top: 5rem;
+  margin-top: 7rem;
 }
 .login-image h1{
-  max-width: 31.5625rem;
+  max-width: 34.375rem;
   font-size: clamp(1.875rem, 8vw - 3vw, 2.75rem);
   text-align: center;
   text-transform: uppercase;
@@ -32,12 +32,15 @@
   text-align: center;
 }
 
+/* Info for form to login and logo */
 .login-info{
   width: 50%;
   display: flex;
   flex-direction: column;
   color: #000000;
 }
+
+/* Logo */
 .login-info .logo{
   width: 130px;
   align-self: flex-end;
@@ -46,6 +49,8 @@
 .login-info .logo img{
   width: 100%;
 }
+
+/* Form */
 .login-form{
   width: 60%;
   margin: 5rem auto;
@@ -71,9 +76,61 @@
   background-color: transparent;
   border: 1px solid #aaaaaa;
   border-radius: .3125rem;
-}
-.login-form .form input::placeholder{
+  color: #000000;
   padding-left: 1.25rem;
   font-size: 1rem;
+}
+.login-form .form input::placeholder{
   color: #aaaaaa;
+}
+.login-info .login-form .form .form-warned{
+  height: 3.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .625rem;
+  font-size: .875rem;
+  padding: 0rem .625rem;
+}
+.login-info .login-form .form .form-warned .form-check{
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+}
+.login-info .login-form .form .btn{
+  height: 3.125rem;
+  background-color: #FF477E;
+  color: #ffffff;
+  font-weight: 400;
+  letter-spacing: 1px;
+  outline: none;
+  border: none;
+  border-radius: .3125rem;
+  transition: transform .6s;
+  text-align: center;
+}
+.login-info .login-form .form .btn:hover{
+  background-color: #ff2f6e;
+  transform: scale(1.03);
+}
+.login-info .login-form .form .btn-google{
+  background-color: transparent;
+  border: 1px solid #aaaaaa;
+  color: #000000;
+  margin-top: .9375rem;
+}
+.login-info .login-form .form .btn-google:hover{
+  background-color: transparent;
+  transform: scale(1.03);
+}
+/* Go to register */
+.login-info span{
+  text-align: center;
+  position: relative;
+  bottom: -12rem;
+}
+.login-info span .link{
+  font-weight: 400;
+  color: #FF477E;
 }
