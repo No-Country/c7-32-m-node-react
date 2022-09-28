@@ -8,9 +8,29 @@ export const transporter = createTransport({
   }
 });
 
-export const options = {
-  from: 'wenwallet.c7@gmail.com',
-  to: '',
-  subject: '',
-  text: ''
+const mailOptions = (confirmationLink, email, option) = {
+  const from = "Wen Wallet";
+
+  if (option === 'renewpassword') {
+    return {
+      from,
+      to: email,
+      cc: process.env.NODEMAILER_USER,
+      subject: 'Reinicio de contraseña',
+      html: `<h3>Por favor, actualice su contraseña clickeando el siguiente enlace <a href="${confirmationLink}">Actualizar contraseña</a></h3><strong><i>Wen Wallet</i></strong>`
+    }
+  };
+
+  if (option === 'activation') {
+    return {
+      from,
+      to: email,
+      cc: process.env.NODEMAILER_USER,
+      subject: 'Confirmacion de cuenta',
+      html: `<h3>Por favor, active su cuenta clickeando el siguiente enlace <a href="${confirmationLink}">ACTIVAR CUENTA</a></h3><strong><i>Wen Wallet</i></strong>`
+    }
+  };
+ 
 };
+
+export default { transporter, mailOptions };

@@ -55,6 +55,10 @@ export const User = sequelize.define('User', {
       type: DataTypes.STRING,
       allowNull: false
     },
+    resetToken: {
+      type: DataTypes.STRING,
+      allowNull:true
+    },
     created_at: {
       type: DataTypes.DATE
     }
