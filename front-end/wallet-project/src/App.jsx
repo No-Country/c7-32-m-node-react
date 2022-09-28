@@ -1,21 +1,23 @@
 import { React } from 'react'
 import { BrowserRouter as Browser, Routes, Route   } from 'react-router-dom'
-import './App.css'
+
+import LoginContainer from './components/container/LoginContainer'
 
 function App() {
 
+   
   return (
-    <div className="App">
-      <Browser>
+    <Browser>
+      <div>
         <Routes>
-          <Route />
+          <Route path='/' element={ <LoginContainer /> }/>
           <Route />
           <Route />
           <Route />
           <Route />
         </Routes>
-      </Browser>
-    </div>
+      </div>
+    </Browser>
   )
 }
 
