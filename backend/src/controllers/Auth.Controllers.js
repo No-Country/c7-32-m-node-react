@@ -2,7 +2,7 @@
 import {generateToken} from '../utils/generateToken.js';
 import { User } from "../models/Users.js";
 // import {createCard} from '../utils/generateCard.js';
-// import { cbu } from '../utils/generateCbu.js';
+import { cbu } from '../utils/generateCbu.js';
 import { comparePassword } from "../utils/encryptPassword.js";
 import {OAuth2Client} from 'google-auth-library';
 
@@ -37,7 +37,7 @@ export const login = async (req, res) => {
 
     res.json({ token, message: "¡Inicio de sesión exitoso!", user: userFound });
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -52,10 +52,10 @@ export const googleLogin = async (req, res) => {
 
   try {
     // verify token of google
-      const ticket = await client.verifyIdToken({
-          idToken: token,
-          audience: process.env.CLIENT_ID, 
-      });
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: process.env.CLIENT_ID, 
+    });
       const payload = ticket.getPayload();
 
       // find if user exist in our DB
@@ -72,22 +72,22 @@ export const googleLogin = async (req, res) => {
 
       // if doesn't exist sign in
 
-      // const cardUser = await createCard(userFound.name, userFound.surname);
+      const cardUser = await createCard(userFound.name, userFound.surname);
 
       const newUser = await User.create({
         name: payload.given_name,
         surname: payload.family_name,
         email: payload.email,
         image: payload.picture,
-        // cbu,
-        // card_id: cardUser.id
+        cbu,
+        card_id: cardUser.id
       });
       
       const tokenGenerated =  generateToken(newUser.id);
 
       res.json({ token: tokenGenerated, message: "¡Inicio de sesión exitoso!", user: newUser});
   } catch (error) {
-    res.status(500).json({message: error});
+    res.status(500).json({message: error.message});
   }
 
 }
