@@ -1,5 +1,10 @@
 import React from "react";
+
+import '../../styles/register.css'
+
 import logo from "../../assets/images/Logo.svg";
+
+
 import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
