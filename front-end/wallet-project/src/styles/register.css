@@ -17,6 +17,7 @@
         rgba(255, 0, 76, 0.22) 101.22%
     );    
     gap: 1rem;
+    height: 100%;
 }
 
 /* .containerRegister img{
