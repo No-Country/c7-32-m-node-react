@@ -1,41 +1,61 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #ffffff;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.containerRegister {   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(
+        0deg,
+        #c22f5b -2.22%,
+        rgba(255, 0, 76, 0.22) 101.22%
+    );    
+    gap: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* .containerRegister img{
+  position: absolute;
+  left: 1in;
+  top: 2rem;
+} */
+
+.containerForm {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-around;  
+    margin-top: 2rem;  
 }
 
-.card {
-  padding: 2em;
+.divInput {
+    box-sizing: border-box;
+    border-bottom: 1px solid #000000;
+    border-radius: 5px;
+    width: 350px;
 }
 
-.read-the-docs {
-  color: #888;
+.divInput input {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: 350px;
+}
+
+.containerForm button {
+    background: #16c98c;
+    border-radius: 5px;
+    width: 400px;    
+    height: 50px;    
+}
+
+.containerRegister span{
+  color: #16C98C;
 }
