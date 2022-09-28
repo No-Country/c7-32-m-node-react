@@ -25,7 +25,7 @@ const LoginContainer = () => {
     e.preventDefault()
 
   }
-  
+
   return (
     <section className='login'>
       <div className='login-image'>
@@ -68,7 +68,7 @@ const LoginContainer = () => {
             <button type='button' className='btn btn-google'>Inicia sesión con Google</button>
           </form>
           
-          <span>¿No tiene una cuenta? <Link className='link'>Únase ahora</Link></span>
+          <span>¿No tiene una cuenta? <Link className='link' to='/register'>Únase ahora</Link></span>
         </div>   
 
       </div>
