@@ -3,9 +3,10 @@ import { Router } from "express";
 const router = Router();
 
 // import controller
-import {register} from '../controllers/Auth.Controllers.js';
+//import {} from '../controllers/Auth.Controllers.js';
+import register from '../controllers/Register.Controller.js';
 
-router.get('/register',register);
+router.post('/register',register);
 
 
 export default router;

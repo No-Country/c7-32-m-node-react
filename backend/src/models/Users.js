@@ -4,10 +4,14 @@ import {DataTypes} from 'sequelize';
 export const User = sequelize.define("Users", {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
+      
     },
     name: {
+      type: DataTypes.STRING,
+    },
+    surname: {
       type: DataTypes.STRING,
     },
     email: {
