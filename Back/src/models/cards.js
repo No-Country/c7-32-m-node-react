@@ -13,6 +13,9 @@ export const Card = sequelize.define('Card', {
       type: DataTypes.STRING,
       allowNull: false
     },
+    surname: {
+      type: DataTypes.STRING
+    },
     number: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -34,6 +37,8 @@ export const Card = sequelize.define('Card', {
       type: DataTypes.STRING,
       allowNull: false
     }
+  }, {
+    timestamps: true
   });
 
   // ASOCIACIONES
