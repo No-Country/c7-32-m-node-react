@@ -10,6 +10,9 @@ export const Card = sequelize.define("Cards", {
     name: {
       type: DataTypes.STRING,
     },
+    surname: {
+      type: DataTypes.STRING
+    },
     number: {
       type: DataTypes.INTEGER,
     },

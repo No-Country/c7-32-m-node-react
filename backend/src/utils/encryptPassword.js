@@ -14,6 +14,6 @@ export const comparePassword = async (password, confirmPassword) => {
   try {
     return await bcrypt.compareSync(password, confirmPassword);
   } catch (error) {
-    return error.message
+    return error.message;
   }
 };
