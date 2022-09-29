@@ -6,7 +6,7 @@ export const encryptPassword = async (password) => {
     const hash = await bcrypt.hashSync(password, salt);
     return hash;
   } catch (error) {
-    return errror;
+    return errror.message;
   }
 };
 
@@ -14,6 +14,6 @@ export const comparePassword = async (password, confirmPassword) => {
   try {
     return await bcrypt.compareSync(password, confirmPassword);
   } catch (error) {
-    return error
+    return error.message;
   }
 };
