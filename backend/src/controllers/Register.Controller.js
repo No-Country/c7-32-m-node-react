@@ -6,9 +6,9 @@ const register = async (req, res)=>{
     const{name,surname,email,password} = req.body;
     const UserFound = await User.findOne({ where: {email}});
         if (UserFound){
-            return res.json({mensaje: "There is already a user with that email"});
+            return res.json({mensaje: "La direccion de mail ya fue usada"});
         } if (!name|| !surname ||!email|| !password){
-            return res.json({mensaje: "Missing name,surname, email, password"});  
+            return res.json({mensaje: "No encuentra nombre, apellido, email, contraseña"});  
         } else {
             //if (password !== confirmPassword){
             //return res.status(400).json("Las contraseñas no coinciden")
@@ -22,7 +22,7 @@ const register = async (req, res)=>{
                         password: passwordHash,
                     });
                    const newUser = await nuevoUser.save()
-                        res.json({mensaje: "User created successfully", newUser})
+                        res.json({mensaje: "Se creo el usuario de forma exitosa", newUser})
                     }}
                 
         
