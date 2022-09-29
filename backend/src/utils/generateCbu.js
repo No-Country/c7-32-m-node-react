@@ -1,1 +1,0 @@
-export const cbu =  "03434" + ("0000989800" + (Math.random()*9999999|0)).slice(-22);
