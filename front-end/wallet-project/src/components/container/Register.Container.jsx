@@ -19,19 +19,19 @@ const Register = () => {
             <form className="containerForm">
                 <div className="divInput">
                     <label htmlFor="name">Name</label>
-                    <input type="text" id="name" />
+                    <input type="text" id="name" placeholder="Pedro"/>
                 </div>
                 <div className="divInput">
                     <label htmlFor="lastName">Last Name</label>
-                    <input type="text" id="lastName" />
+                    <input type="text" id="lastName" placeholder="Perez"/>
                 </div>
                 <div className="divInput">
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" />
+                    <input type="email" id="email" placeholder="pedro.perez@wallet.com"/>
                 </div>
                 <div className="divInput">
                     <label htmlFor="emailConf">Confirm Email</label>
-                    <input type="email" id="emailConf" />
+                    <input type="email" id="emailConf" placeholder="pedro.perez@wallet.com"/>
                 </div>
                 <div className="divInput">
                     <label htmlFor="password">Password</label>
@@ -59,7 +59,7 @@ const Register = () => {
                 </div>
             </form>
             <p>
-                Already have an account? <span style={{ cursor:'pointer' }} onClick={ ()=> navigate('/login') }>Sign in</span>
+                Already have an account? <span style={{ cursor:'pointer' }} onClick={ ()=> navigate('/') }>Sign in</span>
             </p>
         </div>
     );
