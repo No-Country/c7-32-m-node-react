@@ -1,52 +1,76 @@
 import {sequelize} from '../db/db.js';
 import {DataTypes} from 'sequelize';
 
-export const User = sequelize.define("Users", {
+export const User = sequelize.define('User', {
     id: {
       type: DataTypes.INTEGER,
-<<<<<<< HEAD
-      primaryKey: true,
       autoIncrement: true,
-      
-=======
-       autoIncrement: true,
-        primaryKey: true
->>>>>>> 83724d13ca511368060ac2c46b6cf742d575629f
+      allowNull: false,
+      primaryKey: true,
+      unique: true,
     },
     name: {
       type: DataTypes.STRING,
-    },
-    surname: {
-      type: DataTypes.STRING,
+      allowNull: false,
+      notEmpy: true
     },
     email: {
       type: DataTypes.STRING,
-      unique: true
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
+      notEmpy: true
     },
     password: {
       type: DataTypes.STRING,
+      allowNull: false,
+      min: 5,
+      notEmpy: true
     },
     country: {
-        type: DataTypes.STRING,
-      },
-      phone: {
-        type: DataTypes.INTEGER,
-      },
-      cbu: {
-        type: DataTypes.STRING,
-      },
-      cuil_ruc: {
-        type: DataTypes.INTEGER,
-      },
-      image: {
-        type: DataTypes.STRING,
-      },
-      card_id: {
-        type: DataTypes.INTEGER,
-      },
-      status: {
-        type: DataTypes.STRING,
-      },
-  }, {
-    timestamps: true
-  });
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    phone: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+      notEmpy: true
+    },
+    cbu: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    cuil_ruc: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    card_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    resetToken: {
+      type: DataTypes.STRING,
+      allowNull:true
+    },
+    created_at: {
+      type: DataTypes.DATE
+    }
+  },
+    {
+      timestamps: false
+
+    });
+
+    // ASOCIACIONES
+  // User.associate = (Models) => {
+  //   const { Ingreso } = Models;
+
+  //   User.hasOne
+  // };

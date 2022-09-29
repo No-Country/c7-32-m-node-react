@@ -11,6 +11,7 @@ const app = express()
 
 // import routes
 import Auth from './routes/Auth.js';
+import Password from './routes/Password.js';
 
 // settings
 app.set("PORT", process.env.PORT || 4000);
@@ -23,9 +24,9 @@ app.use(morgan("dev"));
 app.use(passport.initialize());
 passport.use(passportMidlewares);
 
-
 // routes
 app.use('/api', Auth);
+app.use('/api/password', Password);
 
 
 // export app
