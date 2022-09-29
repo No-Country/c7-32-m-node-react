@@ -8,7 +8,7 @@ export const transporter = createTransport({
   }
 });
 
-const mailOptions = (confirmationLink, email, option) = {
+export const mailOptions = (confirmationLink, email, option) => {
   const from = "Wen Wallet";
 
   if (option === 'renewpassword') {
@@ -32,5 +32,3 @@ const mailOptions = (confirmationLink, email, option) = {
   };
  
 };
-
-export default { transporter, mailOptions };

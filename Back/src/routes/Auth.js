@@ -8,7 +8,4 @@ const router = Router();
 router.post('/login', login);
 router.post('/google/login', googleLogin);
 
-// PASSWORD
-router.post('/forgot-password', forgotPassword);
-
 export default router;
