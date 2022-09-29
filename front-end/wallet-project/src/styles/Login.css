@@ -53,7 +53,7 @@
 /* Form */
 .login-form{
   width: 60%;
-  margin: 5rem auto;
+  margin: 5rem auto 0rem;
   display: flex;
   flex-direction: column;
 }
@@ -74,7 +74,8 @@
 .login-form .form input{
   height: 3.125rem;
   background-color: transparent;
-  border: 1px solid #aaaaaa;
+  border: none;
+  border-bottom: 1px solid #aaaaaa;
   border-radius: .3125rem;
   color: #000000;
   padding-left: 1.25rem;
@@ -115,22 +116,34 @@
   transform: scale(1.03);
 }
 .login-info .login-form .form .btn-google{
-  background-color: transparent;
-  border: 1px solid #aaaaaa;
-  color: #000000;
-  margin-top: .9375rem;
+  height: 50px !important;
+  background-color: transparent !important;
+  border: 1px solid #aaaaaa !important;
+  color: #000000 !important;
+  margin-top: .9375rem !important;
+  box-shadow: none !important;
+  border-radius: .3125rem !important;
+  justify-content: center !important;
+  transition: transform .6s !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+}
+.login-info .login-form .form .btn-google div{
+  background-color: transparent !important;
+  margin-top: .3125rem;
 }
 .login-info .login-form .form .btn-google:hover{
   background-color: transparent;
   transform: scale(1.03);
 }
 /* Go to register */
-.login-info span{
+.login-info .register{
   text-align: center;
   position: relative;
-  bottom: -12rem;
+  bottom: -10rem;
 }
-.login-info span .link{
+.login-info .register .link{
   font-weight: 400;
   color: #FF477E;
 }
