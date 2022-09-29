@@ -22,7 +22,9 @@ const register = async (req, res) => {
             password: passwordHash,
         });
         const newUser = await nuevoUser.save()
-        res.json({ mensaje: "Se creo el usuario de forma exitosa", newUser })
+
+        const checkUser = await User.findOne({ where: { email }});
+        res.json({ mensaje: "Se creo el usuario de forma exitosa", newUser, checkUser });
     }
 }
 
