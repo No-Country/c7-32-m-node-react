@@ -59,7 +59,7 @@ const Register = () => {
                 </div>
             </form>
             <p>
-                Already have an account? <span style={{ cursor:'pointer' }} onClick={ ()=> navigate('/login') }>Sign in</span>
+                Already have an account? <span style={{ cursor:'pointer' }} onClick={ ()=> navigate('/') }>Sign in</span>
             </p>
         </div>
     );
