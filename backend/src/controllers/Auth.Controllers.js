@@ -1,7 +1,7 @@
 // imports
 import {generateToken} from '../utils/generateToken.js';
 import { User } from "../models/Users.js";
-// import {createCard} from '../utils/generateCard.js';
+import {createCard} from '../utils/generateCard.js';
 import { cbu } from '../utils/generateCbu.js';
 import { comparePassword } from "../utils/encryptPassword.js";
 import {OAuth2Client} from 'google-auth-library';
