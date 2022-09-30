@@ -116,32 +116,33 @@
   transform: scale(1.03);
 }
 .login-info .login-form .form .btn-google{
-  height: 50px !important;
-  background-color: transparent !important;
-  border: 1px solid #aaaaaa !important;
-  color: #000000 !important;
-  margin-top: .9375rem !important;
-  box-shadow: none !important;
-  border-radius: .3125rem !important;
-  justify-content: center !important;
-  transition: transform .6s !important;
-  font-family: 'Poppins', sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-}
-.login-info .login-form .form .btn-google div{
-  background-color: transparent !important;
-  margin-top: .3125rem;
+  background-color: transparent ;
+  border: 1px solid #aaaaaa ;
+  color: #000000 ;
+  margin-top: .9375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .login-info .login-form .form .btn-google:hover{
   background-color: transparent;
   transform: scale(1.03);
 }
+.login-info .login-form .form .btn-google .google-svg{
+  font-size: 1.5rem;
+  margin-right: .625rem;
+}
+.login-info .login-form .form .error{
+  font-size: .875rem;
+  color: red;
+  margin: 0rem;
+}
+
 /* Go to register */
 .login-info .register{
   text-align: center;
   position: relative;
-  bottom: -10rem;
+  bottom: -8rem;
 }
 .login-info .register .link{
   font-weight: 400;

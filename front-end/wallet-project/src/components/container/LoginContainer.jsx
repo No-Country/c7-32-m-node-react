@@ -1,15 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
+import * as Yup from 'yup'
+
+
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as Yup from 'yup'
-import { GoogleLogin } from 'react-google-login'
-import { gapi } from 'gapi-script'
+import { useGoogleLogin } from '@react-oauth/google'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 
 import '../../styles/Login.css'
 import logo from '../../assets/images/Logo-bg-black.png'
 import login_svg from '../../assets/images/Wallet_Monochromatic.svg'
-import axios from 'axios'
+import { FcGoogle } from 'react-icons/fc'
+import { httpsRequest } from '../../assets/config/axios'
+import  setCookie from '../../assets/config/setCookie'
+import  removeCookie  from '../../assets/config/removeCookie'
 
 const LoginSchema = Yup.object({
   email: Yup.string()
@@ -23,32 +30,39 @@ const LoginSchema = Yup.object({
 const LoginContainer = () => {
 
   const { register, handleSubmit, formState:{ errors } } = useForm( { resolver: yupResolver(LoginSchema) } )  
-  const clientID = '788418791012-cg4g59fivrprdgm4eq9pkgv4fmr8474f.apps.googleusercontent.com'
-
-  const submit = (info) =>{
-    axios({
-      method: 'get',
-      url: 'http:localhost:5000/api/login',
-      data: info
-    })
-  }
+  const [remember, setRemember] = useState(false)
   
-  useEffect(() => {
-    const initClient = () => {
-      gapi.client.init({
-        clientId: clientID,
-        scope: ''
-      })
+  const login = (info) =>{
+    try {
+      httpsRequest('post', 'http:localhost:5000/api/login', info)
+      
+      if (remember) {
+        removeCookie('user')
+        setCookie('user', info)
+      }
+      location.assign('/dashboard')
+    } catch (error) {
+      console.log(error.response.data.message)
     }
-    gapi.load('client:auth2', initClient)  
-  }, [])
+  }
 
-  const onSuccess = (res) => {
-    console.log('success:', res)
-  }
-  const onFailure = (err) => {
-    console.log('failed:', err)
-  }
+  const MySwal = withReactContent(Swal)
+
+  const loginGoogle = useGoogleLogin({
+    onSuccess: async res => {
+      try {
+        const data = await httpsRequest('post', 'http:localhost:5000/api/google/login', res.tokenId)
+        console.log(data)
+      } catch (error) {
+        MySwal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Ha ocurrido un error, intentalo más tarde'
+        })
+      }
+    }
+  })
+
 
   return (
     <section className='login'>
@@ -71,7 +85,7 @@ const LoginContainer = () => {
         <div className='login-form'>
           <p>Bienvenido</p>
           <h2>Acceda a su cuenta</h2>
-          <form className='form' onSubmit={ handleSubmit(submit) }>
+          <form className='form' onSubmit={ handleSubmit(login) }>
           
             <label htmlFor='email'>Email</label>
             <input type='email' id='email' placeholder='example@example.com' {...register ('email') }/>
@@ -83,21 +97,20 @@ const LoginContainer = () => {
 
             <div className='form-warned'>
               <div className='form-check'>
-                <input type='checkbox' id='remember'  />
+                <input type='checkbox' id='remember' onChange={ () => setRemember( !remember ) } />
                 <label htmlFor='remember'>Recuerdame</label>
               </div>
-              <Link to='#' className='link' >¿Olvidaste la contraseña?</Link>
+              <Link to='/recoverpass' className='link' >¿Olvidaste la contraseña?</Link>
             </div>
+            
             <button type='submit' className='btn btn-login' >Inicia Sesión</button>
-            <GoogleLogin
-              className='btn-google'
-              clientId={clientID}
-              buttonText="Inicia Sesión con Google"
-              onSuccess={onSuccess}
-              onFailure={onFailure}
-              cookiePolicy={'single_host_origin'}
-              isSignedIn={true}
-            />
+            <button
+              onClick={ loginGoogle }
+              className='btn btn-google' >
+              <FcGoogle className='google-svg'/>
+              Inicia Sesión con Google
+            </button>
+      
           </form>
           
           <span className='register'>¿No tiene una cuenta? <Link className='link' to='/register'>Únase ahora</Link></span>
