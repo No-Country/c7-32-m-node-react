@@ -1,4 +1,4 @@
-import {Strategy, ExtractJwt} from 'passport-jwt';
+import { Strategy, ExtractJwt } from 'passport-jwt';
 import { User } from '../models/Users.js';
 
 const opts = {
@@ -9,7 +9,7 @@ const opts = {
 export default new Strategy(opts, async (payload, done) => {
     try {
         const userFound = await User.findByPk(payload.id);
-        if(userFound){
+        if (userFound) {
             return done(null, userFound)
         }
 

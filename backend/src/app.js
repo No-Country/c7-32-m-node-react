@@ -1,11 +1,10 @@
 import { config } from "dotenv";
-config({path: '.env'});
+config({ path: '.env' });
 import express from "express";
 import cors from "cors";
-import morgan from "morgan";
+import helmet from "helmet";
 import passport from 'passport';
-import passportMidlewares from './middlewares/passport.js';
-
+import passportMiddlewares from './middlewares/passport.js';
 
 const app = express()
 
@@ -18,9 +17,9 @@ app.set("PORT", process.env.PORT || 4000);
 
 // middlewares
 app.use(cors());
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(morgan("dev"));
 app.use(passport.initialize());
 passport.use(passportMidlewares);
 
@@ -28,7 +27,5 @@ passport.use(passportMidlewares);
 app.use('/api', Auth);
 app.use('/api/password', Password);
 
-
 // export app
-
 export default app;
