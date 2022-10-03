@@ -63,7 +63,7 @@ export const googleLogin = async (req, res) => {
     }
 
     // if doesn't exist sign in
-    const cardUser = await createCard(userFound.name, userFound.surname);
+    const cardUser = await createCard(userFound.id, userFound.name, userFound.surname);
 
     const newUser = await User.create({
       name: payload.given_name,

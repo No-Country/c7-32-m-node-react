@@ -1,7 +1,7 @@
 import { Card } from "../models/Cards.js";
 import {cbu} from '../utils/generateCbu.js';
 
-export const createCard = async (name, surname) => {
+export const createCard = async (id, name, surname) => {
 
     // create card
     const cvv = Math.floor(Math.random() * (999 - 100) + 100);
@@ -14,6 +14,7 @@ export const createCard = async (name, surname) => {
         number: cbu,
         exp_date,
         issue_date,
-        cvv
+        cvv,
+        idUser
     })
 }

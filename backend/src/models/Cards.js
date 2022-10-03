@@ -36,6 +36,10 @@ export const Card = sequelize.define('Card', {
     status: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    idUser: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     timestamps: true
