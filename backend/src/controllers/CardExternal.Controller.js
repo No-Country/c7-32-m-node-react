@@ -10,20 +10,21 @@ export const createCardExternal = async (req, res) => {
     try {
         // validate if the user exist
         const userFound = await User.findByPk(id);
+        const numberInt = parseInt(number);
         if(!userFound) {
             return res.status(400).json({message: "Usuario no encontrado"});
         }
-        const cardFound = await Card.findOne({where: { number: number }});
+        const cardFound = await Card.findOne({where: { number: numberInt }});
 
         if(cardFound) {
-            res.status(400).json({message: "La tarjeta ya está agregada"});
+            return res.status(400).json({message: "La tarjeta ya está agregada"});
         }
 
         if(!name || !surname || !number || !exp_date || !issue_date || !cvv){
             return res.status(400).json({message: "Complete todos los datos"});
         }
 
-        if( number.toString().length !== 16 || isNaN(parseInt(number))) {
+        if( number.toString().length !== 16 || isNaN(numberInt)) {
             return res.status(400).json({message: "Número de tarjeta inválido"});
         }
 
@@ -44,19 +45,20 @@ export const createCardExternal = async (req, res) => {
             return res.status(400).json({message: "Cvv inválido"});
         } 
 
-       await Card.create({
+        
+
+        const cardCreated = await Card.create({
             name,
-            // surname,
-            // number: parseInt(number),
-            // exp_date: exp_date,
-            // issue_date: issue_date,
-            // cvv: parseInt(cvv),
-            // id_user: id
+            surname,
+            number: numberInt,
+            exp_date: new Date(exp_date),
+            issue_date: new Date(issue_date),
+            cvv,
+            id_user: id
         })
 
 
-
-        return res.json({message: "Tarjeta añadida"});
+        return res.json({message: "Tarjeta añadida", card: cardCreated});
     } catch (error) {
         res.status(500).json({message: error.message})
     }
