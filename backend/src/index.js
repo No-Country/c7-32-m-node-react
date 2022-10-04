@@ -9,7 +9,6 @@ import './models/Ingresos.js';
 import './models/Egresos.js';
 
 // initalization of DATABASE and SERVER
-
 const Main = async () => {
   try {
     await sequelize.sync({ force: false });
