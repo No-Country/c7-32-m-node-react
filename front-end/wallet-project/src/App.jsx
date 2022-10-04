@@ -3,21 +3,20 @@ import { BrowserRouter as Browser, Routes, Route   } from 'react-router-dom'
 
 import LoginContainer from './components/container/LoginContainer'
 import Register from './components/container/Register.Container'
+import Home from './pages/home'
 
 function App() {
 
    
   return (
     <Browser>
-      <div>
-        <Routes>
-          <Route path='/login' element = { <LoginContainer /> }/>
-          <Route path='/register' element ={ <Register /> } />
-          <Route />
-          <Route />
-          <Route />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path='/' element={ <Home /> }/>
+        <Route path='/login' element = { <LoginContainer /> }/>
+        <Route path='/register' element ={ <Register /> } />
+        <Route />
+        <Route />
+      </Routes>
     </Browser>
   )
 }

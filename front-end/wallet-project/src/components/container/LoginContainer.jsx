@@ -15,8 +15,6 @@ import logo from '../../assets/images/Logo-bg-black.png'
 import login_svg from '../../assets/images/Wallet_Monochromatic.svg'
 import { FcGoogle } from 'react-icons/fc'
 import { httpsRequest } from '../../assets/config/axios'
-import  setCookie from '../../assets/config/setCookie'
-import  removeCookie  from '../../assets/config/removeCookie'
 
 const LoginSchema = Yup.object({
   email: Yup.string()
@@ -31,28 +29,52 @@ const LoginContainer = () => {
 
   const { register, handleSubmit, formState:{ errors } } = useForm( { resolver: yupResolver(LoginSchema) } )  
   const [remember, setRemember] = useState(false)
+  const MySwal = withReactContent(Swal)
   
   const login = (info) =>{
+
     try {
-      httpsRequest('post', 'http:localhost:5000/api/login', info)
-      
-      if (remember) {
-        removeCookie('user')
-        setCookie('user', info)
-      }
-      location.assign('/dashboard')
+      httpsRequest('post',
+       'http:localhost:5000/api/login',
+        { 
+            email: info.email,
+            password: info.password,
+            remember: remember 
+        })
+        .then( () => { 
+          location.assign('/dashboard')
+        })
+        .catch( (err) => {
+          MySwal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `Ha ocurrido un error, ${err.message}`
+          })
+        })
     } catch (error) {
-      console.log(error.response.data.message)
+      MySwal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'No hemos podido iniciar sesión',
+        showConfirmButton: false,
+        timer: 2500
+      })
     }
   }
 
-  const MySwal = withReactContent(Swal)
+  
 
   const loginGoogle = useGoogleLogin({
-    onSuccess: async res => {
+    onSuccess: (res) => {
       try {
-        const data = await httpsRequest('post', 'http:localhost:5000/api/google/login', res.tokenId)
-        console.log(data)
+        httpsRequest('post',
+         'http:localhost:5000/api/google/login',
+          {
+            headers: {
+              "Authorization": `Bearer ${res.tokenId}`
+            }
+          })
+
       } catch (error) {
         MySwal.fire({
           icon: 'error',
