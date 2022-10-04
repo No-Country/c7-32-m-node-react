@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import passport from 'passport';
-import passportMiddlewares from './middlewares/passport.js';
+import {passportMiddleware} from './middlewares/passport.js';
 
 const app = express()
 
@@ -22,7 +22,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
-passport.use(passportMiddlewares);
+passport.use(passportMiddleware);
 
 // routes
 app.use('/api', Auth);

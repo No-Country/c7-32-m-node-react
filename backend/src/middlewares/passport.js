@@ -6,7 +6,7 @@ const opts = {
     secretOrKey: process.env.PASSWORD_TOKEN
 }
 
-export default new Strategy(opts, async (payload, done) => {
+export const passportMiddleware =  new Strategy(opts, async (payload, done) => {
     try {
         const userFound = await User.findByPk(payload.id);
         if (userFound) {

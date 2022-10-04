@@ -11,11 +11,13 @@ const client = new OAuth2Client(process.env.CLIENT_ID);
 
 // LOGIN
 export const login = async (req, res) => {
-  const { email, password, remember } = req.body;
 
-  if (!email || !password || email.length === 0 || password.length === 0) return res.status(400).json({ message: "Complete todos los campos" });
 
   try {
+    const { email, password, remember } = req.body;
+
+    if (!email || !password || email.length === 0 || password.length === 0) return res.status(400).json({ message: "Complete todos los campos" });
+
     // check if the user exist
     const userFound = await User.findOne({ where: { email } });
     if (!userFound) return res.status(400).json({ message: `El mail no está registrado` });
@@ -27,11 +29,13 @@ export const login = async (req, res) => {
 
     if (remember) {
       const token = generateToken(userFound.id, remember);
+      res.json({ token, message: "¡Inicio de sesión exitoso!", user: userFound });
     } else {
       const token = generateToken(userFound.id, false);
+      res.json({ token, message: "¡Inicio de sesión exitoso!", user: userFound });
     }
 
-    res.json({ token, message: "¡Inicio de sesión exitoso!", user: userFound });
+    
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -58,7 +62,7 @@ export const googleLogin = async (req, res) => {
 
       const tokenGenerated = generateToken(userFound.id, false);
 
-      res.json({ token: tokenGenerated, message: "¡Inicio de sesión exitoso!", user: userFound });
+      return res.json({ token: tokenGenerated, message: "¡Inicio de sesión exitoso!", user: userFound });
 
     }
 
