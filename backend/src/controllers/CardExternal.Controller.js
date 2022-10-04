@@ -64,3 +64,19 @@ export const createCardExternal = async (req, res) => {
     }
 
 } 
+
+// GET ALL CARDS OF ONE USER
+
+export const getCardsOfUser = async (req, res) => {
+
+    try {
+        const {id} = req.params;
+
+    const cardsUser = await Card.findAll({where: {id_user: id}});
+
+
+    res.json({cards: cardsUser})
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+} 
