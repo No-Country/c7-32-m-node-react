@@ -15,6 +15,6 @@ export const createCard = async (id, name, surname) => {
         exp_date,
         issue_date,
         cvv,
-        idUser
+        id_user: id
     })
 }

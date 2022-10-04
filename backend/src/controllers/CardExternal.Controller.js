@@ -44,14 +44,14 @@ export const createCardExternal = async (req, res) => {
             return res.status(400).json({message: "Cvv inválido"});
         } 
 
-        const cardCreated = await Card.create({
+       await Card.create({
             name,
-            surname,
-            number,
-            exp_date: new Date(exp_date),
-            issue_date: new Date(issue_date),
-            cvv,
-            idUser: id
+            // surname,
+            // number: parseInt(number),
+            // exp_date: exp_date,
+            // issue_date: issue_date,
+            // cvv: parseInt(cvv),
+            // id_user: id
         })
 
 
