@@ -1,7 +1,7 @@
 import Jwt from "jsonwebtoken";
-import { User } from "../models/users.js/index.js";
-import { transporter, mailOptions } from "../../../Back/src/utils/nodemailer.js";
-import { encryptPassword } from "../../../Back/src/utils/encryptPassword.js";
+import { User } from "../models/Users.js";
+import { transporter, mailOptions } from "../utils/nodemailer.js";
+import { encryptPassword } from "../utils/encryptPassword.js";
 
 export const forgotPassword = async (req, res) => {
   try {

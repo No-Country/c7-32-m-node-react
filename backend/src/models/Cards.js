@@ -17,7 +17,7 @@ export const Card = sequelize.define('Card', {
       type: DataTypes.STRING
     },
     number: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
       unique: true
     },
@@ -35,6 +35,10 @@ export const Card = sequelize.define('Card', {
     },
     status: {
       type: DataTypes.STRING,
+      allowNull: true
+    },
+    id_user: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {

@@ -11,6 +11,7 @@ const app = express()
 // import routes
 import Auth from './routes/Auth.js';
 import Password from './routes/Password.js';
+import CardExternal from './routes/CardExternal.js';
 
 // settings
 app.set("PORT", process.env.PORT || 4000);
@@ -21,11 +22,12 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
-passport.use(passportMidlewares);
+passport.use(passportMiddlewares);
 
 // routes
 app.use('/api', Auth);
 app.use('/api/password', Password);
+app.use('/api/card', CardExternal);
 
 // export app
 export default app;
