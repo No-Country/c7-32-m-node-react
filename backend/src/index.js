@@ -12,7 +12,7 @@ import './models/Egresos.js';
 
 const Main = async () => {
   try {
-    await sequelize.sync({ force: false });
+    await sequelize.sync({ alter: true });
     console.log("Connection has been established successfully.");
     app.listen(app.get("PORT"));
     console.log(`Server listening on port ${app.get("PORT")}`);
