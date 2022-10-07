@@ -12,7 +12,7 @@ import withReactContent from 'sweetalert2-react-content'
 
 import '../../styles/Login.css'
 import logo from '../../assets/images/Logo-bg-black.png'
-import login_svg from '../../assets/images/Wallet_Monochromatic.svg'
+import login_image from '../../assets/images/login-image.png'
 import { FcGoogle } from 'react-icons/fc'
 import { httpsRequest } from '../../assets/config/axios'
 
@@ -91,7 +91,7 @@ const LoginContainer = () => {
       <div className='login-image'>
 
         <div className='image'>
-          <img src={login_svg} alt='image-login'/>
+          <img src={login_image} alt='image-login'/>
         </div>
 
         <h1>Una forma fácil de gestionar su dinero</h1>

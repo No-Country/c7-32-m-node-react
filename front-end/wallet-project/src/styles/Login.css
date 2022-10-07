@@ -15,7 +15,8 @@
   align-items: center;
 }
 .login-image  .image  img{
-  margin-top: 7rem;
+  margin-top: 3rem;
+  width: 31.25rem;
 }
 .login-image h1{
   max-width: 34.375rem;
