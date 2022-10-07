@@ -34,7 +34,7 @@ export const forgotPassword = async (req, res) => {
 
     transporter.sendMail(mailOptions(newPasswordLink, email, "renewpassword"));
 
-    return res.status(200).json({ message: "Email enviado" });
+    res.status(200).json({ message: "Email enviado" });
 
   } catch (error) {
     console.log(err.message);
@@ -84,6 +84,29 @@ export const renewPassword = async(req, res) => {
     return res.status(200).json({ message: "Password actualizada" });
   } catch (err) {
     console.log(err.message);
-    return res.status(400).json({ message: err });
+    res.status(400).json({ message: err });
   }
+};
+
+export const updateProfile = async (req, res) => {
+  try {
+    // const { id, field, value } = req.body;
+    const { id, data } = req.body;
+
+    if (id === undefined || id === '' || id === null) res.status(400).json({ message: "Se necesita un id" });
+    // MAKE VALIDATIONS FOR EMPTY KEY VALUES
+    if (data === undefined || Object.keys(data).length === 0 || data === null) res.status(400).json({ message: "Se necesita un valor" });
+
+    await User.update(data,
+    {
+      where: {
+        id: id
+      }
+    });
+
+    res.status(200).json({ message: "Perfil actualizado" });
+  } catch (err) {
+    console.log(err.message);
+    res.status(400).json({ message: err.message });
+  };
 };
