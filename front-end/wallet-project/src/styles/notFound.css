@@ -1,0 +1,38 @@
+.main{
+  width: 100%;
+  height: calc(100vh - 4.6875rem);
+  background-color: #d2d2d2;
+}
+.main .not-found{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.main .not-found img{
+  width: 46.875rem;
+  height: 29.6875rem;
+  position: relative;
+  top: -3.125rem;
+}
+.main .not-found .not-found-fs{
+  font-size: 1.5rem;
+  color: #FF477E;
+}
+.main .not-found .not-found-sc{
+  color: #FF477E;
+  font-size: 1.75rem;
+  margin-top: .625rem;
+}
+.main .not-found .not-found-btn{
+  width: 15.625rem;
+  height: 3.125rem;
+  background-color: #21A0A8;
+  color: #ffffff;
+  margin-top: 2rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+  cursor: pointer;
+}
