@@ -44,6 +44,7 @@ export const login = async (req, res) => {
 // LOGIN WITH GOOGLE
 export const googleLogin = async (req, res) => {
   const { token } = req.body;
+  console.log(token);
 
   try {
     // verify token of google
