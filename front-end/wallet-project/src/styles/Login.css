@@ -100,7 +100,7 @@
   align-items: center;
   gap: .625rem;
 }
-.login-info .login-form .form .btn{
+.login-info .login-form .form .btn-login{
   height: 3.125rem;
   background-color: #FF477E;
   color: #ffffff;
@@ -111,27 +111,11 @@
   border-radius: .3125rem;
   transition: transform .6s;
   text-align: center;
+  margin-bottom: .625rem;
 }
-.login-info .login-form .form .btn:hover{
+.login-info .login-form .form .btn-login:hover{
   background-color: #ff2f6e;
   transform: scale(1.03);
-}
-.login-info .login-form .form .btn-google{
-  background-color: transparent ;
-  border: 1px solid #aaaaaa ;
-  color: #000000 ;
-  margin-top: .9375rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.login-info .login-form .form .btn-google:hover{
-  background-color: transparent;
-  transform: scale(1.03);
-}
-.login-info .login-form .form .btn-google .google-svg{
-  font-size: 1.5rem;
-  margin-right: .625rem;
 }
 .login-info .login-form .form .error{
   font-size: .875rem;
