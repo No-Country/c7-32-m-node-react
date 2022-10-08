@@ -5,16 +5,15 @@ import * as Yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useGoogleLogin } from '@react-oauth/google'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import { GoogleLogin } from '@react-oauth/google'
+import { httpsRequest } from '../../assets/config/axios'
 
 
 import '../../styles/Login.css'
 import logo from '../../assets/images/Logo-bg-black.png'
 import login_image from '../../assets/images/login-image.png'
-import { FcGoogle } from 'react-icons/fc'
-import { httpsRequest } from '../../assets/config/axios'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const LoginSchema = Yup.object({
   email: Yup.string()
@@ -32,10 +31,9 @@ const LoginContainer = () => {
   const MySwal = withReactContent(Swal)
   
   const login = (info) =>{
-
     try {
       httpsRequest('post',
-       'http:localhost:5000/api/login',
+       'http://localhost:5000/api/login',
         { 
             email: info.email,
             password: info.password,
@@ -61,29 +59,6 @@ const LoginContainer = () => {
       })
     }
   }
-
-  
-
-  const loginGoogle = useGoogleLogin({
-    onSuccess: (res) => {
-      try {
-        httpsRequest('post',
-         'http:localhost:5000/api/google/login',
-          {
-            headers: {
-              "Authorization": `Bearer ${res.tokenId}`
-            }
-          })
-
-      } catch (error) {
-        MySwal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Ha ocurrido un error, intentalo más tarde'
-        })
-      }
-    }
-  })
 
 
   return (
@@ -125,14 +100,16 @@ const LoginContainer = () => {
               <Link to='/recoverpass' className='link' >¿Olvidaste la contraseña?</Link>
             </div>
             
-            <button type='submit' className='btn btn-login' >Inicia Sesión</button>
-            <button
-              onClick={ loginGoogle }
-              className='btn btn-google' >
-              <FcGoogle className='google-svg'/>
-              Inicia Sesión con Google
-            </button>
-      
+            <button type='submit' className='btn-login' >Inicia Sesión</button>
+            <GoogleLogin
+              text='sigin_with'
+              size='large'
+              theme='outline'
+              locale='es'
+              onSuccess={ res => httpsRequest('post','http://localhost:5000/api/google/login',{ token: `Bearer ${res.credential}` })}         
+              onError={ err => MySwal.fire({icon: 'error',title: 'Oops...',text: `Ha ocurrido un error, intentalo más tarde.${err}` })}
+              >
+            </GoogleLogin>
           </form>
           
           <span className='register'>¿No tiene una cuenta? <Link className='link' to='/register'>Únase ahora</Link></span>
