@@ -17,7 +17,7 @@ export const Card = sequelize.define('Card', {
       type: DataTypes.STRING
     },
     number: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true
     },
