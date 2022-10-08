@@ -38,11 +38,11 @@ export const login = async (req, res) => {
 
 // LOGIN WITH GOOGLE
 export const googleLogin = async (req, res) => {
-  const { token } = req.body;
   try {
+    const token = req.body.token.split(" ");
     // verify token of google
     const ticket = await client.verifyIdToken({
-      idToken: token,
+      idToken: token[1],
       audience: process.env.CLIENT_ID,
     });
     const payload = ticket.getPayload();
@@ -58,7 +58,7 @@ export const googleLogin = async (req, res) => {
     }
 
     // if doesn't exist sign in
-    const cardUser = await createCard(userFound.id, userFound.name, userFound.surname);
+    // const cardUser = await createCard(userFound.id, userFound.name, userFound.surname);
 
     const newUser = await User.create({
       name: payload.given_name,
@@ -66,7 +66,7 @@ export const googleLogin = async (req, res) => {
       email: payload.email,
       image: payload.picture,
       cbu,
-      card_id: cardUser.id
+      // card_id: cardUser.id
     });
 
     const tokenGenerated = generateToken(newUser.id, false);
