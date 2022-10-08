@@ -43,7 +43,7 @@ export const login = async (req, res) => {
 
 // LOGIN WITH GOOGLE
 export const googleLogin = async (req, res) => {
-  const { token } = req.body;
+  const { token } = req.body;console.log(token)
 
   try {
     // verify token of google
@@ -67,16 +67,31 @@ export const googleLogin = async (req, res) => {
     }
 
     // if doesn't exist sign in
-    const cardUser = await createCard(userFound.id, userFound.name, userFound.surname);
+    if(!payload.family_name) {
+      payload.family_name = 'wallet'
+    }
 
-    const newUser = await User.create({
-      name: payload.given_name,
-      surname: payload.family_name,
-      email: payload.email,
-      image: payload.picture,
-      cbu,
+
+  
+      const newUser = await User.create({
+        name: payload.given_name,
+        surname: payload.family_name,
+        email: payload.email,
+        image: payload.picture,
+        cbu: cbu,
+        password: ''
+      });
+    
+      
+      const cardUser = await createCard(newUser.id, newUser.name , newUser.surname);
+
+    const userUpdated = await User.update({
       card_id: cardUser.id
-    });
+    }, {
+      where: {
+        id: newUser.id
+      }
+    })
 
     const tokenGenerated = generateToken(newUser.id, false);
 
