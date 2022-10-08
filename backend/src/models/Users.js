@@ -44,11 +44,11 @@ export const User = sequelize.define('User', {
     notEmpy: false
   },
   cbu: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.BIGINT,
     allowNull: true
   },
   cuil_ruc: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.BIGINT,
     allowNull: true
   },
   card_id: {

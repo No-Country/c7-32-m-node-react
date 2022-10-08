@@ -43,8 +43,7 @@ export const login = async (req, res) => {
 
 // LOGIN WITH GOOGLE
 export const googleLogin = async (req, res) => {
-  const { token } = req.body;
-  console.log(token);
+  const { token } = req.body;console.log(token)
 
   try {
     // verify token of google
@@ -68,20 +67,41 @@ export const googleLogin = async (req, res) => {
     }
 
     // if doesn't exist sign in
-    const cardUser = await createCard(userFound.id, userFound.name, userFound.surname);
 
-    const newUser = await User.create({
-      name: payload.given_name,
-      surname: payload.family_name,
-      email: payload.email,
-      image: payload.picture,
-      cbu,
+    if(!payload.family_name) {
+      console.log('noooo')
+      const newUser = await User.create({
+        name: payload.given_name,
+        surname: 'wallet' ,
+        email: payload.email,
+        image: payload.picture,
+        password: ' '
+      });
+    } else {
+      console.log('seeee')
+      const newUser = await User.create({
+        name: payload.given_name,
+        surname: payload.family_name ,
+        email: payload.email,
+        image: payload.picture,
+        password: ' '
+      });
+    }
+    
+    
+    const cardUser = await createCard(newUser.id, newUser.name , newUser.surname);
+
+    const userUpdated = await User.update({
       card_id: cardUser.id
-    });
+    }, {
+      where: {
+        id: newUser.id
+      }
+    })
 
     const tokenGenerated = generateToken(newUser.id, false);
 
-    res.json({ token: tokenGenerated, message: "¡Inicio de sesión exitoso!", user: newUser });
+    res.json({ token: tokenGenerated, message: "¡Inicio de sesión exitoso!", user: userUpdated  });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
