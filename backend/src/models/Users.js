@@ -44,7 +44,7 @@ export const User = sequelize.define('User', {
     notEmpy: false
   },
   cbu: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: true
   },
   cuil_ruc: {
