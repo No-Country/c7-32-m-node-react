@@ -17,24 +17,28 @@ export const Card = sequelize.define('Card', {
       type: DataTypes.STRING
     },
     number: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true
     },
     exp_date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     issue_date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     cvv: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    status: {
-      type: DataTypes.STRING,
+    // status: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true
+    // },
+    id_user: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {

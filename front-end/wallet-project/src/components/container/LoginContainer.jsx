@@ -32,7 +32,7 @@ const LoginContainer = () => {
 
     try {
       httpsRequest('post',
-       'http:localhost:5000/api/login',
+       'http://localhost:5000/api/login',
         { 
             email: info.email,
             password: info.password,
@@ -104,7 +104,7 @@ const LoginContainer = () => {
               size='large'
               theme='outline'
               locale='es'
-              onSuccess={ res => httpsRequest('post','http:localhost:5000/api/google/login',{ token: `Bearer ${res.credential}` })}         
+              onSuccess={ res => httpsRequest('post','http://localhost:5000/api/google/login',{ token: ` ${res.credential}` })}         
               onError={ err => MySwal.fire({icon: 'error',title: 'Oops...',text: `Ha ocurrido un error, intentalo más tarde.${err}` })}
               >
             </GoogleLogin>
