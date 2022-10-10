@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import * as Yup from 'yup'
 
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate  } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { GoogleLogin } from '@react-oauth/google'
 import { httpsRequest } from '../../assets/config/axios'
@@ -12,6 +12,7 @@ import logo from '../../assets/images/Logo-bg-black.png'
 import login_image from '../../assets/images/login-image.png'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { useUserContext } from '../context/userContext'
 
 const LoginSchema = Yup.object({
   email: Yup.string()
@@ -27,35 +28,31 @@ const LoginContainer = () => {
   const { register, handleSubmit, formState:{ errors } } = useForm( { resolver: yupResolver(LoginSchema) } )  
   const [remember, setRemember] = useState(false)
   const MySwal = withReactContent(Swal)
-  
-  const login = (info) =>{
+  const { getUser } = useUserContext()
+
+  const navigate = useNavigate()
+
+  const login = async (info) =>{
 
     try {
-      httpsRequest('post',
+      const res = await httpsRequest('post',
        'http://localhost:5000/api/login',
         { 
             email: info.email,
             password: info.password,
             remember: remember 
         })
-        .then( () => { 
-          location.assign('/dashboard')
-        })
-        .catch( (err) => {
-          MySwal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: `Ha ocurrido un error, ${err.message}`
-          })
-        })
+      getUser(res.data.user)
+      navigate('/dashboard')
+
     } catch (error) {
       MySwal.fire({
-        position: 'top-end',
-        icon: 'warning',
-        title: 'No hemos podido iniciar sesión',
-        showConfirmButton: false,
-        timer: 2500
+        position: 'center',
+        icon: 'error',
+        title: 'Oops',
+        text: error,
       })
+      console.log(error)
     }
   }
 

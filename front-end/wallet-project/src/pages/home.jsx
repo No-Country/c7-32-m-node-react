@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useUserContext } from '../components/context/userContext'
 
+import '../styles/homePage.css'
 import  logo  from '../assets/images/Logo-bg-black.png'
 import  home  from '../assets/images/home-page.png'
-import '../styles/homePage.css'
+import { IoPersonCircleOutline } from 'react-icons/io5'
 
 const Home = () => {
 
   const navigate = useNavigate()
+  const { user } = useUserContext()
 
   return (
 
@@ -15,10 +18,24 @@ const Home = () => {
     
       <section className='home-logo'>
         <img src={ logo } alt='logo'/>
-        <div className='home-sesion'>
-          <span></span>
-         <Link className='btn-login' to='/login'>Iniciar sesión</Link>
-         <Link className='btn-register' to='/register'>!Registrate ahora¡</Link>
+        <div className='home-session'>
+          
+          { Object.entries(user).length === 0 ?
+            <>
+              <span></span>
+              <Link className='btn-login' to='/login'>Iniciar sesión</Link>
+              <Link className='btn-register' to='/register'>!Registrate ahora¡</Link>
+            </>
+            :
+            <div className='other-session'>  
+              {user.image === null ?
+                (<IoPersonCircleOutline className='image' />)
+                :
+                <img className='image' src={user.image} alt='Usuario' />
+              }
+              <p className='user-name'>{ user.name } { user.surname }</p>
+            </div>
+          }
         </div>
       </section>
 

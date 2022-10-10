@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../pure/navbar'
+import Header from '../pure/header'
 
 
 const Dashboard = () => {
   return (
     <div>
-      <Navbar />
+      <Header id='space' title='Dashboard'/>
     </div>
   )
 }
