@@ -67,6 +67,10 @@ export const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: true
   },
+  amount: {
+    type: DataTypes.BIGINT,
+    defaultValue: 100000
+  }
 },
   {
     timestamps: true

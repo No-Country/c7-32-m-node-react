@@ -11,7 +11,7 @@ export const postTransf = async (req, res) => {
     }
 
     if(!cbu, !amount) {
-        return res.status(400).json({message: "Los campos Cbu y Monto son inválidos"});
+        return res.status(400).json({message: "Los campos Cbu o Monto son inválidos"});
     }
 
     if(cbu.toString().length !== 22 ) {
@@ -19,7 +19,7 @@ export const postTransf = async (req, res) => {
     }
 
     if(parseInt(amount) > 10000) {
-        return res.status(400).json({message: "Monto inválido"});
+        return res.status(400).json({message: "Monto demasiado elevado"});
     }
 
     const userTransferring = await User.findByPk(userId);
@@ -28,25 +28,50 @@ export const postTransf = async (req, res) => {
         return res.status(400).json({message: "ID del usuario que transfiere, inválido"});
     }
 
+    if(userTransferring.amount === 0 || amount > userTransferring.amount) {
+        return res.status(400).json({message: "No tiene dinero suficiente"});
+    }
+
    const searchCbu = await User.findOne({where: {cbu}});
    
+//    if Cbu doesn't exist in database, they send money to another count outside of wen wallet
    if(!searchCbu) {
-    return res.status(400).json({message: "El cbu al que desea enviar plata es inválido"});
+
+    const deposit =  await Deposit.create({
+        user_id: null,
+            user_transferring_id: userTransferring.id,
+            user_transferring_cbu: userTransferring.cbu,
+            user_transferring_reason: reason,
+            user_transferring_amount: amount
+       });
+
+        await User.update(
+        {
+            amount: (userTransferring.amount - amount)
+        },
+        {
+            where: {
+                id: userId
+            }
+        }
+       );
+
+    return res.json({message: "¡Transferencia exitosa!"});
    }
+
+//    if the user deposit in another user of wen wallet
 
   const deposit =  await Deposit.create({
     user_id: searchCbu.id,
-    user_transferring: [{
-        id: userId,
-        cbu: userTransferring.cbu,
-        reason,
-        amount
-    }]
+        user_transferring_id: userTransferring.id,
+        user_transferring_cbu: userTransferring.cbu,
+        user_transferring_reason: reason,
+        user_transferring_amount: amount
    });
 
-   const b = await User.update(
+await User.update(
     {
-        amount: +amount
+        amount: (searchCbu.amount + amount)
     },
     {
         where: {
@@ -54,9 +79,9 @@ export const postTransf = async (req, res) => {
         }
     });
 
-  const a = await User.update(
+await User.update(
     {
-        amount: -amount
+        amount: (userTransferring.amount - amount)
     },
     {
         where: {
@@ -64,9 +89,6 @@ export const postTransf = async (req, res) => {
         }
     }
    );
-
-   console.log(deposit, a, b);
-
    
    res.json({message: "¡Transferencia exitosa!"});
     } catch (error) {

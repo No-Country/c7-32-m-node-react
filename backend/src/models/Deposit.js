@@ -11,25 +11,22 @@ export const Deposit = sequelize.define('Ingreso', {
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
-    user_transferring:[ {
-        id: {
+      user_transferring_id: {
           type: DataTypes.INTEGER
         },
-        cbu: {
+        user_transferring_cbu: {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        reason: {
+        user_transferring_reason: {
           type: DataTypes.STRING,
         },
-        amount: {
+        user_transferring_amount: {
           type: DataTypes.FLOAT,
           allowNull: false,
         }
-    }
-  ]
   }, {
     timestamps: true
   });
