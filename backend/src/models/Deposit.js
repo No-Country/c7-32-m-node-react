@@ -24,7 +24,7 @@ export const Deposit = sequelize.define('Ingreso', {
           type: DataTypes.STRING,
         },
         user_transferring_amount: {
-          type: DataTypes.FLOAT,
+          type: DataTypes.DOUBLE,
           allowNull: false,
         }
   }, {
