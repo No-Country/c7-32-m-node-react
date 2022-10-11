@@ -69,7 +69,7 @@ export const User = sequelize.define('User', {
   },
   amount: {
     type: DataTypes.BIGINT,
-    defaultValue: 100000
+    defaultValue: 10000
   }
 },
   {
