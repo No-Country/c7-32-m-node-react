@@ -8,7 +8,8 @@ import { IoNotificationsOff,IoPersonCircleSharp } from 'react-icons/io5'
 
 const TitlePage = ({id, title}) => {
 
-  const { user } = useUserContext()
+  const { client } = useUserContext()
+  const { user } = client
 
   return (
     <div className='header'>
@@ -24,10 +25,10 @@ const TitlePage = ({id, title}) => {
         <div className='info-user'>
           <IoNotificationsOff className='icon'/>
           {
-            user.image === null ?
-              (<IoPersonCircleSharp className='image' />)
-              :
+            client.length > 0 ?
               <img className='image' src={user.image} alt='Usuario' />
+              :
+              (<IoPersonCircleSharp className='image' />)
           }
           <p className='user-name'>{ user.name } { user.surname }</p>
         </div>

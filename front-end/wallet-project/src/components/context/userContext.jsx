@@ -6,20 +6,22 @@ export const useUserContext = () => useContext(CreateUserContext)
 
 const UserContext = ({ children }) => {
   
-  const [user, setUser] = useState({})
+  const [client, setClient] = useState({})
 
   const getUser = (userData) => {
-    setUser(userData)
+    setClient(userData)
   }
   const logOut = () => {
-    setUser({})
+    setClient({})
   }
+
+  
 
   return (
     <CreateUserContext.Provider value={{
-      user,
+      client,
       getUser,
-      logOut
+      logOut,
     }}
     >
       {children}

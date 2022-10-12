@@ -2,9 +2,9 @@ import { React } from 'react'
 import { BrowserRouter as Browser, Routes, Route   } from 'react-router-dom'
 
 import Home from './pages/home'
-import LoginContainer from './components/container/LoginContainer'
-import Register from './components/container/RegisterContainer'
-import Dashboard from './components/container/Dashboard'
+import LoginContainer from './components/container/loginContainer'
+import Register from './components/container/registerContainer'
+import Dashboard from './components/container/dashboard'
 import Error from './pages/404'
 import UserContext from './components/context/userContext'
 

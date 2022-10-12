@@ -10,7 +10,8 @@ import { IoPersonCircleOutline } from 'react-icons/io5'
 const Home = () => {
 
   const navigate = useNavigate()
-  const { user } = useUserContext()
+  const { client } = useUserContext()
+  const { user } = client
 
   return (
 
@@ -20,21 +21,21 @@ const Home = () => {
         <img src={ logo } alt='logo'/>
         <div className='home-session'>
           
-          { Object.entries(user).length === 0 ?
+          { client.length > 0 ?
+            <div className='other-session'>  
+              { client.length > 0 ?
+                <img className='image' src={user.image} alt='Usuario' />
+                :
+                (<IoPersonCircleOutline className='image' />)
+              }
+              <p className='user-name'>{ user.name } { user.surname }</p>
+            </div>
+            :
             <>
               <span></span>
               <Link className='btn-login' to='/login'>Iniciar sesión</Link>
               <Link className='btn-register' to='/register'>!Registrate ahora¡</Link>
             </>
-            :
-            <div className='other-session'>  
-              {user.image === null ?
-                (<IoPersonCircleOutline className='image' />)
-                :
-                <img className='image' src={user.image} alt='Usuario' />
-              }
-              <p className='user-name'>{ user.name } { user.surname }</p>
-            </div>
           }
         </div>
       </section>
@@ -46,7 +47,12 @@ const Home = () => {
             Mira los planes, dale seguimientos a todo el progreso y mantente al tanto de todos los datos desde un solo lugar.
             Si gestionas tus proyectos con nosotros, estarás al tanto de todos los movimientos, gastos y datos que se realizan.
           </p>
-          <button className='btn-register' onClick={ () => navigate('/register')}>Únete a nosotros</button>
+          { client.length > 0 ? 
+            <button className='btn-register' onClick={ () => navigate('/dashboard') }>Ir al Dashboard</button>
+            :
+            <button className='btn-register' onClick={ () => navigate('/register') }>Únete a nosotros</button>
+          }
+          
           <span>@Createdbywenwallet</span>
         </div>
         <img src={ home } alt='empresario' />

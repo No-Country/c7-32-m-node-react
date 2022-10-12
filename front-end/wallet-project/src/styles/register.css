@@ -1,4 +1,4 @@
-.containerRegister {   
+.container-register {   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,14 +14,8 @@
     color: #ffffff;
 }
 
-/* .containerRegister img{
-  position: absolute;
-  left: 1in;
-  top: 2rem;
-} */
-
-.containerForm {
-    width: 9in;
+.container-form {
+    width: 56.25rem;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -29,29 +23,45 @@
     margin-top: 2rem;  
 }
 
-.divInput {
+.div-input {
     box-sizing: border-box;
     border-bottom: 1px solid #000000;
-    border-radius: 5px;
-    width: 350px;
+    border-radius: .3125rem;
+    width: 21.875rem;
 }
 
-.divInput input {
+.div-input input {
     background: none;
     border: none;
     outline: none;
-    padding: 10px;
-    width: 350px;
+    padding: .625rem;
+    width: 21.875rem;
     color: #ffffff;
+    font-size: 1rem;
+    letter-spacing: .0625rem;
 }
-
-.containerForm button {
-    background: #16c98c;
+.div-input input::placeholder{
+    color: #ffffff98;
+}
+.div-input input:focus{
+    border: 1px solid #000000;
     border-radius: 5px;
-    width: 400px;    
-    height: 50px;    
+}
+.container-form button {
+    background: #16c98c;
+    border-radius: .3125rem;
+    width: 25rem;    
+    height: 3.125rem;   
+    color: #ffffff; 
 }
 
-.containerRegister span{
+.container-register span{
   color: #16C98C;
+}
+
+.container-form .form-check{
+    margin-top: 4rem;
+}
+ .form-signIn{
+    margin-top: 4rem;
 }

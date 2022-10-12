@@ -1,10 +1,11 @@
 import React from 'react'
+import { useUserContext } from '../context/userContext'
+
 import { Link, useNavigate } from 'react-router-dom'
 
 import '../../styles/navbar.css'
 import logo from '../../assets/images/Logo-bg-white.png'
 import { IoGrid, IoStatsChart, IoWalletOutline, IoPerson, IoSettingsSharp, IoPower} from 'react-icons/io5'
-import { useUserContext } from '../context/userContext'
 
 const Navbar = () => {
 
