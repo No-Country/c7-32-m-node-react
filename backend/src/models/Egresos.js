@@ -16,7 +16,7 @@ export const Egreso = sequelize.define('Egreso', {
     type: DataTypes.DOUBLE,
     allowNull: false
   },
-  description: {
+  reason: {
     type: DataTypes.STRING
   },
   date: {
