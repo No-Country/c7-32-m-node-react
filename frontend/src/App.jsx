@@ -7,10 +7,13 @@ import Register from './components/container/Register.Container'
 import Dashboard from './components/container/Dashboard'
 import Error from './pages/404'
 
+import CartContextProvider from './components/context/Context'
+
 function App() {
 
    
   return (
+    <CartContextProvider>
     <Browser>
       <Routes>
         <Route path='/' element={ <Home /> }/>
@@ -24,6 +27,7 @@ function App() {
         <Route path='/*' element={ <Error />}/>
       </Routes>
     </Browser>
+    </CartContextProvider>
   )
 }
 

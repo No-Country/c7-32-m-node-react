@@ -1,11 +1,19 @@
 import React from 'react'
-import Navbar from '../pure/navbar'
+import Actions from '../pure/actions'
+import Header from '../pure/header'
 
+import '../../styles/dashboard.css'
+import ListTransactions from '../pure/listTransactions'
 
 const Dashboard = () => {
+
   return (
     <div>
-      <Navbar />
+      <Header id='space' title='Dashboard' show={true} />
+      <main className='main-container'>
+        <Actions />
+        <ListTransactions />
+      </main>
     </div>
   )
 }
