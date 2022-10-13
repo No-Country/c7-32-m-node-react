@@ -32,6 +32,7 @@ export const createCardExternal = async (req, res) => {
       return res.status(400).json({ message: "Fechas inválidas" })
     }
 
+
     if ((new Date(issue_date) - new Date(exp_date)) > 0) {
       return res.status(400).json({ message: "Fechas de creación inválida" })
     }
@@ -44,6 +45,8 @@ export const createCardExternal = async (req, res) => {
       return res.status(400).json({ message: "Cvv inválido" });
     }
 
+
+
     const cardCreated = await Card.create({
       name,
       surname,
@@ -54,20 +57,38 @@ export const createCardExternal = async (req, res) => {
       id_user: id
     })
 
+
     return res.json({ message: "Tarjeta añadida", card: cardCreated });
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
+
 }
 
 // GET ALL CARDS OF ONE USER
 
 export const getCardsOfUser = async (req, res) => {
+
   try {
     const { id } = req.params;
+
     const cardsUser = await Card.findAll({ where: { id_user: id } });
+
+
     res.json({ cards: cardsUser })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
-} 
+}
+
+// Delete Card
+export const deleteCardsOfUser = async (req, res) => {
+  try {
+    const { idCard, idUser } = req.params;
+
+    const cardsUser = await Card.destroy({ where: { id: idCard } });
+    res.sendStatus(204)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+}
