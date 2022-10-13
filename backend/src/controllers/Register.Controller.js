@@ -5,11 +5,15 @@ import { encryptPassword } from "../utils/encryptPassword.js";
 const register = async (req, res) => {
     const { name, surname, email, password } = req.body;
     const UserFound = await User.findOne({ where: { email } });
+    console.log(UserFound);
     if (UserFound) {
+        console.log('aca 1')
         return res.json({ mensaje: "La direccion de mail ya fue usada" });
     } if (!name || !surname || !email || !password) {
-        return res.json({ mensaje: "No encuentra nombre, apellido, email, contraseña" });
+        console.log('aca 2')
+        res.status(400).json({ mensaje: "No encuentra nombre, apellido, email, contraseña" });
     } else {
+        console.log('aca 3')
         //if (password !== confirmPassword){
         //return res.status(400).json("Las contraseñas no coinciden")
         //}
