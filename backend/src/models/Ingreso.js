@@ -1,7 +1,7 @@
 import {sequelize} from '../db/db.js';
 import {DataTypes} from 'sequelize';
 
-export const Transference = sequelize.define('Transference', {
+export const Ingreso = sequelize.define('Ingreso', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,

@@ -1,4 +1,5 @@
 import { User } from "../models/Users.js";
+import {Ingreso} from '../models/Ingreso.js';
 
 export const Ingress = async (req, res) => {
 
@@ -18,7 +19,7 @@ export const Ingress = async (req, res) => {
         return res.status(400).json({message: "Monto inválido"})
     }
 
-    const Ingress = await User.update({
+    await User.update({
         amount: (userFound.amount + parseInt(amount))
     },{
         where: {
@@ -26,8 +27,13 @@ export const Ingress = async (req, res) => {
         }
     });
 
+    const Ingress = await Ingreso.create({
+        user_id: userFound.id,
+        user_amount: amount
+    });
 
-    res.json({message: "Ingreso Completado"});
+
+    res.json({message: "Ingreso Completado", Ingress});
    } catch (error) {
     return res.status(500).json({message: error.message});
    }
