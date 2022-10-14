@@ -4,8 +4,9 @@ import { sequelize } from './db/db.js';
 // import models
 import './models/Users.js';
 import './models/Cards.js';
-import './models/Ingresos.js';
+import './models/Ingreso.js';
 import './models/Egresos.js';
+import './models/Transfers.js';
 
 // initalization of DATABASE and SERVER
 const Main = async () => {
