@@ -1,5 +1,6 @@
 import Jwt from "jsonwebtoken";
 import { User } from "../models/Users.js";
+import { Transfers } from "../models/Transfers.js";
 import { transporter, mailOptions } from "../utils/nodemailer.js";
 import { encryptPassword } from "../utils/encryptPassword.js";
 
@@ -105,6 +106,32 @@ export const updateProfile = async (req, res) => {
     });
 
     res.status(200).json({ message: "Perfil actualizado" });
+  } catch (err) {
+    console.log(err.message);
+    res.status(400).json({ message: err.message });
+  };
+};
+
+export const operationsHistory = async (req, res) => {
+  try {
+    const { id } = req.body;
+    if (!id) res.status(400).json({ message: "Id requerido" });
+    
+    const ingresos = await Transfers.findAll({
+      where: {
+        user_id: id
+      }
+    });
+    const egresos = await Transfers.findAll({
+      where: {
+        user_transferring_id: id
+      }
+    });
+
+    res.status(200).json({
+      ingresos,
+      egresos
+    })
   } catch (err) {
     console.log(err.message);
     res.status(400).json({ message: err.message });
