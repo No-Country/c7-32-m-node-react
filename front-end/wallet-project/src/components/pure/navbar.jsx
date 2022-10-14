@@ -1,11 +1,11 @@
 import React from 'react'
-import { useUserContext } from '../context/userContext'
-
 import { Link, useNavigate } from 'react-router-dom'
+import { IoGrid, IoWalletOutline, IoPerson, IoPower} from 'react-icons/io5'
+
+import { useUserContext } from '../context/userContext'
 
 import '../../styles/navbar.css'
 import logo from '../../assets/images/Logo-bg-white.png'
-import { IoGrid, IoStatsChart, IoWalletOutline, IoPerson, IoSettingsSharp, IoPower} from 'react-icons/io5'
 
 const Navbar = () => {
 
@@ -23,12 +23,6 @@ const Navbar = () => {
         </li>
 
         <li className='item'>
-          <Link to='/stats'> 
-            <IoStatsChart className='icon'/>
-          </Link> 
-        </li>
-
-        <li className='item'>
           <Link to='/wallet'> 
             <IoWalletOutline className='icon'/>
           </Link> 
@@ -37,12 +31,6 @@ const Navbar = () => {
         <li className='item'>
           <Link to='/profile'>
             <IoPerson className='icon'/>
-          </Link> 
-        </li>
-
-        <li className='item'>
-          <Link to='/settings'>
-            <IoSettingsSharp className='icon'/>
           </Link> 
         </li>
 

@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
-import { useUserContext } from '../context/userContext'
-import { httpsRequest } from '../../assets/config/axios'
-
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate  } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { GoogleLogin } from '@react-oauth/google'
 import * as Yup from 'yup'
+import { GoogleLogin } from '@react-oauth/google'
+
+
+import { useUserContext } from '../context/userContext'
+import { httpsRequest } from '../../assets/config/axios'
+import { alertError } from '../../assets/config/swall'
 
 import '../../styles/Login.css'
 import logo from '../../assets/images/Logo-bg-black.png'
 import login_image from '../../assets/images/login-image.png'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+
 
 const LoginSchema = Yup.object({
   email: Yup.string()
@@ -27,7 +28,6 @@ const LoginContainer = () => {
 
   const { register, handleSubmit, formState:{ errors } } = useForm( { resolver: yupResolver(LoginSchema) } )  
   const [remember, setRemember] = useState(false)
-  const MySwal = withReactContent(Swal)
   const { getUser } = useUserContext()
 
   const navigate = useNavigate()
@@ -46,13 +46,7 @@ const LoginContainer = () => {
       navigate('/dashboard')
 
     } catch (error) {
-      MySwal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Oops',
-        text: error.response.data.message,
-      })
-      console.log(error)
+      alertError(error)
     }
   }
 
@@ -101,8 +95,7 @@ const LoginContainer = () => {
               size='large'
               theme='outline'
               locale='es'
-              onSuccess={ res => httpsRequest('post','http://localhost:5000/api/google/login',{ token: ` ${res.credential}` })}         
-              onError={ err => MySwal.fire({icon: 'error',title: 'Oops...',text: `Ha ocurrido un error, intentalo más tarde.${err}` })}
+              onSuccess={ res => httpsRequest('post','http://localhost:5000/api/google/login',{ token: ` ${res.credential}` })}
               >
             </GoogleLogin>
       

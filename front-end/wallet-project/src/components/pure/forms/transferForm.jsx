@@ -1,18 +1,17 @@
 import React from 'react'
-import { useUserContext } from '../../context/userContext'
-
-
 import * as Yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
+import { useUserContext } from '../../context/userContext'
+import { alertError } from '../../../assets/config/swall.js'
 
 import '../../../styles/transferForm.css'
 import { httpsRequest } from '../../../assets/config/axios'
 
 
 const LoginSchema = Yup.object({
-  mount: Yup.string()
+  amount: Yup.string()
         .matches(/^[0-9]+$/, "Deben ser solamente dígitos") 
         .min(1,'Mínimo de 1')
         .max(10000, 'Máxima cantidad a transferir: 10.000')
@@ -53,19 +52,20 @@ const TransferForm = () => {
 
     const transfer = {
       cbu: cbu,
-      amount: info.mount,
+      amount: info.amount,
       reason: info.reason
     }
-    httpsRequest(
-      'post',
-      `http://localhost:5000/api/user/${client.user.id}/transference`,
-      {
-        transfer: transfer
-      }
-    )
-    
-    console.log(transfer)
-
+    try {
+      httpsRequest(
+        'post',
+        `http://localhost:5000/api/user/${client.user.id}/transference`,
+        {
+          transfer: transfer
+        }
+      )
+    } catch (error) {
+      alertError(error)
+    }
   }
 
   return (
@@ -75,8 +75,8 @@ const TransferForm = () => {
       <input type='text' id='reason' placeholder='Netflix...' {...register ('reason') }/>
       <p className='error'>{errors.reason?.message}</p>
 
-      <label htmlFor='mount'>Cantidad a transferir:</label>
-      <input type='number' id='mount' placeholder='1.000' {...register ('mount') }/>
+      <label htmlFor='amount'>Cantidad a transferir:</label>
+      <input type='number' id='amount' placeholder='1.000' {...register ('amount') }/>
       <p className='error'>{errors.mount?.message}</p>
 
       <label htmlFor='cbu'>Clave Bancaria:</label>

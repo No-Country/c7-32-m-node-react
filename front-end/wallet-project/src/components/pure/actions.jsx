@@ -4,21 +4,22 @@ import TransferForm from './forms/transferForm'
 import { useModal } from '../../hooks/useModal'
 
 import '../../styles/modal.css'
+import DepositForm from './forms/depositForm'
 
 const Actions = () => {
 
   const [transferIsOpen, openTransfer, closeTransfer] = useModal(false)
-  const [exchangeIsOpen, openExchange, closeExchange] = useModal(false)
+  const [depositIsOpen, openDeposit, closeDeposit] = useModal(false)
 
 
   return (
     <section className='actions'>
     <div className='action-deposit'>
-        <button className='btn' onClick={ openTransfer }>
+        <button className='btn' onClick={ openDeposit }>
           Ingresar dinero
         </button>
-        <Modal isOpen={transferIsOpen} close={closeTransfer} >
-          <TransferForm />
+        <Modal isOpen={depositIsOpen} close={closeDeposit} >
+          <DepositForm />
         </Modal>
       </div>
       <div className='action-transfer'>
@@ -29,14 +30,14 @@ const Actions = () => {
           <TransferForm />
         </Modal>
       </div>
-      <div className='action-exchange'>
+      {/* <div className='action-exchange'>
         <button className='btn' onClick={openExchange} >
           Cambio de moneda
         </button>
         <Modal isOpen={exchangeIsOpen} close={closeExchange} >
           <TransferForm />
         </Modal>
-      </div>
+      </div> */}
     </section>
   )
 }

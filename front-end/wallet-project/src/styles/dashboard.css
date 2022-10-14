@@ -1,7 +1,7 @@
 .main-container{
   width: 100%;
   min-height: 100vh;
-  padding: 0rem 0rem 0rem 6.25rem;
+  padding-left: 6.25rem;
   display: grid;
   grid-template-areas: 
   "actions transactions transactions"

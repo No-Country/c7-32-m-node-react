@@ -14,54 +14,98 @@
     color: #ffffff;
 }
 
+.container-register .logo{
+    width: 7.5rem;
+}
+.container-register h1{
+    letter-spacing: 5px;
+}
+
+.container-register h2{
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: .0625rem;
+}
+
 .container-form {
     width: 56.25rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1.25rem;
     justify-content: space-around;  
-    margin-top: 2rem;  
+    margin-top: 1rem;  
 }
 
 .div-input {
-    box-sizing: border-box;
-    border-bottom: 1px solid #000000;
-    border-radius: .3125rem;
-    width: 21.875rem;
+    width: 23.4375rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .3125rem;
+    letter-spacing: .0625rem;
 }
 
 .div-input input {
-    background: none;
-    border: none;
-    outline: none;
-    padding: .625rem;
     width: 21.875rem;
+    height: 3.125rem;
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    border-radius: .3125rem;
+    padding: .625rem;
     color: #ffffff;
-    font-size: 1rem;
+    font-size: .875rem;
     letter-spacing: .0625rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
 }
 .div-input input::placeholder{
-    color: #ffffff98;
+    color: #ffffff8a;
+    font-size: .875rem;
 }
 .div-input input:focus{
+    border: none;
     border: 1px solid #000000;
-    border-radius: 5px;
-}
-.container-form button {
-    background: #16c98c;
     border-radius: .3125rem;
-    width: 25rem;    
-    height: 3.125rem;   
-    color: #ffffff; 
-}
-
-.container-register span{
-  color: #16C98C;
 }
 
 .container-form .form-check{
-    margin-top: 4rem;
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
- .form-signIn{
-    margin-top: 4rem;
+
+.container-form .form-check div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .625rem;
+}
+
+.container-register .form-check div span{
+  color: #16C98C;
+}
+
+.container-form button {
+    width: 25rem;    
+    height: 3.125rem;   
+    background: #16c98c;
+    border-radius: .3125rem;
+    color: #ffffff; 
+    margin-top: .625rem;
+    font-weight: 400;
+    letter-spacing: .0625rem;
+    outline: none;
+    border: none;
+}
+
+.container-register .form-signIn{
+    margin-top: 1rem;
+}
+
+.container-register .container-form  .error{
+    color: #000;
 }
