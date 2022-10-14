@@ -35,7 +35,7 @@ const LoginContainer = () => {
 
     try {
       httpsRequest('post',
-       'http:localhost:5000/api/login',
+       'http://localhost:5000/api/login',
         { 
             email: info.email,
             password: info.password,
@@ -68,7 +68,7 @@ const LoginContainer = () => {
     onSuccess: (res) => {
       try {
         httpsRequest('post',
-         'http:localhost:5000/api/google/login',
+         'http://localhost:5000/api/google/login',
           {
             headers: {
               "Authorization": `Bearer ${res.tokenId}`
