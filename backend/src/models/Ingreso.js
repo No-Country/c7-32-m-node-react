@@ -1,25 +1,24 @@
 import { sequelize } from '../db/db.js';
 import { DataTypes } from 'sequelize';
 
-export const Egreso = sequelize.define('Egreso', {
+export const Transference = sequelize.define('Transference', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-    allowNull: false
+    allowNull: false,
+    unique: true
   },
-  userId: {
+  user_id: {
     type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  user_amount: {
+    type: DataTypes.DOUBLE,
     allowNull: false
-  },
-  amount: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  reason: {
-    type: DataTypes.STRING
-  },
-  date: {
-    type: DataTypes.DATE
+
   }
+}, {
+  timestamps: true
 });
+
