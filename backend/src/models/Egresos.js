@@ -13,10 +13,10 @@ export const Egreso = sequelize.define('Egreso', {
     allowNull: false
   },
   amount: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.DOUBLE,
     allowNull: false
   },
-  description: {
+  reason: {
     type: DataTypes.STRING
   },
   date: {

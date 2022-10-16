@@ -12,6 +12,8 @@ const app = express()
 import Auth from './routes/Auth.js';
 import Password from './routes/Password.js';
 import CardExternal from './routes/CardExternal.js';
+import Transference from './routes/Transference.js';
+import Ingress from './routes/Ingress.js';
 
 // settings
 app.set("PORT", process.env.PORT || 4000);
@@ -28,6 +30,8 @@ passport.use(passportMiddleware);
 app.use('/api', Auth);
 app.use('/api/password', Password);
 app.use('/api/card', CardExternal);
+app.use('/api', Transference);
+app.use('/api', Ingress);
 
 // export app
 export default app;
