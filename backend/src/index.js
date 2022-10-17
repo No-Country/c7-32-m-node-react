@@ -31,7 +31,7 @@ passport.use(passportMiddleware);
 // routes
 app.use('/api', Auth);
 app.use('/api/password', Password);
-app.use('api/card', CardExternal);
+app.use('/api/card', CardExternal);
 app.use('/api/profile', UpdateProfile);
 app.use('/api', Transference);
 app.use('/api', Ingress);
