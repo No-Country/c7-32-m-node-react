@@ -23,12 +23,11 @@ export const login = async (req, res) => {
     const checkPassword = await comparePassword(password, userFound.password);
 
     if (!checkPassword) return res.status(400).json({ message: `Contraseña incorrecta` });
-
     if (remember) {
-      const token = generateToken(userFound.id, remember);
+      const token = await generateToken(userFound.id, remember);
       res.json({ token, message: "¡Inicio de sesión exitoso!", user: userFound });
     } else {
-      const token = generateToken(userFound.id, false);
+      const token = await generateToken(userFound.id, false);
       res.json({ token, message: "¡Inicio de sesión exitoso!", user: userFound });
     }
 
