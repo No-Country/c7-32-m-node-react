@@ -1,5 +1,5 @@
 import { User } from '../models/Users.js';
-import { Ingreso } from '../models/Ingresos.js';
+import { Ingreso } from '../models/Ingreso.js';
 
 export const postTransf = async (req, res) => {
   try {
