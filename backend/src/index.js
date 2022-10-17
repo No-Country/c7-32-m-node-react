@@ -4,18 +4,18 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import passport from 'passport';
-import { passportMiddleware } from './src/middlewares/passport.js';
-import Main from './src/app.js';
+import { passportMiddleware } from './middlewares/passport.js';
+import Main from './app.js';
 
 const app = express()
 
 // import routes
-import Auth from './src/routes/Auth.js';
-import Password from './src/routes/Password.js';
-import CardExternal from './src/routes/CardExternal.js';
-import UpdateProfile from './src/routes/UpdateProfile.js';
-import Transference from './src/routes/Transference.js';
-import Ingress from './src/routes/Ingress.js';
+import Auth from './routes/Auth.js';
+import Password from './routes/Password.js';
+import CardExternal from './routes/CardExternal.js';
+import UpdateProfile from './routes/UpdateProfile.js';
+import Transference from './routes/Transference.js';
+import Ingress from './routes/Ingress.js';
 
 // settings
 app.set("PORT", process.env.PORT || 4000);
