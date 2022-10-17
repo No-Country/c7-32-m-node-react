@@ -3,6 +3,6 @@ import { operationsHistory } from "../controllers/Account.Controllers.js";
 
 const router = Router();
 
-router.put('/history', operationsHistory);
+router.get('/history/:id', operationsHistory);
 
 export default router;
