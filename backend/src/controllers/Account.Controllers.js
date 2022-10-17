@@ -130,8 +130,8 @@ export const operationsHistory = async (req, res) => {
     });
 
     res.status(200).json({
-      ingresos,
-      egresos
+      ingresos: ingresos,
+      egresos: egresos
     })
   } catch (err) {
     console.log(err.message);

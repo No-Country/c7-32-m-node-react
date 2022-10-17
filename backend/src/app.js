@@ -15,6 +15,7 @@ import CardExternal from './routes/CardExternal.js';
 import UpdateProfile from './routes/UpdateProfile.js';
 import Transference from './routes/Transference.js';
 import Ingress from './routes/Ingress.js';
+import Operations from './routes/Operations.js';
 
 // settings
 app.set("PORT", process.env.PORT || 4000);
@@ -34,6 +35,7 @@ app.use('api/card', CardExternal);
 app.use('/api/profile', UpdateProfile);
 app.use('/api', Transference);
 app.use('/api', Ingress);
+app.use('/api', Operations);
 
 // export app
 export default app;
