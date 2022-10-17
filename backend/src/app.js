@@ -1,4 +1,4 @@
-import app from "./index.js";
+import app from "../index.js";
 import { sequelize } from './db/db.js';
 
 // import models
