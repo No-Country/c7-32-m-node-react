@@ -15,13 +15,13 @@
 .home .home-logo img{
   width: 7.8125rem;
 }
-.home .home-logo .home-sesion{
+.home .home-logo .home-session{
   margin-top: 1.25rem;
 }
-.home .home-logo .home-sesion span{
+.home .home-logo .home-session span{
   border-left: 1px solid #000000;
 }
-.home .home-logo .home-sesion .btn-login{
+.home .home-logo .home-session .btn-login{
   background-color: transparent;
   color: #000000;
   font-weight: 400;
@@ -34,7 +34,28 @@
   font-weight: 400;
   border-radius: .25rem;
   letter-spacing: 1px;
+  outline: none;
 }
+.btn-register:hover{
+  color: #ffffff;
+}
+
+.home .home-logo .home-session .other-session{
+  display: flex;
+  align-items: center;
+  gap: .3125rem;
+}
+.home .home-logo .home-session .image{
+  font-size: 2.5rem;
+  color: #000000;
+}
+.home .home-logo .home-session .user-name{
+  display: inline-block;
+  color: #000000;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+}
+
 
 .home .home-info{
   display: flex;
@@ -66,7 +87,10 @@
 .home .home-info .info .btn-register{
   width: 17.1875rem;
   padding: .75rem 0rem;
+  border: none;
+  outline: none;
 }
+
 .home .home-info .info span{
   color: #FF477E;
 }

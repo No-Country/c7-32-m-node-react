@@ -45,11 +45,12 @@
 .header .header-info .info-user .icon{
   cursor: pointer;
 }
-.header .header-info .info-user img{
+.header .header-info .info-user .image{
   width: 3.125rem;
   border-radius: .25rem;
-  cursor: pointer;
+  font-size: 2.5rem;
 }
-.header .header-info .info-user p{
+.header .header-info .info-user .user-name{
   letter-spacing: .0625rem;
+  text-transform: capitalize;
 }
