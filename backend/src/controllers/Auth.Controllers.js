@@ -8,11 +8,8 @@ import { OAuth2Client } from 'google-auth-library';
 
 const client = new OAuth2Client(process.env.CLIENT_ID);
 
-
 // LOGIN
 export const login = async (req, res) => {
-
-
   try {
     const { email, password, remember } = req.body;
 
@@ -26,16 +23,14 @@ export const login = async (req, res) => {
     const checkPassword = await comparePassword(password, userFound.password);
 
     if (!checkPassword) return res.status(400).json({ message: `Contraseña incorrecta` });
-
     if (remember) {
-      const token = generateToken(userFound.id, remember);
+      const token = await generateToken(userFound.id, remember);
       res.json({ token, message: "¡Inicio de sesión exitoso!", user: userFound });
     } else {
-      const token = generateToken(userFound.id, false);
+      const token = await generateToken(userFound.id, false);
       res.json({ token, message: "¡Inicio de sesión exitoso!", user: userFound });
     }
 
-    
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -43,7 +38,7 @@ export const login = async (req, res) => {
 
 // LOGIN WITH GOOGLE
 export const googleLogin = async (req, res) => {
-  const { token } = req.body;console.log(token)
+  const { token } = req.body; console.log(token)
 
   try {
     // verify token of google
@@ -67,23 +62,21 @@ export const googleLogin = async (req, res) => {
     }
 
     // if doesn't exist sign in
-    if(!payload.family_name) {
+    if (!payload.family_name) {
       payload.family_name = 'wallet'
     }
 
+    const newUser = await User.create({
+      name: payload.given_name,
+      surname: payload.family_name,
+      email: payload.email,
+      image: payload.picture,
+      cbu: cbu,
+      password: ''
+    });
 
-  
-      const newUser = await User.create({
-        name: payload.given_name,
-        surname: payload.family_name,
-        email: payload.email,
-        image: payload.picture,
-        cbu: cbu,
-        password: ''
-      });
-    
-      
-      const cardUser = await createCard(newUser.id, newUser.name , newUser.surname);
+
+    const cardUser = await createCard(newUser.id, newUser.name, newUser.surname);
 
     const userUpdated = await User.update({
       card_id: cardUser.id

@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import passport from 'passport';
-import {passportMiddleware} from './middlewares/passport.js';
+import { passportMiddleware } from './middlewares/passport.js';
 
 const app = express()
 
@@ -12,6 +12,7 @@ const app = express()
 import Auth from './routes/Auth.js';
 import Password from './routes/Password.js';
 import CardExternal from './routes/CardExternal.js';
+import UpdateProfile from './routes/UpdateProfile.js';
 import Transference from './routes/Transference.js';
 import Ingress from './routes/Ingress.js';
 
@@ -29,7 +30,8 @@ passport.use(passportMiddleware);
 // routes
 app.use('/api', Auth);
 app.use('/api/password', Password);
-app.use('/api/card', CardExternal);
+app.use('api/card', CardExternal);
+app.use('/api/profile', UpdateProfile);
 app.use('/api', Transference);
 app.use('/api', Ingress);
 

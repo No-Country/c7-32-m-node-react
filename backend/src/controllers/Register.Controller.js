@@ -1,4 +1,3 @@
-
 import { User } from '../models/Users.js';
 import { encryptPassword } from "../utils/encryptPassword.js";
 import { cbu } from '../utils/generateCbu.js';

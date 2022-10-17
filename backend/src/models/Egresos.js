@@ -1,5 +1,5 @@
-import {sequelize} from '../db/db.js';
-import {DataTypes} from 'sequelize';
+import { sequelize } from '../db/db.js';
+import { DataTypes } from 'sequelize';
 
 export const Egreso = sequelize.define('Egreso', {
   id: {
