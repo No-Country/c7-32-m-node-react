@@ -4,13 +4,13 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { useUserContext } from '../../context/userContext'
-import { alertError } from '../../../assets/config/swall.js'
-
-import '../../../styles/transferForm.css'
+import { swalAlert } from '../../../assets/config/swal.js'
 import { httpsRequest } from '../../../assets/config/axios'
 
+import '../../../styles/transferForm.css'
 
-const LoginSchema = Yup.object({
+
+const transferSchema = Yup.object({
   amount: Yup.string()
         .matches(/^[0-9]+$/, "Deben ser solamente dígitos") 
         .min(1,'Mínimo de 1')
@@ -43,7 +43,7 @@ const LoginSchema = Yup.object({
 
 const TransferForm = () => {
 
-  const { register, handleSubmit, formState:{ errors } } = useForm( { resolver: yupResolver(LoginSchema) } )
+  const { register, handleSubmit, formState:{ errors } } = useForm( { resolver: yupResolver(transferSchema) } )
   const { client } = useUserContext()
 
 
@@ -64,7 +64,7 @@ const TransferForm = () => {
         }
       )
     } catch (error) {
-      alertError(error)
+      swalAlert('error', 'Oops', error)
     }
   }
 

@@ -30,14 +30,6 @@ const Actions = () => {
           <TransferForm />
         </Modal>
       </div>
-      {/* <div className='action-exchange'>
-        <button className='btn' onClick={openExchange} >
-          Cambio de moneda
-        </button>
-        <Modal isOpen={exchangeIsOpen} close={closeExchange} >
-          <TransferForm />
-        </Modal>
-      </div> */}
     </section>
   )
 }

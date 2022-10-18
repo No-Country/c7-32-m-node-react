@@ -38,7 +38,9 @@ const Navbar = () => {
           <IoPower 
           onClick={ () => { 
             navigate('/')
-            logOut() 
+            logOut()
+            localStorage.clear()
+            sessionStorage.clear()
             }} 
           className='icon'/>
         </li>

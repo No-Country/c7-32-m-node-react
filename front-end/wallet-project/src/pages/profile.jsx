@@ -1,21 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 
 import { useUserContext } from '../components/context/userContext'
 import Header from '../components/pure/header'
 import { httpsRequest } from '../assets/config/axios'
+import { swalAlert } from '../assets/config/swal'
 
 import '../styles/profile.css'
-import {  IoPersonSharp } from 'react-icons/io5'
+import {  IoEyeOffOutline, IoEyeOutline, IoPersonSharp } from 'react-icons/io5'
 
 
 const Profile = () => {
 
-  const MySwal = withReactContent(Swal)
   const { register, handleSubmit } = useForm()
-  const { client } = useUserContext()
+  const { user } = useUserContext()
+  const [showPass, setShowPass] = useState(false)
 
   const uploadRef = useRef()
 
@@ -52,24 +51,18 @@ const Profile = () => {
   }, [preview])
 
   const changeData = (data) => {
-    console.log(uploadRef)
-    // try {
-    //   httpsRequest(
-    //     'put',
-    //     'http://localhost:5000/api/updateprofile',
-    //     {
-    //       ...data,
-    //       image: image
-    //     }
-    //     )
-    //   console.log('Los cambios se realizaron')
-    // } catch (error) {
-    //   MySwal.fire({
-    //     icon: 'error',
-    //     title: 'Oops',
-    //     text: error
-    //   })
-    // }
+    try {
+      httpsRequest(
+        'put',
+        'http://localhost:5000/api/updateprofile',
+        {
+          ...data,
+          input: uploadRef
+        }
+        )
+    } catch (error) {
+      swalAlert('error', 'Oops', error)
+    }
   }
 
   return (
@@ -79,8 +72,8 @@ const Profile = () => {
       <main className='profile-container'>
     
         <section className='profile-user'>
-          { client.user.image ? 
-              <img src={client.user.image} alt='User image' />
+          { user.image ? 
+              <img src={user.image} alt='User image' />
             :
               image ?
                 <img src={image} alt='User image' />
@@ -102,38 +95,44 @@ const Profile = () => {
           <form className='data-form' onSubmit={ handleSubmit(changeData) }>
             <input 
               type='text' 
-              value={`${client.user.name} ${client.user.surname}`}
+              value={user.name}
               {...register('name')}
             />
             <input 
+              type='text' 
+              value={user.surname}
+              style={{ textTransform: 'capitalize'}}
+              {...register('surname')}
+            />
+            <input 
               type='email' 
-              value={client.user.email}
+              value={user.email}
               {...register('email')}
             />
+            <div>
+              <input 
+                type={ showPass ? 'text' : 'password' }
+                value={user.password}
+                {...register('password')}
+              />
+              { showPass ? 
+                (<IoEyeOutline className='icon-pass' onClick={() => setShowPass( !showPass )} />)
+                : 
+                (<IoEyeOffOutline className='icon-pass' onClick={() => setShowPass( !showPass )} />)
+              }
+            </div>
             <input 
               type='text' 
-              placeholder='Documento'
-              {...register('dni')}
-            />
-            <input 
-              type='text' 
-              placeholder='País' 
+              placeholder='País'
+              value={user.country === null ? "" : user.country}
+              style={{ textTransform: 'capitalize'}}
               {...register('country')}
             />
             <input 
-              type='text' 
-              placeholder='Ciudad' 
-              {...register('city')}
-            />
-            <input 
-              type='text' 
-              placeholder='Dirección' 
-              {...register('address')}
-            />
-            <input 
               type='number' 
-              placeholder='Código postal'
-              {...register('zipCode')}
+              placeholder='Teléfono'
+              value={user.phone === null ? "" : user.phone}
+              {...register('phone')}
             />
 
             <button type='submit' className='data-sub'>Guardar cambios</button>

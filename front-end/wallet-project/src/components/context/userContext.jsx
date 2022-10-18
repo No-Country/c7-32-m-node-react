@@ -14,14 +14,15 @@ const UserContext = ({ children }) => {
   const logOut = () => {
     setClient({})
   }
-
   
+  const user = localStorage.getItem('user') !== null ? JSON.parse(localStorage.getItem('user')) : JSON.parse(sessionStorage.getItem('user'))
 
   return (
     <CreateUserContext.Provider value={{
       client,
       getUser,
       logOut,
+      user
     }}
     >
       {children}

@@ -1,22 +1,21 @@
 import React from "react"
 import { Link } from 'react-router-dom'
-// import { httpsRequest } from '../../assets/config/axios'
-
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 
+import { swalAlert } from "../../assets/config/swal"
+import { httpsRequest } from "../../assets/config/axios"
+
 import '../../styles/register.css'
 import logo from "../../assets/images/Logo-bg-black.png"
-// import Swal from 'sweetalert2'
-// import withReactContent from 'sweetalert2-react-content'
 
 const RegisterSchema = Yup.object({
 
   name: Yup.string()
         .min(4, 'Mínimo 4 caracteres')
         .required('Requiere nombre'),
-  lastName: Yup.string()
+  surname: Yup.string()
             .min(4, 'Mínimo 4 caracteres')
             .required('Requiere apellido'),
   email: Yup.string()
@@ -40,26 +39,19 @@ const RegisterSchema = Yup.object({
 const Register = () => {
 
   const { register, handleSubmit, formState:{ errors } } = useForm( { resolver: yupResolver(RegisterSchema) } )  
-  // const MySwal = withReactContent(Swal)
 
   const registerUser = (info) =>{
-    console.log(info)
-    // try {
-    //   httpsRequest(
-    //     'post',
-    //     'http://localhost:5000/api/register',
-    //     {
-
-    //     }
-    //   )
-    // } catch (error) {
-
-    //   MySwal.fire({
-    //     icon: 'error',
-    //     title: 'Oops',
-    //     text: error
-    //   })
-    // }
+    try {
+      httpsRequest(
+        'post',
+        'http://localhost:5000/api/register',
+        {
+          info
+        }
+      )
+    } catch (error) {
+      swalAlert('error', 'Oops', error)
+    }
   }
 
   return (
@@ -77,9 +69,9 @@ const Register = () => {
         </div>
         
         <div className="div-input">
-            <label htmlFor="lastName">Apellido</label>
-            <input type="text" id="lastName" placeholder="Perez" { ...register('lastName')} />
-            <span className='error'>{errors.lastName?.message}</span>
+            <label htmlFor="surname">Apellido</label>
+            <input type="text" id="surname" placeholder="Perez" { ...register('surname')} />
+            <span className='error'>{errors.surname?.message}</span>
         </div>
 
         <div className="div-input">

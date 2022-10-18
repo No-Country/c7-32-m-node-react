@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 
 import { httpsRequest } from '../../../assets/config/axios'
-import { alertError } from '../../../assets/config/swall'
+import { swalAlert } from '../../../assets/config/swal'
 import { useUserContext }  from '../../context/userContext'
 
 
@@ -21,7 +21,7 @@ const DepositForm = () => {
         }
       )
     } catch (error) {
-      alertError(error)
+      swalAlert('error', 'Oops', error)
     }
   }
 

@@ -1,0 +1,106 @@
+.wallet-container{
+  width: 100%;
+  height: 100%;
+  padding-left: 6.25rem;
+}
+/* Card image */
+.card-image{
+  width: 400px;
+  height: 14.375rem;
+  background-image: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%);
+  border-radius: .9375rem;
+  position: relative;
+  margin: 3.125rem auto 6.25rem;
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+  perspective: 600px;
+  transition: .5s;
+}
+
+.card-image img{
+  position: absolute;
+  width: 3.75rem;
+  top: .625rem;
+  right: .625rem;
+  
+}
+.card-image span:nth-child(2){
+  position: absolute;
+  top: 7.5rem;
+  left: 1.875rem;
+  font-size: 1.375rem;
+}
+.card-image span:nth-child(3){
+  position: absolute;
+  top: 10rem;
+  left: 1.875rem;
+  font-size: 1.125rem;
+}
+.card-image span:nth-child(4){
+  position: absolute;
+  top: 12rem;
+  left: 1.875rem;
+  font-size: 16px;
+}
+.card-image:hover{
+  transform: rotateY(-180deg);
+}
+
+
+/* Form */
+.form-wallet{
+  width: 65%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.875rem;
+  color: #575757;
+  position: relative;
+}
+
+.form-number, .form-name, .form-lastName, .form-cvv{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-wallet div input{
+  width: 15.625rem;
+  height: 2.8125rem;
+  border: none;
+  outline: none;
+  border-radius: .25rem;
+  padding-left: .625rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: .9375rem;
+}
+
+.form-wallet .form-date{
+  width: 15.625rem;
+}
+.form-wallet .form-date label{
+  display: block;
+}
+.form-wallet .form-date input{
+  width: 6.25rem;
+}
+.form-wallet .form-date input:nth-child(3){
+  margin-left: 1rem;
+}
+.form-wallet .form-date span{
+  display: block;
+}
+
+.form-wallet button{
+  position: absolute;
+  width: 250px;
+  height: 45px;
+  padding: 0;
+  border: none;
+  outline: none;
+  border-radius: .25rem; 
+  color: #ffffff;
+  background-color: #21A0A8;
+  bottom: -80px;
+  cursor: pointer;
+}

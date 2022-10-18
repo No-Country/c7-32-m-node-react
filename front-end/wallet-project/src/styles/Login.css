@@ -14,10 +14,12 @@
   flex-direction: column;
   align-items: center;
 }
+
 .login-image  .image  img{
   margin-top: 3rem;
   width: 31.25rem;
 }
+
 .login-image h1{
   max-width: 34.375rem;
   font-size: clamp(1.875rem, 8vw - 3vw, 2.75rem);
@@ -26,6 +28,7 @@
   padding: 0rem 1.25rem;
   margin: 2.25rem 0rem;
 }
+
 .login-image p{
   max-width: 30.9375rem;
   margin-top: 1.125rem;
@@ -47,6 +50,7 @@
   align-self: flex-end;
   margin: 1.5rem 2rem 0rem 0rem;
 }
+
 .login-info .logo img{
   width: 100%;
 }
@@ -58,20 +62,24 @@
   display: flex;
   flex-direction: column;
 }
+
 .login-form p{
   margin: 0rem 0rem .5rem;
 }
+
 .login-form h2{
   font-size: 1.75rem;
   margin: 0rem 0rem 1.875rem;
   font-weight: 500;
 }
+
 .login-form .form{
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
+
 .login-form .form input{
   height: 3.125rem;
   background-color: transparent;
@@ -82,27 +90,36 @@
   padding-left: 1.25rem;
   font-size: 1rem;
 }
+
 .login-form .form input::placeholder{
   color: #aaaaaa;
 }
+
 .login-info .login-form .form .form-warned{
   height: 3.125rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: .625rem;
   font-size: .875rem;
   padding: 0rem .625rem;
 }
-.login-info .login-form .form .form-warned .form-check{
-  display: flex;
-  align-items: center;
-  gap: .625rem;
-}
-.login-info .login-form .form .form-warned .form-check label{
+.login-info .login-form .form .form-warned label{
   font-size: .875rem;
 }
+
+.recover{
+  position: absolute;
+  top: 35.125rem;
+  right: 12rem;
+  font-size: 14px;
+  color: #21A0A8;
+  font-weight: 600;
+}
+.recover:active{
+  color: #FF477E;
+}
+
 .login-info .login-form .form .btn-login{
   height: 3.125rem;
   background-color: #FF477E;
@@ -116,10 +133,12 @@
   text-align: center;
   margin-bottom: .625rem;
 }
+
 .login-info .login-form .form .btn-login:hover{
   background-color: #ff2f6e;
   transform: scale(1.03);
 }
+
 .login-info .login-form .form .error{
   font-size: .875rem;
   color: red;
@@ -130,7 +149,7 @@
 .login-info .register{
   text-align: center;
   position: relative;
-  bottom: -8rem;
+  bottom: -7rem;
 }
 .login-info .register .link{
   font-weight: 400;
