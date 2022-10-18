@@ -5,7 +5,7 @@ import { sequelize } from './db/db.js';
 import './models/Users.js';
 import { User } from './models/Users.js';
 import './models/Cards.js';
-import './models/Deposit.js';
+import './models/Ingreso.js';
 import './models/Egresos.js';
 
 // initalization of DATABASE and SERVER
