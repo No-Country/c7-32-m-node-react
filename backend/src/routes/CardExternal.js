@@ -6,8 +6,8 @@ import { createCardExternal, getCardsOfUser, deleteCardsOfUser } from "../contro
 
 const router = Router();
 
-router.post('/create/:id', passport.authenticate('jwt', { session: false }), createCardExternal);
-router.get('/user/:id', passport.authenticate('jwt', { session: false }), getCardsOfUser);
-router.delete('/:idCard/user/delete/:idUser', passport.authenticate('jwt', { session: false }), deleteCardsOfUser)
+router.post('/create/:id',createCardExternal);
+router.get('/user/:id', getCardsOfUser);
+router.delete('/:idCard/user/delete/:idUser', deleteCardsOfUser)
 
 export default router;

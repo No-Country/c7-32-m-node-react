@@ -4,6 +4,6 @@ import passport from 'passport';
 
 const router = Router();
 
-router.post('/:idUser/ingress', passport.authenticate('jwt', { session: false }), Ingress);
+router.post('/:idUser/ingress', Ingress);
 
 export default router;

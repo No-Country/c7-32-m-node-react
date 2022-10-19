@@ -1,6 +1,6 @@
 import Jwt from "jsonwebtoken";
 import { User } from "../models/Users.js";
-import { Transfers } from "../models/Transfers.js";
+import { Transference } from "../models/Transference";
 import { transporter, mailOptions } from "../utils/nodemailer.js";
 import { encryptPassword } from "../utils/encryptPassword.js";
 import cloudinary from '../utils/cloudinary.js';
