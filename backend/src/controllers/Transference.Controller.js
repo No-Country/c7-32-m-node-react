@@ -1,5 +1,5 @@
 import { User } from '../models/Users.js';
-import { Ingreso } from '../models/Ingreso.js';
+import { Transfers } from '../models/Transfers.js';
 
 export const postTransf = async (req, res) => {
   try {
@@ -37,7 +37,7 @@ export const postTransf = async (req, res) => {
     //    if Cbu doesn't exist in database, they send money to another count outside of wen wallet
     if (!searchCbu) {
 
-      const deposit = await Ingreso.create({
+      const deposit = await Transfers.create({
         user_id: null,
         user_transferring_id: userTransferring.id,
         user_transferring_cbu: userTransferring.cbu,
@@ -61,7 +61,7 @@ export const postTransf = async (req, res) => {
 
     //    if the user deposit in another user of wen wallet
 
-    const deposit = await Ingreso.create({
+    const deposit = await Transfers.create({
       user_id: searchCbu.id,
       user_transferring_id: userTransferring.id,
       user_transferring_cbu: userTransferring.cbu,
