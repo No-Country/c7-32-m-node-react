@@ -1,49 +1,19 @@
-<<<<<<< HEAD
 import { config } from "dotenv";
 config({ path: '.env' });
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import passport from 'passport';
-<<<<<<< HEAD
-import passportMiddlewares from './middlewares/passport.js';
-=======
-import app from "./index.js";
-import { sequelize } from './db/db.js';
-=======
 import {passportMiddleware} from './middlewares/passport.js';
->>>>>>> IM_BK_wallet
 
-// import models
-import './models/Users.js';
-import './models/Cards.js';
-import './models/Transference.js';
-import './models/Ingreso.js';
-import './models/Egresos.js';
-import './models/Transfers.js';
->>>>>>> 217ec4978f85c5ad70e110d686a31f8e32528224
+const app = express()
 
-// initalization of DATABASE and SERVER
-const Main = async () => {
-  try {
-      await sequelize.sync({ force: false });
-    console.log("Connection has been established successfully.");
-    app.listen(app.get("PORT"));
-    console.log(`Server listening on port ${app.get("PORT")}`);
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
-  }
-}
-
-<<<<<<< HEAD
 // import routes
 import Auth from './routes/Auth.js';
 import Password from './routes/Password.js';
 import CardExternal from './routes/CardExternal.js';
-<<<<<<< HEAD
-=======
 import Transference from './routes/Transference.js';
->>>>>>> IM_BK_wallet
+import Ingress from './routes/Ingress.js';
 
 // settings
 app.set("PORT", process.env.PORT || 4000);
@@ -54,23 +24,14 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
-<<<<<<< HEAD
-passport.use(passportMiddlewares);
-=======
 passport.use(passportMiddleware);
->>>>>>> IM_BK_wallet
 
 // routes
 app.use('/api', Auth);
 app.use('/api/password', Password);
 app.use('/api/card', CardExternal);
-<<<<<<< HEAD
-=======
 app.use('/api', Transference);
->>>>>>> IM_BK_wallet
+app.use('/api', Ingress);
 
 // export app
 export default app;
-=======
-export default Main;
->>>>>>> 217ec4978f85c5ad70e110d686a31f8e32528224
