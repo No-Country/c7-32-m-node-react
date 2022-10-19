@@ -90,7 +90,7 @@
 }
 
 .container-form button {
-    width: 25rem;    
+    max-width: 25rem;
     height: 3.125rem;   
     background: #16c98c;
     border-radius: .3125rem;
@@ -108,4 +108,39 @@
 
 .container-register .container-form  .error{
     color: #000;
+}
+
+@media only screen and (min-width: 375px){
+    .container-register{
+        padding: 2rem 0rem;
+    }
+    .container-form{
+        width: 80%;
+        flex-direction: column;
+    }
+    .container-form .div-input{
+        width: 100%;
+    }
+    .container-form .div-input input{
+        width: 100%;
+    }
+    .container-form button{
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px){
+
+    .container-form{
+        flex-direction: row;
+    }
+    .container-form .div-input{
+        width: 45%;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    .container-form .form-check{
+        margin-top: 4rem;
+    }
 }

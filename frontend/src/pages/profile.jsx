@@ -84,7 +84,7 @@ const Profile = () => {
                   </div>
                 )
           }
-          <div>
+          <div className='div-file'>
             <input type='file' accept='image/*' ref={uploadRef} onChange={ previewImages } />
             <button className='file-btn' onClick={uploadFiles}>Subir imagen</button>
             <p>Suba una imagen para su perfil</p>
@@ -94,6 +94,7 @@ const Profile = () => {
         <section className='profile-data'>
           <form className='data-form' onSubmit={ handleSubmit(changeData) }>
             <input 
+              className='first'
               type='text' 
               value={user.name}
               {...register('name')}
@@ -109,7 +110,7 @@ const Profile = () => {
               value={user.email}
               {...register('email')}
             />
-            <div>
+            <div className='pass'>
               <input 
                 type={ showPass ? 'text' : 'password' }
                 value={user.password}

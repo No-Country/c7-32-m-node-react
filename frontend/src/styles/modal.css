@@ -18,7 +18,7 @@
 .modal-container{
   position: relative;
   min-width: 23.4375rem;
-  max-width: 75rem;
+  max-width: 56.25rem;
   height: auto;
   max-height: 100vh;
   background-color: #ffffff;
@@ -28,8 +28,7 @@
 
 .modal-close{
   position: absolute;
-  top: -6.75rem;
-  right: -6.75rem;
+  
   background-color: #FF477E;
   padding: .625rem .625rem;
   display: flex;
@@ -40,4 +39,23 @@
 .modal-close .icon{
   color: #ffffff;
   font-size: 1.875rem;
+}
+
+@media only screen and (min-width: 375px){
+  .modal-container{
+    width: 90%;
+    min-width: 0rem;
+  }
+  .modal-close{
+    position: absolute;
+    top: -4.75rem;
+    right: 0rem;
+  }
+}
+
+@media only screen and (min-width: 1200px){
+ .modal-close{
+  top: -6.75rem;
+  right: -6.75rem;
+ }
 }

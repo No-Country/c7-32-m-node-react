@@ -60,7 +60,8 @@ const Wallet = () => {
                 card.name
                 :
                 localCard.name
-              } 
+              }
+              {" "}
               {
               localCard === null ?
                 card.surname

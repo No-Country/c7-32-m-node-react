@@ -14,6 +14,7 @@ const TitlePage = ({id, title}) => {
   return (
     <div className='header'>
       <h2 id={id} >{title}</h2>
+      { screen.width >= 768 &&
       <div className='header-info' >
 
         <div className='info-flag'>
@@ -37,6 +38,8 @@ const TitlePage = ({id, title}) => {
           </div>)
         }
       </div>
+      }
+      
     </div>
   )
 }

@@ -5,7 +5,7 @@
 }
 /* Card image */
 .card-image{
-  width: 400px;
+  width: 25rem;
   height: 14.375rem;
   background-image: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%);
   border-radius: .9375rem;
@@ -103,4 +103,34 @@
   background-color: #21A0A8;
   bottom: -80px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 768px){
+  .wallet-container{
+    height: 100vh;
+    padding-left: 0rem;
+    padding-bottom: 2rem;
+  }
+  .card-image{
+    width: 18.75rem;
+    height: 11.25rem;
+  } 
+  .card-image img{
+    width: 2.5rem;
+  }
+  .card-image span:nth-child(2){
+    position: absolute;
+    top: 4.5rem;
+    left: 1.875rem;
+    font-size: 1.375rem;
+  }
+  .card-image span:nth-child(3){
+    position: absolute;
+    top: 7rem;
+    left: 1.875rem;
+    font-size: 1.125rem;
+  }
+  .card-image span:nth-child(4){
+    top: 9rem;
+  }
 }

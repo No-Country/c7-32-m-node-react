@@ -26,7 +26,7 @@ const DepositForm = () => {
   }
 
   return (
-    <form className='form' onSubmit={ handleSubmit(sendDeposit) }>
+    <form className='form' style={{ width: '100%' }} onSubmit={ handleSubmit(sendDeposit) }>
       <h2 
         style={{
           fontWeight: '500',
@@ -37,6 +37,9 @@ const DepositForm = () => {
         Ingrese el monton que desea depositar
       </h2>
       <input 
+        style={{
+          width: '100%'
+        }}
         type='number' 
         id='amount' 
         placeholder='1.000' 
