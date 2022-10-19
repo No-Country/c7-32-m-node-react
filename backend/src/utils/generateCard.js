@@ -12,6 +12,7 @@ export const createCard = async (id, name, surname) => {
     const issue_date = new Date();
     const exp_date = new Date(`${issue_date.getFullYear() + 10}`);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     return newCard = await Card.create({
         name,
@@ -23,6 +24,8 @@ export const createCard = async (id, name, surname) => {
     })
 }
 =======
+=======
+>>>>>>> IM_BK_wallet
 
     console.log(issue_date, exp_date);
 
@@ -39,5 +42,9 @@ export const createCard = async (id, name, surname) => {
     } catch (error) {
         return error.message;
     }
+<<<<<<< HEAD
 }
 >>>>>>> 217ec4978f85c5ad70e110d686a31f8e32528224
+=======
+}
+>>>>>>> IM_BK_wallet

@@ -5,10 +5,14 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import passport from 'passport';
+<<<<<<< HEAD
 import passportMiddlewares from './middlewares/passport.js';
 =======
 import app from "./index.js";
 import { sequelize } from './db/db.js';
+=======
+import {passportMiddleware} from './middlewares/passport.js';
+>>>>>>> IM_BK_wallet
 
 // import models
 import './models/Users.js';
@@ -36,6 +40,10 @@ const Main = async () => {
 import Auth from './routes/Auth.js';
 import Password from './routes/Password.js';
 import CardExternal from './routes/CardExternal.js';
+<<<<<<< HEAD
+=======
+import Transference from './routes/Transference.js';
+>>>>>>> IM_BK_wallet
 
 // settings
 app.set("PORT", process.env.PORT || 4000);
@@ -46,12 +54,20 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
+<<<<<<< HEAD
 passport.use(passportMiddlewares);
+=======
+passport.use(passportMiddleware);
+>>>>>>> IM_BK_wallet
 
 // routes
 app.use('/api', Auth);
 app.use('/api/password', Password);
 app.use('/api/card', CardExternal);
+<<<<<<< HEAD
+=======
+app.use('/api', Transference);
+>>>>>>> IM_BK_wallet
 
 // export app
 export default app;

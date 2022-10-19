@@ -75,6 +75,7 @@ export const getCardsOfUser = async (req, res) => {
     const cardsUser = await Card.findAll({ where: { id_user: id } });
 
 
+<<<<<<< HEAD
     res.json({ cards: cardsUser })
   } catch (error) {
     res.status(500).json({ message: error.message })
@@ -92,3 +93,10 @@ export const deleteCardsOfUser = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
+=======
+    res.json({cards: cardsUser})
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+} 
+>>>>>>> IM_BK_wallet

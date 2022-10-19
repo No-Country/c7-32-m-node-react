@@ -9,21 +9,13 @@ export const Transference = sequelize.define('Transference', {
       allowNull: false,
       unique: true
     },
+    //usuario de aquien le esta ingresando//
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-      user_transferring_id: {
-          type: DataTypes.INTEGER
-        },
-        user_transferring_cbu: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        user_transferring_reason: {
-          type: DataTypes.STRING,
-        },
-        user_transferring_amount: {
+      
+        user_amount: {
           type: DataTypes.DOUBLE,
           allowNull: false,
         }

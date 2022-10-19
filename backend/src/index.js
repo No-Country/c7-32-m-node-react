@@ -7,7 +7,16 @@ import passport from 'passport';
 import { passportMiddleware } from './middlewares/passport.js';
 import Main from './app.js';
 
+<<<<<<< HEAD
 const app = express()
+=======
+// import models
+import './models/Users.js';
+import { User } from './models/Users.js';
+import './models/Cards.js';
+import './models/Ingreso.js';
+import './models/Egresos.js';
+>>>>>>> IM_BK_wallet
 
 // import routes
 import Auth from './routes/Auth.js';
@@ -17,8 +26,21 @@ import UpdateProfile from './routes/UpdateProfile.js';
 import Transference from './routes/Transference.js';
 import Ingress from './routes/Ingress.js';
 
+<<<<<<< HEAD
 // settings
 app.set("PORT", process.env.PORT || 4000);
+=======
+const Main = async () => {
+  try {
+      await sequelize.sync({ force: false });
+    console.log("Connection has been established successfully.");
+    app.listen(app.get("PORT"));
+    console.log(`Server listening on port ${app.get("PORT")}`);
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+}
+>>>>>>> IM_BK_wallet
 
 // middlewares
 app.use(cors());

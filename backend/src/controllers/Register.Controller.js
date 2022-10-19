@@ -19,11 +19,16 @@ const register = async (req, res) => {
         //return res.status(400).json("Las contraseñas no coinciden")
         //}
 <<<<<<< HEAD
+<<<<<<< HEAD
         const passwordHash = await encryptPassword(password)
 =======
         const passwordHash = await encryptPassword(password);
 
 >>>>>>> 217ec4978f85c5ad70e110d686a31f8e32528224
+=======
+        const passwordHash = await encryptPassword(password);
+
+>>>>>>> IM_BK_wallet
 
         const nuevoUser = new User({
             name,
@@ -31,12 +36,15 @@ const register = async (req, res) => {
             email,
             password: passwordHash,
 <<<<<<< HEAD
+<<<<<<< HEAD
         });
         const newUser = await nuevoUser.save()
 
         const checkUser = await User.findOne({ where: { email }});
         res.json({ mensaje: "Se creo el usuario de forma exitosa", newUser, checkUser });
 =======
+=======
+>>>>>>> IM_BK_wallet
             cbu
         });
         const newUser = await nuevoUser.save();
@@ -50,7 +58,10 @@ const register = async (req, res) => {
           })
         const checkUser = await User.findOne({ where: { email }});
         res.json({ mensaje: "Se creo el usuario de forma exitosa",checkUser });
+<<<<<<< HEAD
 >>>>>>> 217ec4978f85c5ad70e110d686a31f8e32528224
+=======
+>>>>>>> IM_BK_wallet
     }
 }
 

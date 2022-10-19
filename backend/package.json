@@ -40,10 +40,14 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "sequelize": "^6.23.2"
 =======
     "sequelize": "^6.23.1"
 >>>>>>> 217ec4978f85c5ad70e110d686a31f8e32528224
+=======
+    "sequelize": "^6.23.1"
+>>>>>>> IM_BK_wallet
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
