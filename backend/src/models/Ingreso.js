@@ -20,4 +20,8 @@ export const Ingreso = sequelize.define('Ingreso', {
     
   }, {
     timestamps: true
+<<<<<<< HEAD
   });
+=======
+  });
+>>>>>>> ba6cf30220bbcab0fc305e9d4bc397097741f8d5

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { Ingress } from '../controllers/Ingresos.Controllers.js';
+import { Ingress } from '../controllers/Ingreso.Controllers.js';
 import passport from 'passport';
 
 const router = Router();

@@ -5,7 +5,11 @@ import { sequelize } from './db/db.js';
 import './models/Users.js';
 import { User } from './models/Users.js';
 import './models/Cards.js';
+<<<<<<< HEAD
 import './models/Transference.js';
+=======
+import './models/Transfers.js';
+>>>>>>> ba6cf30220bbcab0fc305e9d4bc397097741f8d5
 import './models/Egresos.js';
 
 // initalization of DATABASE and SERVER

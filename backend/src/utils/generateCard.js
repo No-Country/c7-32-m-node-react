@@ -7,6 +7,10 @@ export const createCard = async (id, name, surname) => {
     const cvv = Math.floor(Math.random() * (999 - 100) + 100);
     const issue_date = new Date(); 
     const exp_date = new Date(`${issue_date.getFullYear() + 10}`);
+<<<<<<< HEAD
+=======
+
+>>>>>>> ba6cf30220bbcab0fc305e9d4bc397097741f8d5
 
     console.log(issue_date, exp_date);
 
@@ -23,4 +27,8 @@ export const createCard = async (id, name, surname) => {
     } catch (error) {
         return error.message;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ba6cf30220bbcab0fc305e9d4bc397097741f8d5

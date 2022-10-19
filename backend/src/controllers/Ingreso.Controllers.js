@@ -10,12 +10,12 @@ export const Ingress = async (req, res) => {
 
     const userFound = await User.findByPk(idUser);
 
-    
+
     if(!userFound) {
         return res.status(400).json({message: "El usuario no existe"});
     }
-    
-    if(!amount || parseInt(amount) <= 0 || parseInt(amount) > 10000){
+
+    if(!amount ||  parseInt (amount) <= 0 || parseInt(amount) > 10000){
         return res.status(400).json({message: "Monto inválido"})
     }
 
