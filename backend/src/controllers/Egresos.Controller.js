@@ -1,10 +1,10 @@
 import { User } from "../models/Users.js";
-import {Ingreso} from '../models/Ingreso.js';
+import {Egresos} from '../models/Egresos';
 
-export const Ingress = async (req, res) => {
+export const Egreso = async (req, res) => {
 
    try {
-    const {amount} = req.body;
+    const {amount, reason} = req.body;
 
     const {idUser} = req.params;
 
@@ -15,25 +15,26 @@ export const Ingress = async (req, res) => {
         return res.status(400).json({message: "El usuario no existe"});
     }
     
-    if(!amount || parseInt(amount) <= 0 || parseInt(amount) > 10000){
-        return res.status(400).json({message: "Monto inválido"})
+    if(!amount || parseInt(amount) <= 0 || userFound.amount< amount){
+        return res.status(400).json({message: "Saldo insuficiente"})
     }
 
     await User.update({
-        amount: (userFound.amount + parseInt(amount))
+        amount: (userFound.amount - parseInt(amount))
     },{
         where: {
             id: userFound.id
         }
     });
 
-    const Ingress = await Ingreso.create({
+    const Egreso = await Egresos.create({
         user_id: userFound.id,
-        user_amount: amount
+        user_amount: amount,
+        reason: reason
     });
 
 
-    res.json({message: "Ingreso Completado", Ingress});
+    res.json({message: "Egreso Completado", Egreso});
    } catch (error) {
     return res.status(500).json({message: error.message});
    }

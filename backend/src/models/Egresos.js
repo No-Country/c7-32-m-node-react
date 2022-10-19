@@ -19,7 +19,8 @@ export const Egreso = sequelize.define('Egreso', {
   reason: {
     type: DataTypes.STRING
   },
-  date: {
-    type: DataTypes.DATE
-  }
+  
+},
+{
+  timestamps: true
 });
