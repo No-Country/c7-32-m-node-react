@@ -129,6 +129,7 @@ export const operationsHistory = async (req, res) => {
       }
     });
 
+    
     res.status(200).json({
       ingresos,
       egresos
