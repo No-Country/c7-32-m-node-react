@@ -44,25 +44,11 @@ export const User = sequelize.define('User', {
     notEmpy: false
   },
   cbu: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    type: DataTypes.INTEGER,
-    allowNull: true
-  },
-  cuil_ruc: {
-    type: DataTypes.INTEGER,
-=======
-=======
->>>>>>> IM_BK_wallet
     type: DataTypes.STRING,
     allowNull: true
   },
   cuil_ruc: {
     type: DataTypes.BIGINT,
-<<<<<<< HEAD
->>>>>>> 217ec4978f85c5ad70e110d686a31f8e32528224
-=======
->>>>>>> IM_BK_wallet
     allowNull: true
   },
   card_id: {
@@ -81,19 +67,10 @@ export const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: true
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> IM_BK_wallet
   amount: {
     type: DataTypes.DOUBLE,
     defaultValue: 10000
   }
-<<<<<<< HEAD
->>>>>>> 217ec4978f85c5ad70e110d686a31f8e32528224
-=======
->>>>>>> IM_BK_wallet
 },
   {
     timestamps: true
@@ -104,12 +81,4 @@ export const User = sequelize.define('User', {
   //   const { Ingreso } = Models;
 
   //   User.hasOne
-<<<<<<< HEAD
-<<<<<<< HEAD
   // };
-=======
-  // };
->>>>>>> 217ec4978f85c5ad70e110d686a31f8e32528224
-=======
-  // };
->>>>>>> IM_BK_wallet

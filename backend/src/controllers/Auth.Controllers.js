@@ -10,11 +10,8 @@ const client = new OAuth2Client(process.env.CLIENT_ID);
 
 // LOGIN
 export const login = async (req, res) => {
-<<<<<<< HEAD
-=======
 
 
->>>>>>> IM_BK_wallet
   try {
     const { email, password, remember } = req.body;
 
@@ -36,10 +33,7 @@ export const login = async (req, res) => {
       res.json({ token, message: "¡Inicio de sesión exitoso!", user: userFound });
     }
 
-<<<<<<< HEAD
-=======
     
->>>>>>> IM_BK_wallet
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -47,11 +41,7 @@ export const login = async (req, res) => {
 
 // LOGIN WITH GOOGLE
 export const googleLogin = async (req, res) => {
-<<<<<<< HEAD
-  const { token } = req.body; console.log(token)
-=======
   const { token } = req.body;console.log(token)
->>>>>>> IM_BK_wallet
 
   try {
     // verify token of google
@@ -75,23 +65,6 @@ export const googleLogin = async (req, res) => {
     }
 
     // if doesn't exist sign in
-<<<<<<< HEAD
-    if (!payload.family_name) {
-      payload.family_name = 'wallet'
-    }
-
-    const newUser = await User.create({
-      name: payload.given_name,
-      surname: payload.family_name,
-      email: payload.email,
-      image: payload.picture,
-      cbu: cbu,
-      password: ''
-    });
-
-
-    const cardUser = await createCard(newUser.id, newUser.name, newUser.surname);
-=======
     if(!payload.family_name) {
       payload.family_name = 'wallet'
     }
@@ -109,7 +82,6 @@ export const googleLogin = async (req, res) => {
     
       
       const cardUser = await createCard(newUser.id, newUser.name , newUser.surname);
->>>>>>> IM_BK_wallet
 
     const userUpdated = await User.update({
       card_id: cardUser.id
