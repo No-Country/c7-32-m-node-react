@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  Logs
 logs
 *.log
@@ -129,3 +130,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+=======
+node_modules
+.env
+>>>>>>> 217ec4978f85c5ad70e110d686a31f8e32528224

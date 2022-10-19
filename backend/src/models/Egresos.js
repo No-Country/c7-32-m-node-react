@@ -1,5 +1,5 @@
-import {sequelize} from '../db/db.js';
-import {DataTypes} from 'sequelize';
+import { sequelize } from '../db/db.js';
+import { DataTypes } from 'sequelize';
 
 export const Egreso = sequelize.define('Egreso', {
   id: {
@@ -13,10 +13,10 @@ export const Egreso = sequelize.define('Egreso', {
     allowNull: false
   },
   amount: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.DOUBLE,
     allowNull: false
   },
-  description: {
+  reason: {
     type: DataTypes.STRING
   },
   date: {
