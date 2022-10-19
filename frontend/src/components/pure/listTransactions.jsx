@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 
 import { useUserContext } from '../context/userContext'
@@ -21,10 +22,18 @@ const ListTransactions = () => {
     }
   },[transferences])
 
+=======
+import React from 'react'
+
+import '../../styles/transactions.css'
+
+const ListTransactions = () => {
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
   return (
     <section className='transactions'>
       <h2 className='title'>Transaction Activity</h2>
       <div className='container-transactions'>
+<<<<<<< HEAD
         <ul>
           {transferences.map( (e, i) =>{
             return (
@@ -32,6 +41,9 @@ const ListTransactions = () => {
             )
           } )}
         </ul>
+=======
+        {/* Mapear la lista de transacciones */}
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
         <p>No se ha realizado ninguna transación</p>
       </div>
     </section>

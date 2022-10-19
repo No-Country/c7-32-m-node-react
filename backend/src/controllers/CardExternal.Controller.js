@@ -68,7 +68,6 @@ export const createCardExternal = async (req, res) => {
 // GET ALL CARDS OF ONE USER
 
 export const getCardsOfUser = async (req, res) => {
-
     try {
         const {id} = req.params;
 
@@ -80,3 +79,15 @@ export const getCardsOfUser = async (req, res) => {
         res.status(500).json({message: error.message})
     }
 } 
+
+// Delete Card
+export const deleteCardsOfUser = async (req, res) => {
+    try {
+        const {idCard, idUser} = req.params;
+
+        const cardsUser = await Card.destroy({where: {id : idCard}});
+        res.sendStatus(204)
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}

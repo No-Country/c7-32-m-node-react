@@ -5,12 +5,20 @@
   display: flex; 
   flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
   gap: 4rem;
+=======
+  gap: 2.5rem;
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
   margin-top: 3rem;
 }
 
 .profile-user{
   width: 75%;
+<<<<<<< HEAD
+=======
+  height: 9.375rem;
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
   display: flex;
   align-items: center;
   gap: 3rem;
@@ -18,7 +26,10 @@
 
 .profile-user img{
   width: 9.375rem;
+<<<<<<< HEAD
   height: 9.375rem;
+=======
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
   border-radius: 50%;
 }
 
@@ -31,7 +42,10 @@
   align-items: center;
   justify-content: center;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
 .bg-image .icon-image{
   font-size: 5rem;
   color: #D9D9D9;
@@ -67,7 +81,11 @@
   display: flex;
   flex-direction: column;
   padding-left: 9rem;
+<<<<<<< HEAD
   gap: .625rem;
+=======
+  gap: .3125rem;
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
 }
 
 .profile-data .data-form input{
@@ -80,6 +98,7 @@
   font-size: .9375rem;
   font-family: 'Poppins', sans-serif;
 }
+<<<<<<< HEAD
 
 .profile-data .data-form input:first-child{
   border-top-left-radius: .3125rem;
@@ -87,10 +106,18 @@
 }
 
 .profile-data .data-form input:nth-child(6){
+=======
+.profile-data .data-form input:nth-child(1){
+  border-top-left-radius: .3125rem;
+  border-top-right-radius: .3125rem;
+}
+.profile-data .data-form input:nth-child(7){
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
   border-bottom-left-radius: .3125rem;
   border-bottom-right-radius: .3125rem;
 }
 
+<<<<<<< HEAD
 .profile-container .profile-data .data-form .pass input{
   width: 100%;
   border-radius: 0rem;
@@ -111,6 +138,8 @@
 }
 
 
+=======
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
 .profile-data .data-form .data-sub{
   width: 250px;
   background-color: #16C98C;
@@ -119,6 +148,7 @@
   align-self: flex-end;
   outline: none;
   border: none;
+<<<<<<< HEAD
 }
 
 @media only screen and (max-width: 767px){
@@ -192,4 +222,6 @@
   .profile-data .data-form{
     max-width: 68.75rem;
   }
+=======
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
 }

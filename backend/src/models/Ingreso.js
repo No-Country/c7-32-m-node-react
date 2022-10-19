@@ -11,12 +11,13 @@ export const Ingreso = sequelize.define('Ingreso', {
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
-    amount: {
-      type: DataTypes.INTEGER,
-
+    user_amount: {
+        type: DataTypes.DOUBLE,
+        allowNull: false,
     }
+    
+  }, {
+    timestamps: true
   });
-
-  // ASOCIACIONES

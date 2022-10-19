@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+<<<<<<< HEAD
 import { IoNotificationsOff,IoPersonCircleSharp } from 'react-icons/io5'
 
 import { useUserContext } from '../context/userContext'
@@ -10,11 +11,26 @@ import '../../styles/header.css'
 const TitlePage = ({id, title}) => {
 
   const { user } = useUserContext()
+=======
+import { useUserContext } from '../context/userContext'
+
+import '../../styles/header.css'
+import flag from '../../assets/images/flag.png'
+import { IoNotificationsOff, IoPersonCircleSharp } from 'react-icons/io5'
+
+const TitlePage = ({ id, title }) => {
+
+  const { client } = useUserContext()
+  const { user } = client
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
 
   return (
     <div className='header'>
       <h2 id={id} >{title}</h2>
+<<<<<<< HEAD
       { screen.width >= 768 &&
+=======
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
       <div className='header-info' >
 
         <div className='info-flag'>
@@ -23,6 +39,7 @@ const TitlePage = ({id, title}) => {
           <span></span>
         </div>
 
+<<<<<<< HEAD
         { title === "Error" || title === 'Recover Pass' ?
           <></>
           :
@@ -40,6 +57,19 @@ const TitlePage = ({id, title}) => {
       </div>
       }
       
+=======
+        <div className='info-user'>
+          <IoNotificationsOff className='icon' />
+          {
+            client.length > 0 ?
+              <img className='image' src={user.image} alt='Usuario' />
+              :
+              (<IoPersonCircleSharp className='image' />)
+          }
+          <p className='user-name'>{user.name} {user.surname}</p>
+        </div>
+      </div>
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
     </div>
   )
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react'
 
 import Header from '../components/pure/header'
@@ -96,6 +97,25 @@ const Wallet = () => {
           <CardForm handleCard={cardData} save={saveCard}/>
         </section>
       </main>     
+=======
+import React from 'react'
+
+import Header from '../components/pure/header'
+import CardForm from '../components/pure/forms/cardForm'
+
+const Wallet = () => {
+  return (
+    <div>
+      <Header title='Wallet' id='space' show={true} />
+      <main>
+        <section>
+
+        </section>
+        <section>
+          <CardForm />
+        </section>
+      </main>
+>>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
     </div>
   )
 }
