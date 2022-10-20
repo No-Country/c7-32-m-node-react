@@ -16,7 +16,7 @@ const Dashboard = () => {
          <Actions />
         <ListTransactions />
         <Stats /> 
-      {/* <Cards /> */}
+      <Cards />
       </main>
     </div>
   )
