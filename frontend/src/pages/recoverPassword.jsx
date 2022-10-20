@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import Header from '../components/pure/header'
 import { httpsRequest } from '../assets/config/axios'
+import { swalAlert } from '../assets/config/swal'
 
 const schema = Yup.object({
   password: Yup.string()
@@ -23,7 +24,7 @@ const RecoverPassword = () => {
     try {
       httpsRequest(
         'post',
-        // `http://localhost:5000/api/renew-password/${}`,
+        // `https://wenwallet.vercel.app/api/renew-password/${}`,
         {
           password: data.password
         }

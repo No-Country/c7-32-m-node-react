@@ -11,7 +11,7 @@ function Cards() {
     useEffect( () => {
         async function getHistory() {
           try {
-            const res = await httpsRequest('get', `https://c7-32-back.herokuapp.com/api/card/user/${user.id}`);
+            const res = await httpsRequest('get', `https://wenwallet.vercel.app/api/card/user/${user.id}`);
             setCards(res.data.cards);
           } catch (error) {
             swalAlert('error', 'Oops', error)

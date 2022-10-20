@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 
-
+import { swalAlert } from "../../assets/config/swal"
 import { httpsRequest } from "../../assets/config/axios"
 
 import '../../styles/register.css'
@@ -44,7 +44,7 @@ const Register = () => {
     try {
       httpsRequest(
         'post',
-        'https://c7-32-back.herokuapp.com/api/register',
+        'https://wenwallet.vercel.app/api/register',
         {
           info
         }

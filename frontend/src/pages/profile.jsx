@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useUserContext } from '../components/context/userContext'
 import Header from '../components/pure/header'
 import { httpsRequest } from '../assets/config/axios'
+import { swalAlert } from '../assets/config/swal'
 
 import '../styles/profile.css'
 import {  IoEyeOffOutline, IoEyeOutline, IoPersonSharp } from 'react-icons/io5'
@@ -53,7 +54,7 @@ const Profile = () => {
     try {
      const res = await httpsRequest(
         'put',
-        'http://localhost:5000/api/updateprofile',
+        'https://wenwallet.vercel.app/api/updateprofile',
         {
           ...data,
           input: uploadRef
