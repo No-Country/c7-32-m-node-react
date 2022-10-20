@@ -1,6 +1,8 @@
 import Jwt from "jsonwebtoken";
 import { User } from "../models/Users.js";
 import { Transfers } from "../models/Transfers.js";
+import { Egreso } from "../models/Egresos.js";
+import { Ingreso } from "../models/Ingreso.js";
 import { transporter, mailOptions } from "../utils/nodemailer.js";
 import { encryptPassword } from "../utils/encryptPassword.js";
 import cloudinary from '../utils/cloudinary.js';
@@ -116,7 +118,7 @@ export const updateProfile = async (req, res) => {
 export const operationsHistory = async (req, res) => {
   try {
     const id = req.params.id;
-    
+
     if (!id) res.status(400).json({ message: "Id requerido" });
 
     const ingresos = await Transfers.findAll({
@@ -161,6 +163,33 @@ export const uploadProfileImage = async (req, res) => {
 
     res.status(200).json({ message: "Foto de perfial actualizada", profileImage })
 
+  } catch (err) {
+    console.log(err.message);
+    res.status(400).json({ message: err.message });
+  }
+};
+
+export const IngresoEgresoHistory = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    if (!id) res.status(400).json({ message: "Id requerido" });
+
+    const egresos = await Egreso.findAll({
+      where: {
+        userId: id
+      }
+    });
+    const ingreso = await Ingreso.findAll({
+      where: {
+        user_id: id
+      }
+    });
+
+    res.status(200).json({
+      egresos: egresos,
+      ingreso: ingreso
+    })
   } catch (err) {
     console.log(err.message);
     res.status(400).json({ message: err.message });
