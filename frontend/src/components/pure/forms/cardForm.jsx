@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-
+import { swalAlert } from '../../../assets/config/swal.js'
 import { httpsRequest } from '../../../assets/config/axios'
 import { useUserContext } from '../../context/userContext.jsx'
 
@@ -46,7 +46,7 @@ const CardForm = ({ handleCard, save }) => {
     try {
         await httpsRequest(
         'post',
-        `http://localhost:5000/api/card/create/${user.id}`,
+        `https://wenwallet.vercel.app/card/create/${user.id}`,
         {
           number: data.number,
           cvv: data.cvv,
