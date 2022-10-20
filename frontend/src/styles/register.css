@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 .container-register {   
-=======
-.containerRegister {   
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +14,6 @@
     color: #ffffff;
 }
 
-<<<<<<< HEAD
 .container-register .logo{
     width: 7.5rem;
 }
@@ -148,46 +143,4 @@
     .container-form .form-check{
         margin-top: 4rem;
     }
-=======
-/* .containerRegister img{
-  position: absolute;
-  left: 1in;
-  top: 2rem;
-} */
-
-.containerForm {
-    width: 9in;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: space-around;  
-    margin-top: 2rem;  
-}
-
-.divInput {
-    box-sizing: border-box;
-    border-bottom: 1px solid #000000;
-    border-radius: 5px;
-    width: 350px;
-}
-
-.divInput input {
-    background: none;
-    border: none;
-    outline: none;
-    padding: 10px;
-    width: 350px;
-    color: #ffffff;
-}
-
-.containerForm button {
-    background: #16c98c;
-    border-radius: 5px;
-    width: 400px;    
-    height: 50px;    
-}
-
-.containerRegister span{
-  color: #16C98C;
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
 }

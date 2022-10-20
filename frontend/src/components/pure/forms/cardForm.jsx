@@ -1,5 +1,4 @@
 import React from 'react'
-<<<<<<< HEAD
 import PropTypes from 'prop-types'
 import * as Yup from 'yup'
 import { useForm } from 'react-hook-form'
@@ -101,15 +100,4 @@ CardForm.propTypes = {
   save: PropTypes.func.isRequired
 }
 
-=======
-
-const CardForm = () => {
-  return (
-    <div>
-
-    </div>
-  )
-}
-
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
 export default CardForm

@@ -14,11 +14,7 @@
   width: 80%;
 }
 .navbar .nav-list{
-<<<<<<< HEAD
   height: 100%;
-=======
-  height: 18.75rem;
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -34,7 +30,6 @@
   font-size: 1.375rem;
 }
 .navbar .nav-list .log-out{
-<<<<<<< HEAD
   margin-top: 22rem;
 }
 
@@ -125,7 +120,3 @@
   }
 }
 
-=======
-  margin-top: 13rem;
-}
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
