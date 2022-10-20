@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useUserContext } from '../context/userContext'
 import { httpsRequest } from '../../assets/config/axios'
-import { swalAlert } from '../../assets/config/swal'
+
 
 import '../../styles/transactions.css'
 import Transaction from './transaction'
@@ -15,7 +15,7 @@ const ListTransactions = () => {
   useEffect( () => {
     async function getHistory() {
       try {
-        const res = await httpsRequest('get', `http://localhost:5000/api/history/${user.id}`);
+        const res = await httpsRequest('get', `https://c7-32-back.herokuapp.com/api/history/${user.id}`);
         const history = [...res.data.ingresos, ...res.data.egresos];
         setTransferences(history)
       } catch (error) {

@@ -14,7 +14,7 @@ const Stats = () => {
   useEffect( () => {
     async function getHistory() {
       try {
-        const res = await httpsRequest('get', `http://localhost:5000/api/operations/${user.id}`);
+        const res = await httpsRequest('get', `https://c7-32-back.herokuapp.com/api/operations/${user.id}`);
        
         let addIngress = 0;
      for (let index = 0; index < res.data.ingreso.length; index++) {

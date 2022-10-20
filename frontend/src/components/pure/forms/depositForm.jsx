@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 
 import { httpsRequest } from '../../../assets/config/axios'
-import { swalAlert } from '../../../assets/config/swal'
+
 import { useUserContext }  from '../../context/userContext'
 
 
@@ -15,7 +15,7 @@ const DepositForm = () => {
     try {
       await httpsRequest(
         'post',
-        `http://localhost:5000/api/${user.id}/ingress`,
+        `https://c7-32-back.herokuapp.com/api/${user.id}/ingress`,
         {
           amount: qty
         }

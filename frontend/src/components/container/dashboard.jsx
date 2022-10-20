@@ -6,17 +6,21 @@ import '../../styles/dashboard.css'
 import ListTransactions from '../pure/listTransactions'
 import Stats from '../pure/stats'
 import Cards from '../pure/cards'
+import { useUserContext } from '../context/userContext'
 
 const Dashboard = () => {
+
+  const { user } = useUserContext()
 
   return (
     <div>
       <Header id='space' title='Dashboard' show={true} />
+      <p className='cbu'>CVU: {user.cbu}</p>
       <main className='dashboard-container'>
          <Actions />
         <ListTransactions />
         <Stats /> 
-      {/* <Cards /> */}
+      <Cards />
       </main>
     </div>
   )

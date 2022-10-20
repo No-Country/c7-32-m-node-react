@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { useUserContext } from '../../context/userContext'
-import { swalAlert } from '../../../assets/config/swal.js'
 import { httpsRequest } from '../../../assets/config/axios'
 
 import '../../../styles/transferForm.css'
@@ -58,7 +57,7 @@ const TransferForm = () => {
     try {
       const res =await httpsRequest(
         'post',
-        `http://localhost:5000/api/user/${user.id}/transference`,
+        `https://c7-32-back.herokuapp.com/api/user/${user.id}/transference`,
         {
           transfer: transfer
         }

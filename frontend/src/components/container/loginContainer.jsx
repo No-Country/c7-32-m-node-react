@@ -8,7 +8,6 @@ import { GoogleLogin } from '@react-oauth/google'
 
 import { useUserContext } from '../context/userContext'
 import { httpsRequest } from '../../assets/config/axios'
-import { swalAlert } from '../../assets/config/swal'
 import Modal from '../pure/modal'
 import { useModal } from '../../hooks/useModal'
 
@@ -39,7 +38,7 @@ const LoginContainer = () => {
 
     try {
       const res = await httpsRequest('post',
-       'http://localhost:5000/api/login',
+       'https://c7-32-back.herokuapp.com/api/login',
         { 
             email: info.email,
             password: info.password,
