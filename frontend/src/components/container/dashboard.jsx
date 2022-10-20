@@ -15,7 +15,7 @@ const Dashboard = () => {
   return (
     <div>
       <Header id='space' title='Dashboard' show={true} />
-      <p className='cbu'>CVU: {user.cbu}</p>
+      <p className='cbu'>CBU: {user.cbu}</p>
       <main className='dashboard-container'>
          <Actions />
         <ListTransactions />
