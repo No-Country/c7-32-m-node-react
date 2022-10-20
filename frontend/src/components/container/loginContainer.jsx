@@ -39,7 +39,7 @@ const LoginContainer = () => {
 
     try {
       const res = await httpsRequest('post',
-       'https://wenwallet.vercel.app/api/login',
+       'https://c7-32-back.herokuapp.com/api/login',
         { 
             email: info.email,
             password: info.password,

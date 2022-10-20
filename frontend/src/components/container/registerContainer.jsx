@@ -44,7 +44,7 @@ const Register = () => {
     try {
       httpsRequest(
         'post',
-        'https://wenwallet.vercel.app/api/register',
+        'https://c7-32-back.herokuapp.com/api/register',
         {
           info
         }
