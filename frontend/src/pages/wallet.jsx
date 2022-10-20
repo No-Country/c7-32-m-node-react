@@ -8,6 +8,7 @@ import '../styles/wallet.css'
 
 const Wallet = () => {
 
+
   const [card, setCard] = useState({})
   
   const cardData = (data) =>{
@@ -49,42 +50,42 @@ const Wallet = () => {
           <div className='card-image'>
             <img src={cardChip} />
             <span>{
-              localCard === null ?
+              localCard !== null ?
                 card.number
                 :
                 localCard.number
               }
             </span>
             <span>{
-              localCard === null ?
+              localCard !== null ?
                 card.name
                 :
                 localCard.name
               }
               {" "}
               {
-              localCard === null ?
+              localCard !== null ?
                 card.surname
                 :
                 localCard.surname
               }
             </span>
             <span>{
-              localCard === null ?
+              localCard !== null ?
                 card.month
                 :
                 localCard.month
               } 
               / 
               {
-              localCard === null ?
+              localCard !== null ?
                 card.year
                 :
                 localCard.year
               }
             </span>
             <span>{
-              localCard === null ?
+              localCard !== null ?
                 card.cvv
                 :
                 localCard.cvv

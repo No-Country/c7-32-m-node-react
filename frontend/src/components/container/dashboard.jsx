@@ -5,6 +5,7 @@ import Header from '../pure/header'
 import '../../styles/dashboard.css'
 import ListTransactions from '../pure/listTransactions'
 import Stats from '../pure/stats'
+import Cards from '../pure/cards'
 
 const Dashboard = () => {
 
@@ -14,7 +15,8 @@ const Dashboard = () => {
       <main className='dashboard-container'>
          <Actions />
         <ListTransactions />
-        <Stats />  
+        <Stats /> 
+      <Cards />
       </main>
     </div>
   )

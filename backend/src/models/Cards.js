@@ -25,10 +25,6 @@ export const Card = sequelize.define('Card', {
       type: DataTypes.DATEONLY,
       allowNull: false
     },
-    issue_date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false
-    },
     cvv: {
       type: DataTypes.INTEGER,
       allowNull: false
