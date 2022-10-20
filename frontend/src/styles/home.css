@@ -1,0 +1,225 @@
+.home{
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(111.34deg, rgb(253, 148, 179) 25.52%, rgb(159, 255, 223) 76.56%);
+}
+
+.home .home-logo{
+  width: 100%;
+  height: 10.625rem;
+  padding: 1.875rem 5.625rem 0rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.home .home-logo img{
+  width: 7.8125rem;
+}
+.home .home-logo .home-session{
+  margin-top: 1.25rem;
+}
+.home .home-logo .home-session span{
+  border-left: 1px solid #000000;
+}
+.home .home-logo .home-session .btn-login{
+  background-color: transparent;
+  color: #000000;
+  font-weight: 400;
+  padding: 0rem 1.25rem;
+}
+.btn-register{
+  padding: .875rem 1.875rem;
+  background-color: #21A0A8;
+  color: #ffffff;
+  font-weight: 400;
+  border-radius: .25rem;
+  letter-spacing: 1px;
+  outline: none;
+}
+.btn-register:hover{
+  color: #ffffff;
+}
+
+.home .home-logo .home-session .other-session{
+  display: flex;
+  align-items: center;
+  gap: .3125rem;
+}
+.home .home-logo .home-session .image{
+  font-size: 2.5rem;
+  color: #000000;
+}
+.home .home-logo .home-session .user-name{
+  display: inline-block;
+  color: #000000;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+}
+
+
+.home .home-info{
+  display: flex;
+}
+.home .home-info img{
+  height: 100%;
+  width: 45.625rem;
+  position: relative;
+  top: 5.75rem;
+}
+.home .home-info .info{
+  margin: 4rem 0rem 0rem 4rem;
+  height: 37.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.home .home-info .info h1{
+  line-height: 4.375rem;
+  color: #000000;
+}
+.home .home-info .info h1 span{
+  color: #ffffff;
+}
+.home .home-info .info .info-text{
+  color: #646F79;
+  line-height: 1.75rem;
+}
+.home .home-info .info .btn-register{
+  width: 17.1875rem;
+  padding: .75rem 0rem;
+  border: none;
+  outline: none;
+}
+
+.home .home-info .info span{
+  color: #FF477E;
+}
+
+
+
+@media only screen and (min-width: 375px){
+  .home{
+    display: flex;
+    flex-direction: column;
+    gap: 7rem;
+  }
+  .home .home-logo{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem;
+    margin-top: 0rem;
+    padding-top: 6rem;
+  }
+  .home-session{
+    display: flex;
+    flex-direction: column;
+  }
+  .btn-login{
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .home .home-info{
+    justify-content: center;
+  }
+  .home .home-info .info{
+    margin: 0rem;
+    height: 29rem;
+    align-items: center;
+  }
+  .home .home-info .info h1{
+    font-size: clamp(1.375rem, 8vw - 3.5vw, 3.1875rem);
+    line-height: 1.5;
+    padding: 0rem 2rem;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  .home .home-info .info .info-text{
+    padding: 0rem 1.5rem;
+    text-align: center;
+  }
+  .home-info img{
+    display: none;
+  }
+
+}
+
+@media only screen and (min-width: 600px){
+  .home .home-info .info h1{
+    margin-top: 1.875rem;
+  }
+}
+
+@media only screen and (min-width: 768px){
+  .home{
+    gap: 4rem;
+  }
+  .home .home-logo{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.875rem 2.625rem 0rem;
+    margin-top: 0rem;
+  }
+  .home .home-logo .home-session{
+    display: block;
+  }
+  .home .home-info{
+    justify-content: flex-start;
+  }
+  .home .home-info .info{
+    width: 80%;
+    height: 32rem;
+    justify-content: space-between;
+  }
+  
+  .home .home-info .info h1{
+    text-align: left;
+  }
+  .home .home-info .info .info-text{
+    padding: 0rem 1.5rem;
+    text-align: left;
+  }
+}
+
+@media only screen and (min-width: 1024px){
+  .home .home-info{
+    height: 100%;
+  }
+  .home .home-info .info{
+    width: 100%;
+    height: 37rem;
+  }
+  .home .home-info .info h1{
+    padding: 0rem 0rem 0rem 2rem;
+    margin: 0rem;
+  }
+  .home .home-info .info .info-text{
+    font-size: clamp(1rem, 8vw - 6.5vw, 1.25rem);
+    line-height: 1.7;
+  }
+  .home .home-info img{
+    display: block;
+    width: 33.125rem;
+    height: 33.625rem;
+    align-self: flex-end;
+    position: static;
+  }
+}
+
+@media only screen and (min-width: 1440px){
+  .home{
+    gap: 5rem
+  }
+  .home .home-info .info{
+    width: 60%;
+  }
+  
+}
+@media only screen and (min-width: 1440px) and (min-height: 975px){
+  .home .home-info img{
+    width: 630px;
+    height: 638px;
+  }
+}

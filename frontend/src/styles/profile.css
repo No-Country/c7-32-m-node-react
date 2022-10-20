@@ -5,13 +5,12 @@
   display: flex; 
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
+  gap: 4rem;
   margin-top: 3rem;
 }
 
 .profile-user{
   width: 75%;
-  height: 9.375rem;
   display: flex;
   align-items: center;
   gap: 3rem;
@@ -19,6 +18,7 @@
 
 .profile-user img{
   width: 9.375rem;
+  height: 9.375rem;
   border-radius: 50%;
 }
 
@@ -66,7 +66,7 @@
   display: flex;
   flex-direction: column;
   padding-left: 9rem;
-  gap: .3125rem;
+  gap: .625rem;
 }
 
 .profile-data .data-form input{
@@ -79,14 +79,36 @@
   font-size: .9375rem;
   font-family: 'Poppins', sans-serif;
 }
-.profile-data .data-form input:nth-child(1){
+
+.profile-data .data-form input:first-child{
   border-top-left-radius: .3125rem;
   border-top-right-radius: .3125rem;
 }
-.profile-data .data-form input:nth-child(7){
+
+.profile-data .data-form input:nth-child(6){
   border-bottom-left-radius: .3125rem;
   border-bottom-right-radius: .3125rem;
 }
+
+.profile-container .profile-data .data-form .pass input{
+  width: 100%;
+  border-radius: 0rem;
+}
+
+.profile-data .data-form div{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+
+.profile-data .data-form div .icon-pass{
+  position: absolute;
+  color: #000;
+  right: -1.5rem;
+  font-size: 1.125rem;
+}
+
 
 .profile-data .data-form .data-sub{
   width: 250px;
@@ -96,4 +118,77 @@
   align-self: flex-end;
   outline: none;
   border: none;
+}
+
+@media only screen and (max-width: 767px){
+  .profile-container{
+    padding-left: 0rem;
+    padding-bottom: 2rem;
+  }
+  
+  .profile-user{
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .profile-container .profile-user .div-file{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-data .data-form{
+    padding-left: 0rem;
+    align-items: center;
+  }
+  .profile-data .data-form .pass{
+    width: 75%;
+  }
+  
+}
+
+@media only screen and (min-width: 768px){
+  .profile-container{
+    padding-left: 6.25rem;
+    padding-bottom: 0rem;
+  }
+  .profile-data .data-form{
+    padding-left: 0rem;
+    align-items: center;
+  }
+  .profile-data .data-form .pass{
+    width: 75%;
+  }
+  .profile-data .data-form{
+    max-width: 56.25rem;
+  }
+
+}
+
+@media only screen and (min-width: 1200px){
+  .profile-container{
+    gap: 2.5rem;
+  }
+  .profile-data .data-form .data-sub{
+    width: 250px;
+    background-color: #16C98C;
+    color: #ffffff;
+    margin: 2rem -9rem 0rem 0rem;
+    align-self: flex-end;
+    outline: none;
+    border: none;
+  }
+  .profile-data .data-form div .icon-pass{
+    position: absolute;
+    color: #000;
+    right: -2.5rem;
+    font-size: 1.375rem;
+  }
+}
+@media only screen and (min-width: 1440px){
+  .profile-data .data-form{
+    max-width: 68.75rem;
+  }
 }

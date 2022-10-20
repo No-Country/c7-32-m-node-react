@@ -14,8 +14,8 @@ const Actions = () => {
 
   return (
     <section className='actions'>
-      <div className='action-deposit'>
-        <button className='btn' onClick={openDeposit}>
+    <div className='action-deposit'>
+        <button className='btn' onClick={ openDeposit }>
           Ingresar dinero
         </button>
         <Modal isOpen={depositIsOpen} close={closeDeposit} >
@@ -23,21 +23,13 @@ const Actions = () => {
         </Modal>
       </div>
       <div className='action-transfer'>
-        <button className='btn' onClick={openTransfer}>
+        <button className='btn' onClick={ openTransfer }>
           Realizar transferencia
         </button>
         <Modal isOpen={transferIsOpen} close={closeTransfer} >
           <TransferForm />
         </Modal>
       </div>
-      {/* <div className='action-exchange'>
-        <button className='btn' onClick={openExchange} >
-          Cambio de moneda
-        </button>
-        <Modal isOpen={exchangeIsOpen} close={closeExchange} >
-          <TransferForm />
-        </Modal>
-      </div> */}
     </section>
   )
 }

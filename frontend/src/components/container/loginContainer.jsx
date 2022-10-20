@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
-import * as Yup from 'yup'
-
-
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate  } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useGoogleLogin } from '@react-oauth/google'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import * as Yup from 'yup'
+import { GoogleLogin } from '@react-oauth/google'
 
 
-import '../../styles/Login.css'
-import logo from '../../assets/images/Logo-bg-black.png'
-import login_svg from '../../assets/images/Wallet_Monochromatic.svg'
-import { FcGoogle } from 'react-icons/fc'
+import { useUserContext } from '../context/userContext'
 import { httpsRequest } from '../../assets/config/axios'
-import  setCookie from '../../assets/config/setCookie'
-import  removeCookie  from '../../assets/config/removeCookie'
+import { swalAlert } from '../../assets/config/swal'
+import Modal from '../pure/modal'
+import { useModal } from '../../hooks/useModal'
+
+import '../../styles/login.css'
+import logo from '../../assets/images/Logo-bg-black.png'
+import login_image from '../../assets/images/login-image.png'
+import RecoverForm from '../pure/forms/recoverForm'
+
 
 const LoginSchema = Yup.object({
   email: Yup.string()
@@ -31,45 +31,36 @@ const LoginContainer = () => {
 
   const { register, handleSubmit, formState:{ errors } } = useForm( { resolver: yupResolver(LoginSchema) } )  
   const [remember, setRemember] = useState(false)
-  
-  const login = (info) =>{
+  const { getUser } = useUserContext()
+
+  const navigate = useNavigate()
+
+  const login = async (info) =>{
+
     try {
-      httpsRequest('post', 'http:localhost:5000/api/login', info)
-      
-      if (remember) {
-        removeCookie('user')
-        setCookie('user', info)
-      }
-      location.assign('/dashboard')
+      const res = await httpsRequest('post',
+       'http://localhost:5000/api/login',
+        { 
+            email: info.email,
+            password: info.password,
+            remember: remember 
+        })
+      getUser(res.data)
+      navigate('/dashboard')
+      remember ? localStorage.setItem('user', JSON.stringify(res.data.user)) : sessionStorage.setItem('user', JSON.stringify(res.data.user))
     } catch (error) {
-      console.log(error.response.data.message)
+      swalAlert('error', 'Oops', error)
     }
   }
 
-  const MySwal = withReactContent(Swal)
-
-  const loginGoogle = useGoogleLogin({
-    onSuccess: async res => {
-      try {
-        const data = await httpsRequest('post', 'http:localhost:5000/api/google/login', res.tokenId)
-        console.log(data)
-      } catch (error) {
-        MySwal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Ha ocurrido un error, intentalo más tarde'
-        })
-      }
-    }
-  })
-
+  const [recover, openRecover, closeRecover ] = useModal(false)
 
   return (
     <section className='login'>
       <div className='login-image'>
 
         <div className='image'>
-          <img src={login_svg} alt='image-login'/>
+          <img src={login_image} alt='image-login'/>
         </div>
 
         <h1>Una forma fácil de gestionar su dinero</h1>
@@ -96,24 +87,27 @@ const LoginContainer = () => {
             <p className='error'>{errors.password?.message}</p>
 
             <div className='form-warned'>
-              <div className='form-check'>
-                <input type='checkbox' id='remember' onChange={ () => setRemember( !remember ) } />
-                <label htmlFor='remember'>Recuerdame</label>
-              </div>
-              <Link to='/recoverpass' className='link' >¿Olvidaste la contraseña?</Link>
+              <input type='checkbox' id='remember' onChange={ () => setRemember( !remember ) } />
+              <label htmlFor='remember'>Recuerdame</label>
             </div>
             
-            <button type='submit' className='btn btn-login' >Inicia Sesión</button>
-            <button
-              onClick={ loginGoogle }
-              className='btn btn-google' >
-              <FcGoogle className='google-svg'/>
-              Inicia Sesión con Google
-            </button>
+            <button type='submit' className='btn-login' >Inicia Sesión</button>
+            <GoogleLogin
+              text='sigin_with'
+              size='large'
+              theme='outline'
+              locale='es'
+              onSuccess={ res => httpsRequest('post','http://localhost:5000/api/google/login',{ token: ` ${res.credential}` })}
+              >
+            </GoogleLogin>
       
           </form>
           
           <span className='register'>¿No tiene una cuenta? <Link className='link' to='/register'>Únase ahora</Link></span>
+          <span onClick={openRecover} className='recover' >¿Olvidaste la contraseña?</span>
+          <Modal isOpen={recover} close={closeRecover}>
+            <RecoverForm />
+          </Modal>
         </div>   
 
       </div>

@@ -1,4 +1,4 @@
-.containerRegister {   
+.container-register {   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,44 +14,133 @@
     color: #ffffff;
 }
 
-/* .containerRegister img{
-  position: absolute;
-  left: 1in;
-  top: 2rem;
-} */
+.container-register .logo{
+    width: 7.5rem;
+}
+.container-register h1{
+    letter-spacing: 5px;
+}
 
-.containerForm {
-    width: 9in;
+.container-register h2{
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: .0625rem;
+}
+
+.container-form {
+    width: 56.25rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1.25rem;
     justify-content: space-around;  
-    margin-top: 2rem;  
+    margin-top: 1rem;  
 }
 
-.divInput {
-    box-sizing: border-box;
-    border-bottom: 1px solid #000000;
-    border-radius: 5px;
-    width: 350px;
+.div-input {
+    width: 23.4375rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .3125rem;
+    letter-spacing: .0625rem;
 }
 
-.divInput input {
+.div-input input {
+    width: 21.875rem;
+    height: 3.125rem;
     background: none;
-    border: none;
     outline: none;
-    padding: 10px;
-    width: 350px;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    border-radius: .3125rem;
+    padding: .625rem;
     color: #ffffff;
+    font-size: .875rem;
+    letter-spacing: .0625rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+.div-input input::placeholder{
+    color: #ffffff8a;
+    font-size: .875rem;
+}
+.div-input input:focus{
+    border: none;
+    border: 1px solid #000000;
+    border-radius: .3125rem;
 }
 
-.containerForm button {
-    background: #16c98c;
-    border-radius: 5px;
-    width: 400px;    
-    height: 50px;    
+.container-form .form-check{
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.containerRegister span{
+.container-form .form-check div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .625rem;
+}
+
+.container-register .form-check div span{
   color: #16C98C;
+}
+
+.container-form button {
+    max-width: 25rem;
+    height: 3.125rem;   
+    background: #16c98c;
+    border-radius: .3125rem;
+    color: #ffffff; 
+    margin-top: .625rem;
+    font-weight: 400;
+    letter-spacing: .0625rem;
+    outline: none;
+    border: none;
+}
+
+.container-register .form-signIn{
+    margin-top: 1rem;
+}
+
+.container-register .container-form  .error{
+    color: #000;
+}
+
+@media only screen and (min-width: 375px){
+    .container-register{
+        padding: 2rem 0rem;
+    }
+    .container-form{
+        width: 80%;
+        flex-direction: column;
+    }
+    .container-form .div-input{
+        width: 100%;
+    }
+    .container-form .div-input input{
+        width: 100%;
+    }
+    .container-form button{
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px){
+
+    .container-form{
+        flex-direction: row;
+    }
+    .container-form .div-input{
+        width: 45%;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    .container-form .form-check{
+        margin-top: 4rem;
+    }
 }
