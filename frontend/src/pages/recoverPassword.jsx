@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import Header from '../components/pure/header'
 import { httpsRequest } from '../assets/config/axios'
-import { swalAlert } from '../assets/config/swal'
 
 const schema = Yup.object({
   password: Yup.string()

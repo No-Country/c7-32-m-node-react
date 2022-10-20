@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { httpsRequest } from '../../../assets/config/axios'
-import { swalAlert } from '../../../assets/config/swal'
 
 const schema = Yup.object({
   email: Yup.string()
@@ -19,7 +18,7 @@ const RecoverForm = () => {
     try {
       httpsRequest(
         'post',
-        'http://localhost:5000/api/forgot-password',
+        'https://c7-32-back.herokuapp.com/api/forgot-password',
         {
           data
         }

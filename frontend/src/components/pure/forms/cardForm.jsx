@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { swalAlert } from '../../../assets/config/swal.js'
+
 import { httpsRequest } from '../../../assets/config/axios'
 import { useUserContext } from '../../context/userContext.jsx'
 
