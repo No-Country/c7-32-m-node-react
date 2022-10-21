@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { httpsRequest } from '../../assets/config/axios'
 import { useUserContext } from '../context/userContext'
 import { swalAlert } from '../../assets/config/swal'
+<<<<<<< HEAD
 import '../../styles/cards.css'
+=======
+import "../../styles/cards.css"
+>>>>>>> 01d6978aca5f60d0921aa15e53dcfee3c690cd25
 
 function Cards() {
 

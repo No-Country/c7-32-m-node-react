@@ -116,6 +116,7 @@ const Profile = () => {
               className='first'
               type='text'
               placeholder={user.name}
+              style={{ textTransform: 'capitalize' }}
               {...register('name')}
             />
             <input
@@ -143,15 +144,13 @@ const Profile = () => {
             </div>
             <input
               type='text'
-              placeholder='País'
-              value={user.country === null ? "" : user.country}
+              placeholder={user.country === null ? "País" : user.country}
               style={{ textTransform: 'capitalize' }}
               {...register('country')}
             />
             <input
               type='number'
-              placeholder='Teléfono'
-              value={user.phone === null ? "" : user.phone}
+              placeholder={user.phone === null ? "Teléfono" : user.phone}
               {...register('phone')}
             />
 
