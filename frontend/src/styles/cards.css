@@ -1,0 +1,58 @@
+
+.title-card {
+    color: #000000;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.container-show-card {
+    width: 100%;
+    border-radius: 0.75rem;
+    color: #000000;
+    font-size: 1.125rem;
+    padding: 0rem .625rem;
+}
+
+.table {
+    width: 100%;
+    min-height: auto;
+    border: 1px solid #aaaaaa;
+    border-radius: .625rem;
+    display: flex;
+}
+.table thead {
+    width: 50%;
+}
+.table thead tr{
+    display: flex;
+    flex-direction: column;
+}
+.table thead tr th{
+    padding: 1rem;
+}
+.table tbody tr{
+    display: flex;
+    flex-direction: column;
+}
+.table tbody tr td{
+    padding: 1rem;
+}
+
+@media only screen and (min-width: 600px){
+    .table{
+        display: table;
+    }
+    .table thead {
+        width: 100%;
+    }
+    .table body{
+        width: 100%;
+    }
+    .table thead tr{
+        display: table-row;
+    }
+    .table tbody tr{
+        display: table-row;
+    }
+    
+}

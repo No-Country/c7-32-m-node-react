@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import { useUserContext } from '../context/userContext'
 import { httpsRequest } from '../../assets/config/axios'
 import { swalAlert } from '../../assets/config/swal'
+import Transaction from './transaction'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 
 import '../../styles/transactions.css'
-import Transaction from './transaction'
 
 const ListTransactions = () => {
 
-  const [transferences, setTransferences] = useState([])
+  const [transferences, setTransferences] = useLocalStorage('tns', [])
   const { user } = useUserContext()
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const ListTransactions = () => {
             )
           })}
         </ul>
-        {transferences.length < 1 && <p>No se ha realizado ninguna transación</p> }
+        {transferences.length < 1 && <p> No se ha realizado ninguna transación </p> }
       </div>
     </section>
   )

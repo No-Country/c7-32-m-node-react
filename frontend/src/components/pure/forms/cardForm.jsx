@@ -34,7 +34,7 @@ const cardSchema = Yup.object({
     .required('Debe introducir un código de seguridad')
 })
 
-const CardForm = ({ handleCard, save }) => {
+const CardForm = ({ handleCard }) => {
 
   const { user } = useUserContext()
 
@@ -55,7 +55,6 @@ const CardForm = ({ handleCard, save }) => {
           exp_date
         },
       )
-      save()
     } catch (error) {
       swalAlert('error', 'Oops', error.response.data.message)
     }
@@ -103,7 +102,6 @@ const CardForm = ({ handleCard, save }) => {
 
 CardForm.propTypes = {
   handleCard: PropTypes.func.isRequired,
-  save: PropTypes.func.isRequired
 }
 
 export default CardForm

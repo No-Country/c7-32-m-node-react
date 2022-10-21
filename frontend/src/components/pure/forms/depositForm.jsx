@@ -11,7 +11,7 @@ const DepositForm = ({ close }) => {
 
   const { register, handleSubmit } = useForm()
   const { user, makeDeposit } = useUserContext()
-
+  
   async function getDeposit() {
     const res = await httpsRequest('get', `https://c7-32-back.herokuapp.com/api/operations/${user.id}`)
     let result = 0

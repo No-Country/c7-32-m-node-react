@@ -6,7 +6,7 @@
   grid-template-areas:
     "actions transactions transactions"
     "stats transactions transactions"
-    "stats exchange exchange ";
+    "stats cards cards ";
   grid-template-columns: 25%;
   grid-template-rows: repeat(3, 36.5%);
 }
@@ -92,9 +92,11 @@
 }
 
 .cbu {
+  width: 100%;
   color: #000000;
+  text-align: center;
+  font-size: 1rem;
   margin-top: 1rem;
-  margin-left: 8rem;
 }
 
 @media only screen and (min-width: 375px) {
@@ -105,13 +107,20 @@
       "stats"
       "transactions"
       "transactions"
-      "transactions";
+      "cards"
+      "cards";
     grid-template-columns: 100%;
-    grid-template-rows: repeat(5, 25%);
-    padding: 0rem;
+    grid-template-rows: repeat(7, auto);
+    padding: 0rem 0rem 2rem;
   }
-
+  .actions{
+    padding: 2rem 0rem;
+  }
   .transactions {
+    text-align: center;
+  }
+  .cards{
+    margin-top: 1rem;
     text-align: center;
   }
 }
@@ -122,9 +131,10 @@
       "actions actions"
       "stats" "stats"
       "transactions" "transactions"
-      "transactions" "transactions";
+      "transactions" "transactions"
+      "cards cards";
     grid-template-columns: 50% 50%;
-    grid-template-rows: repeat(3, 25%);
+    grid-template-rows: repeat(6, 25%);
     padding-left: 6.25rem;
   }
 
@@ -135,6 +145,7 @@
 
   .stats-container {
     grid-column: 1 / 3;
+    grid-row: 2 / 3;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -144,8 +155,17 @@
 
   .transactions {
     grid-column: 1 / 3;
+    grid-row: 3 / 5;
     padding-bottom: 1.5rem;
 
+  }
+  .cards{
+    grid-column: 1 / 3;
+    grid-row: 5 / 6;
+    padding: 0rem 1.5rem;
+  }
+  .cbu {
+    padding-left: 6.25rem;
   }
 }
 
@@ -154,7 +174,7 @@
     grid-template-areas:
       "actions transactions transactions"
       "stats transactions transactions"
-      "stats";
+      "stats cards cards";
     grid-template-columns: repeat(3, 33.3%);
     grid-template-rows: repeat(3, 35.6%);
   }
@@ -184,7 +204,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 0rem 0rem 1rem;
     gap: 3rem
   }
@@ -195,6 +215,15 @@
     width: 90%;
   }
 
+  .cards{
+    grid-area: cards;
+    margin-top: 2.5rem;
+  }
+  .cbu {
+    text-align: left;
+    padding-left: 8.5rem;
+  }
+  
 }
 
 @media only screen and (min-width: 1200px) {
@@ -204,13 +233,6 @@
   .stats-container .spend {
     width: 80%;
   }
-  
-}
-
-@media only screen and (max-width: 1200px){
-  .cbu {
-    font-size: .6rem;
-   }
   
 }
 
