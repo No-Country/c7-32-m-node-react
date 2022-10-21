@@ -36,6 +36,15 @@ const Profile = () => {
 
   }
 
+  const filterData = (data) => {
+    const filterData = {}
+    for (const prop in data) {
+      if (data[prop] !== '')
+        filterData[prop] = data[prop]
+    }
+    return filterData
+  }
+
   useEffect(() => {
 
     if (preview) {
@@ -54,14 +63,17 @@ const Profile = () => {
     try {
       const res = await httpsRequest(
         'put',
-        'https://wenwallet.vercel.app/api/updateprofile',
+        `https://c7-32-back.herokuapp.com/api/profile/updateprofile/`,
         {
-          ...data,
-          input: uploadRef
+          data: filterData(data),
+          id: user.id
+          // input: uploadRef
         }
       )
+      console.log(await res)
       swalAlert('success', 'Cambio exitoso', 'Tus datos han sido modificados.')
     } catch (error) {
+      console.log(error.message)
       swalAlert('error', 'Oops', error)
     }
   }

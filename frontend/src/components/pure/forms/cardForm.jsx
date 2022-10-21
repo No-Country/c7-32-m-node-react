@@ -46,7 +46,7 @@ const CardForm = ({ handleCard, save }) => {
     try {
         await httpsRequest(
         'post',
-        `https://wenwallet.vercel.app/card/create/${user.id}`,
+        `https://c7-32-back.herokuapp.com/api/card/create/${user.id}`,
         {
           number: data.number,
           cvv: data.cvv,

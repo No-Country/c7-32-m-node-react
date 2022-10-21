@@ -12,6 +12,7 @@ const Wallet = () => {
   const [card, setCard] = useState({})
   
   const cardData = (data) =>{
+    console.log(data)
     switch (data.name) {
       case "number":
         setCard({ ...card, number: data.value })
@@ -42,6 +43,7 @@ const Wallet = () => {
   }
 
   const localCard = localStorage !== null && localStorage.getItem('card')
+  console.log(localCard)
   return (
     <div>
       <Header title='Wallet' id='space' show={true}/>
@@ -53,42 +55,42 @@ const Wallet = () => {
               localCard !== null ?
                 card.number
                 :
-                localCard.number
+                localCard?.number
               }
             </span>
             <span>{
               localCard !== null ?
                 card.name
                 :
-                localCard.name
+                localCard?.name
               }
               {" "}
               {
               localCard !== null ?
                 card.surname
                 :
-                localCard.surname
+                localCard?.surname
               }
             </span>
             <span>{
               localCard !== null ?
                 card.month
                 :
-                localCard.month
+                localCard?.month
               } 
               / 
               {
               localCard !== null ?
                 card.year
                 :
-                localCard.year
+                localCard?.year
               }
             </span>
             <span>{
               localCard !== null ?
                 card.cvv
                 :
-                localCard.cvv
+                localCard?.cvv
               }
             </span>
           </div>

@@ -15,11 +15,11 @@ const ListTransactions = () => {
   useEffect(() => {
     async function getHistory() {
       try {
-        const res = await httpsRequest('get', `http://localhost:5000/api/history/${user.id}`)
+        const res = await httpsRequest('get', `https://c7-32-back.herokuapp.com/api/history/${user.id}`)
         const history = [...res.data.ingreso, ...res.data.egreso]
         setTransferences(history)
       } catch (error) {
-        swalAlert('error', 'Oops', error.response.data.message)
+        swalAlert('error', 'Oops', error.response.data?.message)
       }
     }
     getHistory()

@@ -11,7 +11,7 @@ function Cards() {
   useEffect(() => {
     async function getHistory() {
       try {
-        const res = await httpsRequest('get', `https://wenwallet.vercel.app/api/card/user/${user.id}`);
+        const res = await httpsRequest('get', `https://c7-32-back.herokuapp.com/api/card/user/${user.id}`);
         setCards(res.data.cards);
       } catch (error) {
         swalAlert('error', 'Oops', error)
@@ -23,38 +23,35 @@ function Cards() {
   return (
     <div>
       <h2 className='title-card'>Tarjetas</h2>
-      <div className='container-show-card'>
-
-        <table className='table'>
-          <thead>
-            <tr>
-              <th scope="col">Número</th>
-              <th scope="col">nombre</th>
-              <th scope="col">expiración</th>
-              <th scope="col">cvv</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              cards.length > 1 ?
-                cards.map((e, i) => {
+      {
+        cards.length > 0 ?
+          <div className='container-show-card'>
+            <table className='table'>
+              <thead>
+                <tr>
+                  <th scope="col">Número</th>
+                  <th scope="col">nombre</th>
+                  <th scope="col">expiración</th>
+                  <th scope="col">cvv</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cards.map((e, i) => {
                   return (
-
-                    <tr>
+                    <tr key={i}>
                       <th scope="row">{e.number}</th>
                       <td>{e.name + ' ' + e.surname}</td>
                       <td>{e.exp_date}</td>
                       <td>{e.cvv}</td>
                     </tr>
-
-                  )
-                })
-                :
-                <p>No tiene tarjetas</p>
+                    )
+                })}
+              </tbody>
+            </table>
+          </div>
+          :
+          <p>No tiene tarjetas</p>
             }
-          </tbody>
-        </table>
-      </div>
     </div>
   )
 }
