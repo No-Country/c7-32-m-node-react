@@ -149,7 +149,7 @@ const Profile = () => {
               {...register('country')}
             />
             <input
-              type='number'
+              type='tel'
               placeholder={user.phone === null ? "Teléfono" : user.phone}
               {...register('phone')}
             />
