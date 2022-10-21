@@ -7,7 +7,7 @@ import '../../styles/cards.css'
 function Cards() {
 
   const [cards, setCards] = useState([])
-  const { user } = useUserContext()
+  const { user } = useUserContext() 
 
   useEffect(() => {
     async function getHistory() {
