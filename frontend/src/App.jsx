@@ -16,17 +16,17 @@ function App() {
   return (
     <UserContext>
       <Browser>
-        <Routes>
-          <Route path='/' element={ <Home /> }/>
-          <Route path='/login' element = { <LoginContainer /> }/>
-          <Route path='/register' element ={ <Register /> } />
-          <Route path='/dashboard' element={ <Dashboard />} />
-          <Route path='/wallet' element={ <Wallet />}/>
-          <Route path='/profile' element={ <Profile />}/>
-          <Route path='/recoverpass' element={ <RecoverPassword />}/>
-          
-          <Route path='/*' element={ <Error />}/>
-        </Routes>
+          <Routes>
+            <Route path='/' element={ <Home /> }/>
+            <Route path='/login' element = { <LoginContainer /> }/>
+            <Route path='/register' element ={ <Register /> } />
+            <Route path='/dashboard' element={ <Dashboard />} />
+            <Route path='/wallet' element={ <Wallet />}/>
+            <Route path='/profile' element={ <Profile />}/>
+            <Route path='/recoverpass' element={ <RecoverPassword />}/>
+            
+            <Route path='/*' element={ <Error />}/>
+          </Routes>
       </Browser>
     </UserContext>
     
