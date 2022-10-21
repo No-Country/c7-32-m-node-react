@@ -11,8 +11,8 @@ const Home = () => {
 
   const navigate = useNavigate()
   const { user } = useUserContext()
+  
   return (
-
     <main className='home'>
     
       <section className='home-logo'>

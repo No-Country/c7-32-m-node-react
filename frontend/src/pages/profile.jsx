@@ -67,14 +67,12 @@ const Profile = () => {
         {
           data: filterData(data),
           id: user.id
-          // input: uploadRef
         }
       )
       console.log(await res)
       swalAlert('success', 'Cambio exitoso', 'Tus datos han sido modificados.')
     } catch (error) {
-      console.log(error.message)
-      swalAlert('error', 'Oops', error)
+      swalAlert('error', 'Oops', error.response.data.error)
     }
   }
 

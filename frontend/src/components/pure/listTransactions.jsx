@@ -24,7 +24,7 @@ const ListTransactions = () => {
       }
     }
     getHistory()
-  }, [])
+  }, [transferences])
 
 
   return (

@@ -11,10 +11,6 @@
   border-radius: .9375rem;
   position: relative;
   margin: 3.125rem auto 6.25rem;
-  transform: rotateY(0deg);
-  transform-style: preserve-3d;
-  perspective: 600px;
-  transition: .5s;
 }
 
 .card-image img{
@@ -42,9 +38,14 @@
   left: 1.875rem;
   font-size: 16px;
 }
-.card-image:hover{
-  transform: rotateY(-180deg);
+.card-image span:nth-child(5){
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 16px;
 }
+
+
 
 
 /* Form */

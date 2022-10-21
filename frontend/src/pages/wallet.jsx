@@ -13,7 +13,6 @@ const Wallet = () => {
   const [card, setCard] = useState({})
   
   const cardData = (data) =>{
-    console.log(data)
     switch (data.name) {
       case "number":
         setCard({ ...card, number: data.value })
