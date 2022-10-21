@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { httpsRequest } from '../../assets/config/axios'
 import { useUserContext } from '../context/userContext'
 import { swalAlert } from '../../assets/config/swal'
+import "../../styles/cards.css"
 
 function Cards() {
 
