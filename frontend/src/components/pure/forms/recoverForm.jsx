@@ -19,7 +19,7 @@ const RecoverForm = () => {
     try {
       httpsRequest(
         'post',
-        'http://localhost:5000/api/forgot-password',
+        'https://wenwallet.vercel.app/api/forgot-password',
         {
           data
         }

@@ -24,7 +24,7 @@ const RecoverPassword = () => {
     try {
       httpsRequest(
         'post',
-        // `http://localhost:5000/api/renew-password/${}`,
+        // `https://wenwallet.vercel.app/api/renew-password/${}`,
         {
           password: data.password
         }

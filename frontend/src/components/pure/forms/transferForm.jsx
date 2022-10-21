@@ -59,7 +59,7 @@ const TransferForm = ({ close }) => {
     try {
       await httpsRequest(
         'post',
-        `http://localhost:5000/api/user/${user.id}/transference`,
+        `https://wenwallet.vercel.app/user/${user.id}/transference`,
         {
           transfer: transfer
         }
@@ -72,34 +72,34 @@ const TransferForm = ({ close }) => {
   }
 
   return (
-    <form className='form' onSubmit={handleSubmit(sendTransfer)}>
-
+    <form className='form' onSubmit={ handleSubmit(sendTransfer) }>
+          
       <label htmlFor='reason'>Motivo:</label>
-      <input type='text' id='reason' placeholder='Netflix...' {...register('reason')} />
+      <input type='text' id='reason' placeholder='Netflix...' {...register ('reason') }/>
       <p className='error'>{errors.reason?.message}</p>
 
       <label htmlFor='amount'>Cantidad a transferir:</label>
-      <input type='number' id='amount' placeholder='1.000' {...register('amount')} />
+      <input type='number' id='amount' placeholder='1.000' {...register ('amount') }/>
       <p className='error'>{errors.mount?.message}</p>
 
       <label htmlFor='cbu'>Clave Bancaria:</label>
       <div className='form-cbu'>
         <div>
-          <input type='number' className='' placeholder='Número de identidad...' {...register('cbuId')} />
+          <input type='number' className='' placeholder='Número de identidad...' {...register ('cbuId') }/>
           <span className='error'>{errors.cbuId?.message}</span>
         </div>
         <div>
-          <input type='number' placeholder='Sucursal y verificador...' {...register('cbuVer')} />
+          <input type='number' placeholder='Sucursal y verificador...' {...register ('cbuVer') }/>
           <span className='error'>{errors.cbuVer?.message}</span>
         </div>
         <div>
-          <input type='number' placeholder='Segundo bloque...' {...register('cbuAcc')} />
+          <input type='number' placeholder='Segundo bloque...' {...register ('cbuAcc') }/>
           <span className='error'>{errors.cbuAcc?.message}</span>
         </div>
       </div>
-
-      <button type='submit' className='btn-transfer' >Transferir</button>
-    </form>
+    
+    <button type='submit' className='btn-transfer' >Transferir</button>
+  </form>
   )
 }
 TransferForm.propTypes = {

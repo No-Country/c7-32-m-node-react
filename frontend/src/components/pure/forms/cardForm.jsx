@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import { swalAlert } from '../../../assets/config/swal.js'
 import { httpsRequest } from '../../../assets/config/axios'
+import { useUserContext } from '../../context/userContext.jsx'
 
 const cardSchema = Yup.object({
   number: Yup.string()
@@ -35,17 +36,22 @@ const cardSchema = Yup.object({
 
 const CardForm = ({ handleCard, save }) => {
 
-  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(cardSchema) })
+  const { user } = useUserContext()
 
-  const createCard = (data) => {
-    const exp_date = new Date(parseInt(data.year) + 2000, (parseInt(data.month) - 1))
+  const { register, handleSubmit, formState:{ errors } } = useForm( { resolver: yupResolver(cardSchema) } )
 
+  const createCard = async (data) =>{
+    const exp_date = new Date(parseInt(data.year) + 2000 , (parseInt(data.month) - 1)  )
+    
     try {
-      httpsRequest(
+        await httpsRequest(
         'post',
-        '',
+        `https://wenwallet.vercel.app/card/create/${user.id}`,
         {
-          ...data,
+          number: data.number,
+          cvv: data.cvv,
+          name: data.name,
+          surname:data.surname,
           exp_date
         },
       )

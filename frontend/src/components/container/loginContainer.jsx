@@ -39,11 +39,11 @@ const LoginContainer = () => {
 
     try {
       const res = await httpsRequest('post',
-        'http://localhost:5000/api/login',
-        {
-          email: info.email,
-          password: info.password,
-          remember: remember
+       'https://c7-32-back.herokuapp.com/api/login',
+        { 
+            email: info.email,
+            password: info.password,
+            remember: remember 
         })
       getUser(res.data)
       navigate('/dashboard')
@@ -97,8 +97,8 @@ const LoginContainer = () => {
               size='large'
               theme='outline'
               locale='es'
-              onSuccess={res => httpsRequest('post', 'http://localhost:5000/api/google/login', { token: ` ${res.credential}` })}
-            >
+              onSuccess={ res => httpsRequest('post','https://c7-32-back.herokuapp.com/api/google/login',{ token: ` ${res.credential}` })}
+              >
             </GoogleLogin>
 
           </form>

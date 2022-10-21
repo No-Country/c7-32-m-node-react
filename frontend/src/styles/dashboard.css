@@ -91,6 +91,11 @@
   font-size: 18px;
 }
 
+.cbu {
+  color: #000000;
+  margin-top: 1rem;
+  margin-left: 8rem;
+}
 
 @media only screen and (min-width: 375px) {
   .dashboard-container {
@@ -199,4 +204,13 @@
   .stats-container .spend {
     width: 80%;
   }
+  
 }
+
+@media only screen and (max-width: 1200px){
+  .cbu {
+    font-size: .6rem;
+   }
+  
+}
+

@@ -5,7 +5,6 @@ const CreateUserContext = createContext(null)
 export const useUserContext = () => useContext(CreateUserContext)
 
 const UserContext = ({ children }) => {
-
   const [client, setClient] = useState({})
   const [deposit, setDeposit] = useState(0)
 

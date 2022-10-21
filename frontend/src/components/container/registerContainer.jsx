@@ -46,7 +46,7 @@ const Register = () => {
     try {
       const res = await httpsRequest(
         'post',
-        'http://localhost:5000/api/register',
+        'https://c7-32-back.herokuapp.com/api/register',
         {
           name: info.name,
           surname: info.surname,

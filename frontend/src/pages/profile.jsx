@@ -54,7 +54,7 @@ const Profile = () => {
     try {
       const res = await httpsRequest(
         'put',
-        'http://localhost:5000/api/updateprofile',
+        'https://wenwallet.vercel.app/api/updateprofile',
         {
           ...data,
           input: uploadRef

@@ -16,7 +16,7 @@ const ListTransactions = () => {
     async function getHistory() {
       try {
         const res = await httpsRequest('get', `http://localhost:5000/api/history/${user.id}`)
-        const history = [...res.data.ingresos, ...res.data.egresos]
+        const history = [...res.data.ingreso, ...res.data.egreso]
         setTransferences(history)
       } catch (error) {
         swalAlert('error', 'Oops', error.response.data.message)
