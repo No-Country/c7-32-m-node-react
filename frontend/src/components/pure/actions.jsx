@@ -14,42 +14,22 @@ const Actions = () => {
 
   return (
     <section className='actions'>
-<<<<<<< HEAD
-    <div className='action-deposit'>
-        <button className='btn' onClick={ openDeposit }>
-=======
       <div className='action-deposit'>
         <button className='btn' onClick={openDeposit}>
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
           Ingresar dinero
         </button>
         <Modal isOpen={depositIsOpen} close={closeDeposit} >
-          <DepositForm />
+          <DepositForm close={closeDeposit} />
         </Modal>
       </div>
       <div className='action-transfer'>
-<<<<<<< HEAD
-        <button className='btn' onClick={ openTransfer }>
-=======
         <button className='btn' onClick={openTransfer}>
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
           Realizar transferencia
         </button>
         <Modal isOpen={transferIsOpen} close={closeTransfer} >
-          <TransferForm />
+          <TransferForm close={closeTransfer} />
         </Modal>
       </div>
-<<<<<<< HEAD
-=======
-      {/* <div className='action-exchange'>
-        <button className='btn' onClick={openExchange} >
-          Cambio de moneda
-        </button>
-        <Modal isOpen={exchangeIsOpen} close={closeExchange} >
-          <TransferForm />
-        </Modal>
-      </div> */}
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
     </section>
   )
 }

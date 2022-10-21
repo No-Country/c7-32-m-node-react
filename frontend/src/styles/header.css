@@ -1,4 +1,4 @@
-.header{
+.header {
   width: 100vw;
   height: 4.6875rem;
   background-color: #000000;
@@ -6,51 +6,59 @@
   align-items: center;
   justify-content: space-between;
   padding: 0rem 3rem;
+  color: #ffffff;
 }
 
-.header h2{
+.header h2 {
   font-weight: 500;
   font-size: 1.625rem;
-  letter-spacing: 2px;  
+  letter-spacing: 2px;
 }
-.header #space{
+
+.header #space {
   margin-left: 6rem;
 }
 
-.header .header-info{
+.header .header-info {
   display: flex;
   align-items: center;
   gap: 1.25rem;
 }
 
-.header .header-info .info-flag{
+.header .header-info .info-flag {
   display: flex;
   gap: .9375rem;
 }
-.header .header-info .info-flag span:nth-child(1){
- border-left: 1px solid #fff;
+
+.header .header-info .info-flag span:nth-child(1) {
+  border-left: 1px solid #fff;
 }
-.header .header-info .info-flag span:nth-child(3){
+
+.header .header-info .info-flag span:nth-child(3) {
   border-right: 1px solid #fff;
 }
-.header .header-info .info-flag img{
+
+.header .header-info .info-flag img {
   width: 1.875rem;
 }
 
-.header .header-info .info-user{
+.header .header-info .info-user {
   display: flex;
   align-items: center;
   gap: .9375rem;
 }
-.header .header-info .info-user .icon{
+
+.header .header-info .info-user .icon {
   cursor: pointer;
 }
-.header .header-info .info-user .image{
+
+.header .header-info .info-user .image {
   width: 3.125rem;
   border-radius: .25rem;
   font-size: 2.5rem;
 }
-.header .header-info .info-user .user-name{
+
+.header .header-info .info-user .user-name {
   letter-spacing: .0625rem;
   text-transform: capitalize;
 }

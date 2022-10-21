@@ -148,8 +148,7 @@
 /* Go to register */
 .login-info .register{
   text-align: center;
-  position: relative;
-  bottom: -7rem;
+  margin-top: 6rem;
 }
 .login-info .register .link{
   font-weight: 400;
@@ -181,9 +180,6 @@
     top: 36.125rem;
     right: 0rem;
   }
-  .login-info .register{
-    bottom: -2rem;
-  }
 }
 
 @media only screen and (min-width: 600px){
@@ -197,7 +193,7 @@
   }
 }
 
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 768px) {
   .login-form .form{
     width: 70%;
   }
@@ -249,5 +245,38 @@
     width: 200px;
     top: 34.5rem;
     right: 8%;
+  }
+}
+
+@media screen and (max-height: 720px){
+  .recover{
+    top: 29rem;
+  }
+
+  .login .login-image .image img{
+    width: 300px;
+    height: 300px;
+  }
+  .login .login-info .login-form{
+    margin-top: 2rem;
+  }
+  .login .login-info .logo img{
+    width: 100px;
+  }
+  .login-info .register{
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-height: 720px) and (max-width: 1024px){
+  .recover{
+    top: 32rem
+  }
+}
+@media screen and (max-height: 720px) and (max-width: 600px){
+  .recover{
+    top: 31.25rem
   }
 }

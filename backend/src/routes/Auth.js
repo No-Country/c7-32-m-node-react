@@ -7,7 +7,7 @@ import register from '../controllers/Register.Controller.js';
 const router = Router();
 
 // REGISTER
-router.post('/register',register);
+router.post('/register', register);
 
 // LOGIN
 router.post('/login', login);

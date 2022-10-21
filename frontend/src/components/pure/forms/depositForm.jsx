@@ -1,51 +1,50 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 import { httpsRequest } from '../../../assets/config/axios'
-<<<<<<< HEAD
 import { swalAlert } from '../../../assets/config/swal'
-import { useUserContext }  from '../../context/userContext'
-=======
-import { alertError } from '../../../assets/config/swall'
 import { useUserContext } from '../../context/userContext'
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
 
 
-const DepositForm = () => {
+const DepositForm = ({ close }) => {
 
   const { register, handleSubmit } = useForm()
-  const { client } = useUserContext()
+  const { user, makeDeposit } = useUserContext()
 
-<<<<<<< HEAD
-  const sendDeposit = (qty) =>{
-=======
-  const sendDeposit = (qty) => {
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
+  async function getDeposit() {
+    const res = await httpsRequest('get', `http://localhost:5000/api/operations/${user.id}`)
+    let result = 0
+    for (let i = 0; i < res.data.ingreso.length; i++) {
+      if (res.data.ingreso.length !== 0) {
+        result += res.data.ingreso[i].user_amount
+      }
+    }
+    makeDeposit(result)
+  }
+
+  const sendDeposit = async (qty) => {
     try {
-      httpsRequest(
+      await httpsRequest(
         'post',
-        `http://localhost:5000/api/user/${client.user.id}/ingress`,
+        `http://localhost:5000/api/${user.id}/ingress`,
         {
           amount: qty
         }
       )
+      swalAlert('success', 'Excelente', "Su deposito ha sido realizado.")
+      close()
+      getDeposit()
     } catch (error) {
-<<<<<<< HEAD
-      swalAlert('error', 'Oops', error)
-=======
-      alertError(error)
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
+      swalAlert('error', 'Oops', error.response.data.message)
     }
   }
 
+
+
   return (
-<<<<<<< HEAD
-    <form className='form' style={{ width: '100%' }} onSubmit={ handleSubmit(sendDeposit) }>
-      <h2 
-=======
-    <form className='form' onSubmit={handleSubmit(sendDeposit)}>
+    <form className='form' style={{ width: '100%' }} onSubmit={handleSubmit(sendDeposit)}>
       <h2
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
         style={{
           fontWeight: '500',
           textAlign: 'center',
@@ -54,20 +53,10 @@ const DepositForm = () => {
       >
         Ingrese el monton que desea depositar
       </h2>
-<<<<<<< HEAD
-      <input 
+      <input
         style={{
           width: '100%'
         }}
-        type='number' 
-        id='amount' 
-        placeholder='1.000' 
-        {...register ('amount') }
-      />
-      <button 
-        style={{ 
-=======
-      <input
         type='number'
         id='amount'
         placeholder='1.000'
@@ -75,24 +64,23 @@ const DepositForm = () => {
       />
       <button
         style={{
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
           width: '250px',
           backgroundColor: '#16C98C',
           margin: '15px auto 0px',
           color: '#ffffff',
           letterSpacing: '1px',
-<<<<<<< HEAD
-          
-          }}
-=======
 
         }}
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
       >
         Depositar monto
       </button>
     </form>
   )
 }
+
+DepositForm.propTypes = {
+  close: PropTypes.func.isRequired
+}
+
 
 export default DepositForm

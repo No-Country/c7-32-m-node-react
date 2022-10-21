@@ -12,9 +12,9 @@ const Dashboard = () => {
     <div>
       <Header id='space' title='Dashboard' show={true} />
       <main className='dashboard-container'>
-        <Actions />
+         <Actions />
         <ListTransactions />
-        <Stats />
+        <Stats />  
       </main>
     </div>
   )

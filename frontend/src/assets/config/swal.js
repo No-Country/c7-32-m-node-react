@@ -12,4 +12,3 @@ export const swalAlert = (icon, title, text) => {
 }
 
 
-  

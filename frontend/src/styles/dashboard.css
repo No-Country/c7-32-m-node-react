@@ -1,18 +1,18 @@
-.dashboard-container{
+.dashboard-container {
   width: 100%;
   height: 100%;
   padding-left: 6.25rem;
   display: grid;
-  grid-template-areas: 
-  "actions transactions transactions"
-  "stats transactions transactions"
-  "stats exchange exchange ";
+  grid-template-areas:
+    "actions transactions transactions"
+    "stats transactions transactions"
+    "stats exchange exchange ";
   grid-template-columns: 25%;
   grid-template-rows: repeat(3, 36.5%);
 }
 
 /* Sección de acciones */
-.actions{
+.actions {
   grid-area: actions;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@
   gap: .625rem;
 }
 
-.actions .btn{
+.actions .btn {
   width: 15.625rem;
   background-color: #ffffff;
   cursor: pointer;
@@ -29,19 +29,20 @@
   outline: none;
   text-align: center;
 }
-.actions .btn:hover{
+
+.actions .btn:hover {
   color: #21A0A8;
 }
 
 /* Lista de transacciones */
-.transactions{
+.transactions {
   grid-area: transactions;
   padding: 1.5rem 1.5rem 0rem 1.5rem;
 }
 
 
 /* Sección estadisticas */
-.stats-container{
+.stats-container {
   grid-area: stats;
   display: flex;
   flex-direction: column;
@@ -50,11 +51,13 @@
   gap: 3rem;
 }
 
-.stats-container .money{
+.stats-container .money {
   grid-area: stats;
 }
 
-.stats-container .money, .stats-container .income, .stats-container .spend{
+.stats-container .money,
+.stats-container .income,
+.stats-container .spend {
   width: 300px;
   height: 150px;
   background-color: #ffffff;
@@ -68,54 +71,64 @@
   gap: .625rem;
 }
 
-.stats-container .money > img, .stats-container .income > img, .stats-container .spend > img{
+.stats-container .money>img,
+.stats-container .income>img,
+.stats-container .spend>img {
   position: absolute;
   width: 45px;
   right: 1.875rem;
 }
-.stats-container .money > p:nth-child(1), .stats-container .income > p:nth-child(1), .stats-container .spend > p:nth-child(1){
+
+.stats-container .money>p:nth-child(1),
+.stats-container .income>p:nth-child(1),
+.stats-container .spend>p:nth-child(1) {
   font-size: .875rem;
 }
-.stats-container .money > p:nth-child(2), .stats-container .income > p:nth-child(2), .stats-container .spend > p:nth-child(2){
+
+.stats-container .money>p:nth-child(2),
+.stats-container .income>p:nth-child(2),
+.stats-container .spend>p:nth-child(2) {
   font-size: 18px;
 }
 
 
-@media only screen and (min-width: 375px){
-  .dashboard-container{
-    grid-template-areas: 
-    "actions "
-    "stats"
-    "stats"
-    "transactions"
-    "transactions"
-    "transactions";
+@media only screen and (min-width: 375px) {
+  .dashboard-container {
+    grid-template-areas:
+      "actions "
+      "stats"
+      "stats"
+      "transactions"
+      "transactions"
+      "transactions";
     grid-template-columns: 100%;
     grid-template-rows: repeat(5, 25%);
     padding: 0rem;
   }
-  .transactions{
+
+  .transactions {
     text-align: center;
   }
 }
 
-@media only screen and (min-width: 768px){
-  .dashboard-container{
-    grid-template-areas: 
-    "actions actions"
-    "stats" "stats"
-    "transactions" "transactions"
-    "transactions" "transactions";
+@media only screen and (min-width: 768px) {
+  .dashboard-container {
+    grid-template-areas:
+      "actions actions"
+      "stats" "stats"
+      "transactions" "transactions"
+      "transactions" "transactions";
     grid-template-columns: 50% 50%;
     grid-template-rows: repeat(3, 25%);
     padding-left: 6.25rem;
   }
 
-  .actions{
+  .actions {
     grid-column: 1 / 3;
     justify-content: center;
   }
-  .stats-container{
+
+  .stats-container {
     grid-column: 1 / 3;
     flex-direction: row;
     flex-wrap: wrap;
@@ -123,28 +136,32 @@
     padding: 0rem .5rem;
     gap: 0rem 2rem;
   }
-  .transactions{
+
+  .transactions {
     grid-column: 1 / 3;
     padding-bottom: 1.5rem;
-    
+
   }
 }
-@media only screen and (min-width: 1024px){
-  .dashboard-container{
-    grid-template-areas: 
-    "actions transactions transactions"
-    "stats transactions transactions"
-    "stats";
+
+@media only screen and (min-width: 1024px) {
+  .dashboard-container {
+    grid-template-areas:
+      "actions transactions transactions"
+      "stats transactions transactions"
+      "stats";
     grid-template-columns: repeat(3, 33.3%);
     grid-template-rows: repeat(3, 35.6%);
   }
-  .actions{
+
+  .actions {
     grid-area: actions;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     justify-content: center;
   }
-  .transactions{
+
+  .transactions {
     grid-area: transactions;
     grid-column: 2 / 4;
     grid-row: 1 / 3;
@@ -154,7 +171,8 @@
     justify-content: center;
     padding: 1rem 1rem 0rem 1rem;
   }
-  .stats-container{
+
+  .stats-container {
     grid-area: stats;
     grid-column: 1 / 2;
     grid-row: 2 / 4;
@@ -165,14 +183,20 @@
     padding: 0rem 0rem 1rem;
     gap: 3rem
   }
-  .stats-container .money, .stats-container .income, .stats-container .spend{
+
+  .stats-container .money,
+  .stats-container .income,
+  .stats-container .spend {
     width: 90%;
   }
-  
+
 }
 
-@media only screen and (min-width: 1200px){
-  .stats-container .money, .stats-container .income, .stats-container .spend{
+@media only screen and (min-width: 1200px) {
+
+  .stats-container .money,
+  .stats-container .income,
+  .stats-container .spend {
     width: 80%;
   }
 }

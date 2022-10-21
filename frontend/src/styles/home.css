@@ -1,6 +1,6 @@
 .home{
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(111.34deg, rgb(253, 148, 179) 25.52%, rgb(159, 255, 223) 76.56%);
 }
 
@@ -201,10 +201,10 @@
   }
   .home .home-info img{
     display: block;
+    position: static;
     width: 33.125rem;
     height: 33.625rem;
     align-self: flex-end;
-    position: static;
   }
 }
 
@@ -221,5 +221,12 @@
   .home .home-info img{
     width: 630px;
     height: 638px;
+  }
+}
+
+@media screen and (min-height: 830px){
+  .home{
+    height: 100vh;
+    min-height: 0rem;
   }
 }

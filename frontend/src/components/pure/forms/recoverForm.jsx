@@ -8,14 +8,14 @@ import { swalAlert } from '../../../assets/config/swal'
 
 const schema = Yup.object({
   email: Yup.string()
-        .email('Formato invalido')
-        .required('Requiere email')
+    .email('Formato invalido')
+    .required('Requiere email')
 })
 
 const RecoverForm = () => {
-  
-  const { register, handleSubmit, formState:{ errors } } = useForm( { resolver: yupResolver(schema) } )  
-  const recoverPass = (data) =>{
+
+  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) })
+  const recoverPass = (data) => {
     try {
       httpsRequest(
         'post',
@@ -26,32 +26,32 @@ const RecoverForm = () => {
       )
       swalAlert('success', 'Excelente', 'Reciba tu buzón de correos')
     } catch (error) {
-      swalAlert('error', 'Oops', error)
+      swalAlert('error', 'Oops', error.response.data.message)
     }
-  } 
+  }
 
   return (
-    <form onSubmit={ handleSubmit(recoverPass)} 
-      style={{ display:'flex', flexDirection:'column', alignItems: 'center', justifyContent:'center', gap:'1rem', padding:'2.5rem'}}>
+    <form onSubmit={handleSubmit(recoverPass)}
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1rem', padding: '2.5rem' }}>
       <h2>
         Ingresa tu email para recuperar tu contraseña
       </h2>
 
-      <input 
-        type='email' 
-        { ...register('email') } 
+      <input
+        type='email'
+        {...register('email')}
         style={{
-          width:'80%',
+          width: '80%',
           height: '2.5rem',
           border: '1px solid #000000',
           outline: 'none',
-          fontSize:'1rem',
+          fontSize: '1rem',
           borderRadius: '.3125rem',
           paddingLeft: '.625rem'
         }}
       />
 
-      <span 
+      <span
         style={{
           color: 'red'
         }}

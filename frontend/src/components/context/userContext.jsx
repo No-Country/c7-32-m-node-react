@@ -5,12 +5,9 @@ const CreateUserContext = createContext(null)
 export const useUserContext = () => useContext(CreateUserContext)
 
 const UserContext = ({ children }) => {
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
   const [client, setClient] = useState({})
+  const [deposit, setDeposit] = useState(0)
 
   const getUser = (userData) => {
     setClient(userData)
@@ -18,23 +15,20 @@ const UserContext = ({ children }) => {
   const logOut = () => {
     setClient({})
   }
-<<<<<<< HEAD
-  
+  const makeDeposit = (value) => {
+    setDeposit(value)
+  }
+
   const user = localStorage.getItem('user') !== null ? JSON.parse(localStorage.getItem('user')) : JSON.parse(sessionStorage.getItem('user'))
-=======
-
-
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
 
   return (
     <CreateUserContext.Provider value={{
       client,
       getUser,
       logOut,
-<<<<<<< HEAD
-      user
-=======
->>>>>>> 942cba35f972c139adc825dd83c5e2d56e8df53e
+      user,
+      deposit,
+      makeDeposit
     }}
     >
       {children}
