@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, /*useNavigate*/ } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 import { GoogleLogin } from '@react-oauth/google'
 
 
-// import { useUserContext } from '../context/userContext'
+import { useUserContext } from '../context/userContext'
 import { httpsRequest } from '../../assets/config/axios'
-import { alertError } from '../../assets/config/swall'
+import { swalAlert } from '../../assets/config/swal'
+import Modal from '../pure/modal'
+import { useModal } from '../../hooks/useModal'
 
-import '../../styles/Login.css'
+import '../../styles/login.css'
 import logo from '../../assets/images/Logo-bg-black.png'
 import login_image from '../../assets/images/login-image.png'
+import RecoverForm from '../pure/forms/recoverForm'
 
 
 const LoginSchema = Yup.object({
@@ -28,28 +31,29 @@ const LoginContainer = () => {
 
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(LoginSchema) })
   const [remember, setRemember] = useState(false)
-  // const { getUser } = useUserContext()
+  const { getUser } = useUserContext()
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const login = async (info) => {
+
     try {
       const res = await httpsRequest('post',
-        'http://localhost:5000/api/login',
-        {
-          email: info.email,
-          password: info.password,
-          remember: remember
+       'https://c7-32-back.herokuapp.com/api/login',
+        { 
+            email: info.email,
+            password: info.password,
+            remember: remember 
         })
-      console.log(await res)
-      // getUser(res.user)
-      // navigate('/dashboard')
-
+      getUser(res.data)
+      navigate('/dashboard')
+      remember ? localStorage.setItem('user', JSON.stringify(res.data.user)) : sessionStorage.setItem('user', JSON.stringify(res.data.user))
     } catch (error) {
-      console.log(error.message)
-      alertError(error)
+      swalAlert('error', 'Oops', error.response.data.message)
     }
   }
+
+  const [recover, openRecover, closeRecover] = useModal(false)
 
   return (
     <section className='login'>
@@ -83,11 +87,8 @@ const LoginContainer = () => {
             <p className='error'>{errors.password?.message}</p>
 
             <div className='form-warned'>
-              <div className='form-check'>
-                <input type='checkbox' id='remember' onChange={() => setRemember(!remember)} />
-                <label htmlFor='remember'>Recuerdame</label>
-              </div>
-              <Link to='/recoverpass' className='link' >¿Olvidaste la contraseña?</Link>
+              <input type='checkbox' id='remember' onChange={() => setRemember(!remember)} />
+              <label htmlFor='remember'>Recuerdame</label>
             </div>
 
             <button type='submit' className='btn-login' >Inicia Sesión</button>
@@ -96,13 +97,17 @@ const LoginContainer = () => {
               size='large'
               theme='outline'
               locale='es'
-              onSuccess={res => httpsRequest('post', 'http://localhost:5000/api/google/login', { token: ` ${res.credential}` })}
-            >
+              onSuccess={ res => httpsRequest('post','https://c7-32-back.herokuapp.com/api/google/login',{ token: ` ${res.credential}` })}
+              >
             </GoogleLogin>
 
           </form>
 
           <span className='register'>¿No tiene una cuenta? <Link className='link' to='/register'>Únase ahora</Link></span>
+          <span onClick={openRecover} className='recover' >¿Olvidaste la contraseña?</span>
+          <Modal isOpen={recover} close={closeRecover}>
+            <RecoverForm />
+          </Modal>
         </div>
 
       </div>

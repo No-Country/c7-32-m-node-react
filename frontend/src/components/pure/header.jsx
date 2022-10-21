@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 
 import TitlePage from './titlePage'
 import Navbar from './navbar'
+ 
+const Header = ( { title, id, show} ) => {
 
-const Header = ({ title, id, show }) => {
-
-
+  
   return (
     <header>
-      {show ?
+      { show ?
         (
           <>
             <TitlePage id={id} title={title} />
@@ -23,7 +23,7 @@ const Header = ({ title, id, show }) => {
         )
       }
     </header>
-
+    
 
   )
 }

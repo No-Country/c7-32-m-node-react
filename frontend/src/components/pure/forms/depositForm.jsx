@@ -1,32 +1,49 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 import { httpsRequest } from '../../../assets/config/axios'
-import { alertError } from '../../../assets/config/swall'
+import { swalAlert } from '../../../assets/config/swal'
 import { useUserContext } from '../../context/userContext'
 
 
-const DepositForm = () => {
+const DepositForm = ({ close }) => {
 
   const { register, handleSubmit } = useForm()
-  const { client } = useUserContext()
+  const { user, makeDeposit } = useUserContext()
 
-  const sendDeposit = (qty) => {
+  async function getDeposit() {
+    const res = await httpsRequest('get', `http://localhost:5000/api/operations/${user.id}`)
+    let result = 0
+    for (let i = 0; i < res.data.ingreso.length; i++) {
+      if (res.data.ingreso.length !== 0) {
+        result += res.data.ingreso[i].user_amount
+      }
+    }
+    makeDeposit(result)
+  }
+
+  const sendDeposit = async (qty) => {
     try {
-      httpsRequest(
+      await httpsRequest(
         'post',
-        `http://localhost:5000/api/user/${client.user.id}/ingress`,
+        `http://localhost:5000/api/${user.id}/ingress`,
         {
           amount: qty
         }
       )
+      swalAlert('success', 'Excelente', "Su deposito ha sido realizado.")
+      close()
+      getDeposit()
     } catch (error) {
-      alertError(error)
+      swalAlert('error', 'Oops', error.response.data.message)
     }
   }
 
+
+
   return (
-    <form className='form' onSubmit={handleSubmit(sendDeposit)}>
+    <form className='form' style={{ width: '100%' }} onSubmit={handleSubmit(sendDeposit)}>
       <h2
         style={{
           fontWeight: '500',
@@ -37,6 +54,9 @@ const DepositForm = () => {
         Ingrese el monton que desea depositar
       </h2>
       <input
+        style={{
+          width: '100%'
+        }}
         type='number'
         id='amount'
         placeholder='1.000'
@@ -57,5 +77,10 @@ const DepositForm = () => {
     </form>
   )
 }
+
+DepositForm.propTypes = {
+  close: PropTypes.func.isRequired
+}
+
 
 export default DepositForm

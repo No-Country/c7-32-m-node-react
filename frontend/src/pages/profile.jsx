@@ -1,21 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 
 import { useUserContext } from '../components/context/userContext'
 import Header from '../components/pure/header'
 import { httpsRequest } from '../assets/config/axios'
+import { swalAlert } from '../assets/config/swal'
 
 import '../styles/profile.css'
-import { IoPersonSharp } from 'react-icons/io5'
+import { IoEyeOffOutline, IoEyeOutline, IoPersonSharp } from 'react-icons/io5'
 
 
 const Profile = () => {
 
-  const MySwal = withReactContent(Swal)
   const { register, handleSubmit } = useForm()
-  const { client } = useUserContext()
+  const { user } = useUserContext()
+  const [showPass, setShowPass] = useState(false)
 
   const uploadRef = useRef()
 
@@ -51,25 +50,28 @@ const Profile = () => {
 
   }, [preview])
 
-  const changeData = (data) => {
-    console.log(uploadRef)
-    // try {
-    //   httpsRequest(
-    //     'put',
-    //     'http://localhost:5000/api/updateprofile',
-    //     {
-    //       ...data,
-    //       image: image
-    //     }
-    //     )
-    //   console.log('Los cambios se realizaron')
-    // } catch (error) {
-    //   MySwal.fire({
-    //     icon: 'error',
-    //     title: 'Oops',
-    //     text: error
-    //   })
-    // }
+  const changeData = async (data) => {
+    try {
+      const res = await httpsRequest(
+        'put',
+        'https://wenwallet.vercel.app/api/updateprofile',
+        {
+          ...data,
+          input: uploadRef
+        }
+      )
+      swalAlert('success', 'Cambio exitoso', 'Tus datos han sido modificados.')
+    } catch (error) {
+      swalAlert('error', 'Oops', error)
+    }
+  }
+
+  const showPassword = () => {
+    let pass = ""
+    for (let i = 0; i <= user.password.length; i++) {
+      pass += "*"
+    }
+    return pass
   }
 
   return (
@@ -79,8 +81,8 @@ const Profile = () => {
       <main className='profile-container'>
 
         <section className='profile-user'>
-          {client.user.image ?
-            <img src={client.user.image} alt='User image' />
+          {user.image ?
+            <img src={user.image} alt='User image' />
             :
             image ?
               <img src={image} alt='User image' />
@@ -91,7 +93,7 @@ const Profile = () => {
                 </div>
               )
           }
-          <div>
+          <div className='div-file'>
             <input type='file' accept='image/*' ref={uploadRef} onChange={previewImages} />
             <button className='file-btn' onClick={uploadFiles}>Subir imagen</button>
             <p>Suba una imagen para su perfil</p>
@@ -101,39 +103,46 @@ const Profile = () => {
         <section className='profile-data'>
           <form className='data-form' onSubmit={handleSubmit(changeData)}>
             <input
+              className='first'
               type='text'
-              value={`${client.user.name} ${client.user.surname}`}
+              placeholder={user.name}
               {...register('name')}
             />
             <input
-              type='email'
-              value={client.user.email}
-              {...register('email')}
+              type='text'
+              placeholder={user.surname}
+              style={{ textTransform: 'capitalize' }}
+              {...register('surname')}
             />
             <input
-              type='text'
-              placeholder='Documento'
-              {...register('dni')}
+              type='email'
+              placeholder={user.email}
+              {...register('email')}
             />
+            <div className='pass'>
+              <input
+                type={showPass ? 'text' : 'password'}
+                placeholder={showPass ? user.password : showPassword()}
+                {...register('password')}
+              />
+              {showPass ?
+                (<IoEyeOutline className='icon-pass' onClick={() => setShowPass(!showPass)} />)
+                :
+                (<IoEyeOffOutline className='icon-pass' onClick={() => setShowPass(!showPass)} />)
+              }
+            </div>
             <input
               type='text'
               placeholder='País'
+              value={user.country === null ? "" : user.country}
+              style={{ textTransform: 'capitalize' }}
               {...register('country')}
             />
             <input
-              type='text'
-              placeholder='Ciudad'
-              {...register('city')}
-            />
-            <input
-              type='text'
-              placeholder='Dirección'
-              {...register('address')}
-            />
-            <input
               type='number'
-              placeholder='Código postal'
-              {...register('zipCode')}
+              placeholder='Teléfono'
+              value={user.phone === null ? "" : user.phone}
+              {...register('phone')}
             />
 
             <button type='submit' className='data-sub'>Guardar cambios</button>

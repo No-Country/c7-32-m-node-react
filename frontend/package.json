@@ -19,6 +19,7 @@
     "react-hook-form": "^7.36.1",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.4.1",
+    "react-select": "^5.4.0",
     "sweetalert2": "^11.4.35",
     "sweetalert2-react-content": "^5.0.3",
     "yup": "^0.32.11"
@@ -31,5 +32,10 @@
     "eslint-plugin-react": "^7.31.8",
     "nodemon": "^2.0.20",
     "vite": "^3.1.4"
-  }
+  },
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

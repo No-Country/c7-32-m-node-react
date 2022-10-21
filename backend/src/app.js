@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import passport from 'passport';
-import { passportMiddleware } from './middlewares/passport.js';
+import {passportMiddleware} from './middlewares/passport.js';
 
 const app = express()
 
@@ -21,7 +21,7 @@ import Operations from './routes/Operations.js';
 app.set("PORT", process.env.PORT || 4000);
 
 // middlewares
-app.use(cors());
+app.use(cors('*'));
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,7 +31,7 @@ passport.use(passportMiddleware);
 // routes
 app.use('/api', Auth);
 app.use('/api/password', Password);
-app.use('api/card', CardExternal);
+app.use('/api/card', CardExternal);
 app.use('/api/profile', UpdateProfile);
 app.use('/api', Transference);
 app.use('/api', Ingress);

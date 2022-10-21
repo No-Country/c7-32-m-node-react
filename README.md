@@ -24,7 +24,14 @@ Instala las dependencias del proyecto con npm, dentro de la carpeta del proyecto
   npm install
 ```
 
+Para el cliente: 
 
+Dentro de la carpeta backend completar y cambiar el archivo .env.example por .env con las variables necesarias.
+
+```bash
+  .env.example
+  .env
+```
 ## Autores
 
 - [@Sheice](https://github.com/Sheice) - Jaziel
@@ -32,4 +39,11 @@ Instala las dependencias del proyecto con npm, dentro de la carpeta del proyecto
 - [@uspaz](https://github.com/uspaz) - Matias
 - [@Adremess](https://github.com/Adremess) - Adrian
 
+
+
+## Tech Stack
+
+**Client:** React
+
+**Server:** Node, Express, MySQL
 

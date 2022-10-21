@@ -48,7 +48,7 @@ export const User = sequelize.define('User', {
     allowNull: true
   },
   cuil_ruc: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.BIGINT,
     allowNull: true
   },
   card_id: {
@@ -67,6 +67,10 @@ export const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: true
   },
+  amount: {
+    type: DataTypes.DOUBLE,
+    defaultValue: 10000
+  }
 },
   {
     timestamps: true

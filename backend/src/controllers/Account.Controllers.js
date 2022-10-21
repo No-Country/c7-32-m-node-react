@@ -117,8 +117,7 @@ export const updateProfile = async (req, res) => {
 
 export const operationsHistory = async (req, res) => {
   try {
-    const id = req.params.id;
-
+    const { id } = req.params;
     if (!id) res.status(400).json({ message: "Id requerido" });
 
     const ingresos = await Transfers.findAll({
@@ -131,6 +130,7 @@ export const operationsHistory = async (req, res) => {
         user_transferring_id: id
       }
     });
+
 
     res.status(200).json({
       ingresos: ingresos,

@@ -1,6 +1,3 @@
 {
-  "typescript.autoClosingTags": true,
-  "typescript.check.npmIsInstalled": true,
-  // "typescript.validate.enable": false,
-  "javascript.validate.enable": false,
+    "git.ignoreLimitWarning": true
 }

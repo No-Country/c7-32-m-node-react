@@ -19,7 +19,7 @@ const Actions = () => {
           Ingresar dinero
         </button>
         <Modal isOpen={depositIsOpen} close={closeDeposit} >
-          <DepositForm />
+          <DepositForm close={closeDeposit} />
         </Modal>
       </div>
       <div className='action-transfer'>
@@ -27,17 +27,9 @@ const Actions = () => {
           Realizar transferencia
         </button>
         <Modal isOpen={transferIsOpen} close={closeTransfer} >
-          <TransferForm />
+          <TransferForm close={closeTransfer} />
         </Modal>
       </div>
-      {/* <div className='action-exchange'>
-        <button className='btn' onClick={openExchange} >
-          Cambio de moneda
-        </button>
-        <Modal isOpen={exchangeIsOpen} close={closeExchange} >
-          <TransferForm />
-        </Modal>
-      </div> */}
     </section>
   )
 }
