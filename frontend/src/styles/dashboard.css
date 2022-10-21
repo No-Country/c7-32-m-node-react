@@ -120,8 +120,12 @@
     text-align: center;
   }
   .cards{
+    width: 95%;
     margin-top: 1rem;
     text-align: center;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 1rem 1rem;
   }
 }
 
@@ -134,8 +138,9 @@
       "transactions" "transactions"
       "cards cards";
     grid-template-columns: 50% 50%;
-    grid-template-rows: repeat(6, 25%);
+    grid-template-rows: 20% 20% 25% 25% 30%;
     padding-left: 6.25rem;
+    margin-bottom: 1rem;
   }
 
   .actions {
@@ -160,9 +165,13 @@
 
   }
   .cards{
+    width: 100%;
     grid-column: 1 / 3;
     grid-row: 5 / 6;
     padding: 0rem 1.5rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin-top: 0rem;
   }
   .cbu {
     padding-left: 6.25rem;
@@ -176,7 +185,7 @@
       "stats transactions transactions"
       "stats cards cards";
     grid-template-columns: repeat(3, 33.3%);
-    grid-template-rows: repeat(3, 35.6%);
+    grid-template-rows: 25% 25% 45%;
   }
 
   .actions {

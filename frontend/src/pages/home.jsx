@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { IoPersonCircleOutline } from 'react-icons/io5'
+
 import { useUserContext } from '../components/context/userContext'
 
 import '../styles/home.css'
 import  logo  from '../assets/images/Logo-bg-black.png'
 import  home  from '../assets/images/home-page.png'
-import { IoPersonCircleOutline } from 'react-icons/io5'
 
 const Home = () => {
 

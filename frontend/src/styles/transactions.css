@@ -12,17 +12,17 @@
   color: #000000;
   font-size: 1.125rem;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 1rem 0rem;
 }
 .container-transactions::-webkit-scrollbar {
   width: 4px;
-  
 }
+
 .container-transactions::-webkit-scrollbar-thumb {
   background-color: #bbbbbb;
   border-radius: 10px;
 }
-
 
 .list-transactions {
   list-style: none;
