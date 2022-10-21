@@ -6,8 +6,4 @@ const router = Router();
 router.get('/history/:id', operationsHistory);
 router.get('/operations/:id', IngresoEgresoHistory);
 
-<<<<<<< HEAD
 export default router;
-=======
-export default router;
->>>>>>> origin/main

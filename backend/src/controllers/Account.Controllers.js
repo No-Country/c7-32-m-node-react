@@ -93,8 +93,8 @@ export const renewPassword = async (req, res) => {
 };
 
 export const updateProfile = async (req, res) => {
+  console.log(req.body);
   try {
-    // const { id, field, value } = req.body;
     const { id, data } = req.body;
 
     if (id === undefined || id === '' || id === null) res.status(400).json({ message: "Se necesita un id" });
