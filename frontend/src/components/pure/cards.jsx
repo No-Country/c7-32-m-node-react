@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { httpsRequest } from '../../assets/config/axios'
 import { useUserContext } from '../context/userContext'
 import { swalAlert } from '../../assets/config/swal'
-import '../../styles/cardDash.css'
 
 function Cards() {
 
