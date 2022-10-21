@@ -44,7 +44,7 @@ const CardForm = ({ handleCard }) => {
     const exp_date = new Date(parseInt(data.year) + 2000 , (parseInt(data.month) - 1)  )
     
     try {
-        await httpsRequest(
+        const newCard = await httpsRequest(
         'post',
         `https://c7-32-back.herokuapp.com/api/card/create/${user.id}`,
         {
@@ -55,6 +55,8 @@ const CardForm = ({ handleCard }) => {
           exp_date
         },
       )
+      swalAlert('success', 'Excelente', `${newCard.data.message}`)
+      close()
     } catch (error) {
       swalAlert('error', 'Oops', error.response.data.message)
     }
