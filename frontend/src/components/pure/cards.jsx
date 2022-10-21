@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { httpsRequest } from '../../assets/config/axios';
-import { useUserContext } from '../context/userContext';
-import '../../styles/cardDash.css';
+import { httpsRequest } from '../../assets/config/axios'
+import { useUserContext } from '../context/userContext'
+import { swalAlert } from '../../assets/config/swal'
+import '../../styles/cardDash.css'
 
 function Cards() {
 
@@ -11,14 +12,14 @@ function Cards() {
   useEffect(() => {
     async function getHistory() {
       try {
-        const res = await httpsRequest('get', `https://c7-32-back.herokuapp.com/api/card/user/${user.id}`);
-        setCards(res.data.cards);
+        const res = await httpsRequest('get', `https://c7-32-back.herokuapp.com/api/card/user/${user.id}`)
+        setCards(res.data.cards)
       } catch (error) {
         swalAlert('error', 'Oops', error)
       }
     }
-    getHistory();
-  }, []);
+    getHistory()
+  }, [])
 
   return (
     <div>
