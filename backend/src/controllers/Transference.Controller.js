@@ -23,7 +23,6 @@ export const postTransf = async (req, res) => {
     }
 
     const userTransferring = await User.findByPk(userId);
-
     if (!userTransferring) {
       return res.status(400).json({ message: "ID del usuario que transfiere, inválido" });
     }
@@ -44,7 +43,7 @@ export const postTransf = async (req, res) => {
         user_transferring_reason: transfer.reason,
         user_transferring_amount: transfer.amount
       });
-
+      
       await User.update(
         {
           amount: (userTransferring.amount - transfer.amount)
@@ -65,13 +64,13 @@ export const postTransf = async (req, res) => {
       user_id: searchCbu.id,
       user_transferring_id: userTransferring.id,
       user_transferring_cbu: userTransferring.cbu,
-      user_transferring_reason: reason,
-      user_transferring_amount: amount
+      user_transferring_reason: transfer.reason,
+      user_transferring_amount: transfer.amount
     });
 
     await User.update(
       {
-        amount: (searchCbu.amount + amount)
+        amount: (searchCbu.amount + transfer.amount)
       },
       {
         where: {
@@ -81,7 +80,7 @@ export const postTransf = async (req, res) => {
 
     await User.update(
       {
-        amount: (userTransferring.amount - amount)
+        amount: (userTransferring.amount - transfer.amount)
       },
       {
         where: {
@@ -90,7 +89,7 @@ export const postTransf = async (req, res) => {
       }
     );
 
-    res.json({ message: "¡Transferencia exitosa!" });
+    res.json({ message: "¡Transferencia exitosa!"});
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

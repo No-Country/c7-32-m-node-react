@@ -93,7 +93,6 @@ export const renewPassword = async (req, res) => {
 };
 
 export const updateProfile = async (req, res) => {
-  console.log(req.body);
   try {
     const { id, data } = req.body;
 

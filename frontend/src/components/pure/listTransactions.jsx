@@ -16,7 +16,7 @@ const ListTransactions = () => {
     async function getHistory() {
       try {
         const res = await httpsRequest('get', `https://c7-32-back.herokuapp.com/api/history/${user.id}`)
-        const history = [...res.data.ingreso, ...res.data.egreso]
+        const history = [...res.data.ingresos, ...res.data.egresos]
         setTransferences(history)
       } catch (error) {
         swalAlert('error', 'Oops', error.response.data?.message)

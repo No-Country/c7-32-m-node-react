@@ -5,8 +5,15 @@ import { IoChevronDownOutline, IoChevronUpOutline } from 'react-icons/io5'
 
 const Transaction = ({props, id}) => {
 
-  const createDate = new Date()
-  const actualyDate = createDate.toLocaleString()
+  const getFormattedDate = (date) => {
+    return `${date.getFullYear()}-${padNumber(date.getMonth() + 1)}-${padNumber(date.getDate())} ${padNumber(date.getHours())}:${padNumber(date.getMinutes())}:${padNumber(date.getSeconds())}`
+  }
+  
+  const padNumber = (number) => {
+    return number < 10 ? "0" + number : number
+  }
+  
+  const actualyDate = getFormattedDate(new Date(props.createdAt))
 
   return (
     <li className='item-transaction' id={id}>

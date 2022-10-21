@@ -56,10 +56,11 @@ const TransferForm = ({ close }) => {
       amount: info.amount,
       reason: info.reason
     }
+
     try {
       await httpsRequest(
         'post',
-        `https://wenwallet.vercel.app/user/${user.id}/transference`,
+        `https://c7-32-back.herokuapp.com/api/user/${user.id}/transference`,
         {
           transfer: transfer
         }

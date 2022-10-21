@@ -13,7 +13,7 @@ const DepositForm = ({ close }) => {
   const { user, makeDeposit } = useUserContext()
 
   async function getDeposit() {
-    const res = await httpsRequest('get', `http://localhost:5000/api/operations/${user.id}`)
+    const res = await httpsRequest('get', `https://c7-32-back.herokuapp.com/api/operations/${user.id}`)
     let result = 0
     for (let i = 0; i < res.data.ingreso.length; i++) {
       if (res.data.ingreso.length !== 0) {
@@ -27,7 +27,7 @@ const DepositForm = ({ close }) => {
     try {
       await httpsRequest(
         'post',
-        `http://localhost:5000/api/${user.id}/ingress`,
+        `https://c7-32-back.herokuapp.com/api/${user.id}/ingress`,
         {
           amount: qty
         }
