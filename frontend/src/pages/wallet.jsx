@@ -3,12 +3,13 @@ import React, { useState } from 'react'
 import Header from '../components/pure/header'
 import CardForm from '../components/pure/forms/cardForm'
 import cardChip from '../assets/images/cardChip.png'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 import '../styles/wallet.css'
 
 const Wallet = () => {
 
-
+  const [localCard, setLocalCard] = useLocalStorage('card', '')
   const [card, setCard] = useState({})
   
   const cardData = (data) =>{
@@ -35,13 +36,9 @@ const Wallet = () => {
         setCard({ ...card })
         break
     }
+    setLocalCard(card)
   }
 
-  const saveCard = () =>{
-    localStorage.setItem('card', JSON.stringify( card ) )
-  }
-
-  const localCard = localStorage !== null && localStorage.getItem('card')
   return (
     <div>
       <Header title='Wallet' id='space' show={true}/>
@@ -50,51 +47,51 @@ const Wallet = () => {
           <div className='card-image'>
             <img src={cardChip} />
             <span>{
-              localCard !== null ?
-                card.number
-                :
+              localCard ?
                 localCard.number
+                :
+                card.number
               }
             </span>
             <span>{
-              localCard !== null ?
-                card.name
-                :
+              localCard ?
                 localCard.name
+                :
+                card.name
               }
               {" "}
               {
-              localCard !== null ?
-                card.surname
-                :
+              localCard ?
                 localCard.surname
+                :
+                card.surname
               }
             </span>
             <span>{
-              localCard !== null ?
-                card.month
-                :
+              localCard ?
                 localCard.month
+                :
+                card.month
               } 
               / 
               {
-              localCard !== null ?
-                card.year
-                :
+              localCard ?
                 localCard.year
+                :
+                card.year
               }
             </span>
             <span>{
-              localCard !== null ?
-                card.cvv
-                :
+              localCard ?
                 localCard.cvv
+                :
+                card.cvv
               }
             </span>
           </div>
         </section>
         <section>
-          <CardForm handleCard={cardData} save={saveCard}/>
+          <CardForm handleCard={cardData} />
         </section>
       </main>     
     </div>

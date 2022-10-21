@@ -11,7 +11,7 @@ const DepositForm = ({ close }) => {
 
   const { register, handleSubmit } = useForm()
   const { user, makeDeposit } = useUserContext()
-
+  
   async function getDeposit() {
     const res = await httpsRequest('get', `http://localhost:5000/api/operations/${user.id}`)
     let result = 0
